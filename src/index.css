@@ -1,69 +1,168 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background: linear-gradient(#672280, #A626D3) right;
+}
+
+.navbar {
+  position: sticky;
+  width: 90%;
+  margin: auto;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin-right: 3.5rem;
+  gap: 3rem;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.nav-links .links {
+  text-decoration: none;
+  color: white;
+  transition: color 0.4s linear;
+  position: relative;
+  padding: 1.125rem;
+}
+.nav-links .links:hover {
+  color: blueviolet;
+}
+.nav-links .links::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+.nav-links .navbar-links::before {
+  transform: scaleX(0);
+}
+.nav-links .navbar-links:hover::before {
+  transform: scaleX(1);
+}
+.nav-links .navbar-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 1s;
+  box-shadow: 1px 2px white;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.nav-links .navbar-btn:hover {
+  background-color: white;
+  transform: translateX(-5px) translateY(5px);
+  color: blueviolet;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.logo {
+  width: 15rem;
 }
+
+main {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.hero {
+  background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+
+.hero-text {
+  padding-top: 10rem;
+  max-width: 60%;
+  margin: auto;
+}
+.hero-text h1 {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 2.125rem;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: start;
+}
+.hero-text p {
+  margin-top: 2rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: start;
+}
+.hero-text .btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+.hero-text .btn {
+  margin-top: 2rem;
+  padding: 1.25rem 10rem;
+  margin: 10rem, 2rem;
+  background: transparent;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 5px solid white;
+  color: white;
+  position: relative;
+  transition: color 0.4s linear;
+}
+.hero-text .btn:hover {
+  color: black;
+  text-shadow: 2px 2px 5px blueviolet;
+}
+.hero-text .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+  transition: transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+.hero-text .hero-btn::before {
+  transform: scaleX(0);
+}
+.hero-text .hero-btn:hover::before {
+  transform: scaleX(1);
+}/*# sourceMappingURL=index.css.map */

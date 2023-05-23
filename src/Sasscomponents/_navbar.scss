@@ -1,0 +1,86 @@
+header {
+    background: linear-gradient(#672280,#A626D3) right;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+.navbar {
+    @include flex(space-between,center,20px,row);
+    position: sticky;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+.nav-links {
+    @include flex(space-between,center,20px,row);
+    @include font(('Karla',sans-serif),1.125rem);
+    list-style: none;
+    margin-right: 3.5rem;
+    gap: 3rem;
+    position: relative;
+    .hamburger {
+        position: absolute;
+        left: 9rem;
+        display: none;
+        cursor: pointer;
+    }
+    .links {
+        text-decoration: none;
+        color: white;
+        transition: color 0.4s linear;
+        position: relative;
+        padding: 1.125rem;
+        &:hover {
+            color: $purpleColor;
+        }
+        &::before {
+            @include btnAnimation();
+        }
+    }
+    .navbar-links {
+        &::before {
+            transform: scaleY(0);
+        }
+        &:hover::before {
+            transform: scaleY(1);
+        }
+    }
+    .navbar-btn {
+        @include font(('Karla',sans-serif),1.125rem);
+        @include border(1px,solid,white,10px);
+        padding: 10px 20px;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+        transition: 1s;
+        box-shadow: 1px 2px white;
+        &:hover {
+            background-color: white;
+            transform: translateX(-5px) translateY(5px);
+            color: $purpleColor;
+        }
+    }
+
+}
+.logo {
+    width: 15rem;
+}
+@media (max-width: 1150px) {
+    .nav-links {
+        .links {
+            display: none;
+        }
+        button {
+            display: none;
+        }
+        .hamburger {
+            display: block;
+        }
+    }
+}
+@media (min-width: 35em) {
+    header {
+        width: 100%;
+    }
+}

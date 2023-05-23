@@ -1,7 +1,5 @@
-import React from 'react'
 import {useState} from "react"
 import logo from "../assets/logo.jpg"
-import heroimage from "../assets/heroimage.jpg"
 export default function Landing() {
 
 

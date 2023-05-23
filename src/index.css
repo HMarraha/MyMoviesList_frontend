@@ -57,10 +57,10 @@ header {
   transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
 }
 .nav-links .navbar-links::before {
-  transform: scaleX(0);
+  transform: scaleY(0);
 }
 .nav-links .navbar-links:hover::before {
-  transform: scaleX(1);
+  transform: scaleY(1);
 }
 .nav-links .navbar-btn {
   padding: 10px 20px;

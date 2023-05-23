@@ -1,13 +1,8 @@
 import { useState } from 'react'
-import Landing from './Components/Landing'
+import Landing from './Views/Landing'
 import './App.css'
 
 function App() {
-  const [onScroll, setOnScroll] = useState(false)
-
-  function handleOnScroll() {
-    setOnScroll(true)
-  }
   return (
     <>
       <Landing />

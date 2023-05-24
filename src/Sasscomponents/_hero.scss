@@ -61,7 +61,28 @@ main  {
     }
 }
 @media (max-width: 1150px) {
-    .latest {
-        display: none;
+    .hero {
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        padding: 0;
+        .hero-text {
+            margin-bottom: 15rem;
+            padding-top: 5rem;
+            h1 {
+                font-size: 1.5rem;
+                text-align: center;
+                padding: 0;
+            }
+            p {
+                font-size: 1rem;
+                text-align: center;
+            }
+            .btn-container {
+                flex-wrap: wrap;
+                margin-top: 4rem;
+            }
+        }
     }
+
 }

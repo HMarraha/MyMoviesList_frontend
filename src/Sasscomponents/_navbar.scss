@@ -49,7 +49,7 @@ header {
     }
     .hamburger {
         position: absolute;
-        left: 4rem;
+        left: 6rem;
         display: none;
         cursor: pointer;
     }
@@ -98,7 +98,9 @@ header {
             color: $purpleColor;
         }
     }
-
+    .latestli {
+        display: none;
+    }
 }
 .logo {
     width: 15rem;
@@ -124,6 +126,34 @@ header {
             gap: 1rem;
             height: 100vh;
         }
+        .mobilelatest {
+            text-align: center;
+            padding: 0;
+            .latestli {
+                color: white;
+                display: block;
+                text-decoration: none;
+                transition: color 0.4s linear;
+                position: relative;
+                padding: 1rem 5rem;
+                max-width: 100%;
+                margin-top: 2rem;
+                &:hover {
+                    color: $purpleColor;
+                }
+                &::before {
+                @include btnAnimation();
+                }
+            }
+            .latest-links {
+                &::before {
+                    transform: scaleX(0);
+                }
+                &:hover::before {
+                    transform: scaleX(1);
+                }
+            }    
+        }
         .mobile-btn {
             display: block;
             @include font(('Karla',sans-serif),1.125rem);
@@ -135,7 +165,7 @@ header {
             padding: 1rem 7.3rem ;
             transition: 1s;
             box-shadow: 1px 2px white;
-            width: 100%;
+            max-width: 100%;
             &:hover {
                 background-color: white;
                 transform: translateX(-5px) translateY(5px);
@@ -159,7 +189,7 @@ header {
             transition: color 0.4s linear;
             position: relative;
             padding: 1rem 8rem;
-            width: 100%;
+            max-width: 100%;
             &:hover {
                 color: $purpleColor;
             }

@@ -2,7 +2,7 @@ import {useState} from "react"
 import {FaBars,FaTimes} from "react-icons/fa"
 import logo from "../assets/logo.jpg"
 import "../index.css"
-export default function Landing({latest,handleLatest,icon,handleIcon}) {
+export default function Landing({latest,handleLatest,icon,handleIcon,show,handleShow}) {
     const styles = {
         visibility: latest ? "hidden" : "visible",
         transform: latest ? "translateY(-5%)" : "translateY(5%)",
@@ -13,7 +13,19 @@ export default function Landing({latest,handleLatest,icon,handleIcon}) {
         transform: icon ? "translateX(0rem)" : "translate(30rem)",
         transition: "350ms ease-in"
     }
-    console.log(icon)
+    const latestStyle = {
+        transition: "350ms ease-in",
+        opacity: show ? "0" : "1",
+        transform: show ? "translateY(-5%)" : "translate(0)",
+        visibility: show ? "hidden" : "visible"
+    }
+    const role= {
+        transform: show ? "translateY(-16rem)" : "translate(0)",
+        transition: "350ms ease-in",
+    }
+
+    
+    console.log(show)
   return (
     <>
         <header>
@@ -32,11 +44,18 @@ export default function Landing({latest,handleLatest,icon,handleIcon}) {
                             <li><a className='links navbar-links' href="#">About</a></li>
                             <li><a className='links navbar-links' href="#">FAQS</a></li>
                         <div style={translate} className="mobilenav">
-                            <li><a onClick={handleLatest} className='link navbar-link' href="#">Latest</a></li>
-                            <li><a className='link navbar-link' href="#">About</a></li>
-                            <li><a className='link navbar-link' href="#">FAQS</a></li>
-                            <button className='mobile-btn' type='button'>Login</button>
-                            <button className='mobile-btn' type='button'>Sign up</button>
+                            <div>
+                            <li><a onClick={handleShow} className='link navbar-link' href="#">Latest</a></li>
+                            <div style={latestStyle} className="mobilelatest"> 
+                                <li ><a className="latestli latest-links" href="#">Popular</a></li>  
+                                <li ><a className="latestli latest-links" href="#">Movies</a></li>
+                                <li ><a className="latestli latest-links" href="#">TV Shows</a></li>
+                            </div> 
+                            </div>
+                            <li style={role} ><a className='link navbar-link' href="#">About</a></li>
+                            <li style={role} ><a className='link navbar-link' href="#">FAQS</a></li>
+                            <button style={role}  className='mobile-btn' type='button'>Sign in</button>
+                            <button style={role}  className='mobile-btn' type='button'>Sign up</button>
                         </div>
                     </ul>
                     <button className='navbar-btn' type='button'>Login</button>

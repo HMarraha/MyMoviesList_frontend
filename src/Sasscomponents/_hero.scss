@@ -11,24 +11,10 @@ main  {
     background-repeat: no-repeat;
     background-size: cover;
     height: 80vh;
+    position: fixed;
+    max-width: 70%;
+    z-index: -1;
     filter: drop-shadow(8px 8px 10px gray);
-    position: relative;
-    .latestmtv {
-        @include flex(space-evenly,center,10px,column);
-        @include border(1px,solid,white,10px);
-        @include font(('Cairo',sans-serif),1.5rem);
-        position: absolute;
-        left: 59%;
-        bottom: 75.2%;
-        background-color: white;
-        padding: 2rem;
-        transition: 350ms ease-in;
-        a {
-            text-decoration: none;
-            color: black;
-            text-shadow: 2px 2px 5px blueviolet;
-        }
-    }
     .hero-text {
         padding-top: 10rem;
         max-width: 60%;
@@ -44,6 +30,7 @@ main  {
         }
         .btn-container {
             @include flex(space-evenly,center,10px,row); 
+            margin-top: 6rem;
         }
         .btn {
             margin-top: 2rem;

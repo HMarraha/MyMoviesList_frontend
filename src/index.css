@@ -33,11 +33,59 @@ header {
   gap: 3rem;
   position: relative;
 }
+.nav-links .dropdown {
+  position: relative;
+}
+.nav-links .latest {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  width: 180%;
+  top: calc(100% + 1rem);
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.nav-links .latest li {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  text-align: start;
+}
+.nav-links .latest li:hover {
+  transform: translateX(2px) translateY(-2px);
+}
+.nav-links .latest a {
+  text-decoration: none;
+  color: black;
+  text-shadow: 2px 2px 5px blueviolet;
+}
 .nav-links .hamburger {
   position: absolute;
-  left: 9rem;
+  left: 4rem;
   display: none;
   cursor: pointer;
+}
+.nav-links .mobilenav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: row;
+}
+.nav-links .mobile-btn {
+  display: none;
+}
+.nav-links .link {
+  display: none;
 }
 .nav-links .links {
   text-decoration: none;
@@ -96,12 +144,86 @@ header {
 @media (max-width: 1150px) {
   .nav-links .links {
     display: none;
+    padding: 1rem 8.3rem;
+    width: 100%;
   }
-  .nav-links button {
+  .nav-links .mobilenav {
+    background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: fixed;
+    top: 5.8rem;
+    right: 0;
+    max-width: 100%;
+    padding: 5rem;
+    gap: 1rem;
+    height: 100vh;
+  }
+  .nav-links .mobile-btn {
+    display: block;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 7.3rem;
+    transition: 1s;
+    box-shadow: 1px 2px white;
+    width: 100%;
+  }
+  .nav-links .mobile-btn:hover {
+    background-color: white;
+    transform: translateX(-5px) translateY(5px);
+    color: blueviolet;
+  }
+  .nav-links .navbar-btn {
     display: none;
   }
   .nav-links .hamburger {
     display: block;
+  }
+  .nav-links .dropdown {
+    display: none;
+    opacity: 0;
+  }
+  .nav-links .link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    transition: color 0.4s linear;
+    position: relative;
+    padding: 1rem 8rem;
+    width: 100%;
+  }
+  .nav-links .link:hover {
+    color: blueviolet;
+  }
+  .nav-links .link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  }
+  .nav-links .navbar-link::before {
+    transform: scaleY(0);
+  }
+  .nav-links .navbar-link:hover::before {
+    transform: scaleY(1);
   }
 }
 @media (min-width: 35em) {
@@ -122,31 +244,10 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
+  position: fixed;
+  max-width: 70%;
+  z-index: -1;
   filter: drop-shadow(8px 8px 10px gray);
-  position: relative;
-}
-.hero .latestmtv {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 10px;
-  flex-direction: column;
-  border: 1px solid white;
-  border-radius: 10px;
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  position: absolute;
-  left: 59%;
-  bottom: 75.2%;
-  background-color: white;
-  padding: 2rem;
-  transition: 350ms ease-in;
-}
-.hero .latestmtv a {
-  text-decoration: none;
-  color: black;
-  text-shadow: 2px 2px 5px blueviolet;
 }
 .hero .hero-text {
   padding-top: 10rem;
@@ -176,6 +277,7 @@ main {
   align-items: center;
   gap: 10px;
   flex-direction: row;
+  margin-top: 6rem;
 }
 .hero .hero-text .btn {
   margin-top: 2rem;

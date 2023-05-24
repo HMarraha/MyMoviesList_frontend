@@ -17,15 +17,13 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
         transition: "350ms ease-in",
         opacity: show ? "0" : "1",
         transform: show ? "translateY(-5%)" : "translate(0)",
-        visibility: show ? "hidden" : "visible"
+        visibility: show ? "hidden" : "visible",
     }
     const role= {
         transform: show ? "translateY(-16rem)" : "translate(0)",
         transition: "350ms ease-in",
     }
 
-    
-    console.log(show)
   return (
     <>
         <header>

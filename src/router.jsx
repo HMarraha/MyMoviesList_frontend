@@ -1,35 +1,50 @@
-import {createBrowserRouter} from "react-router-dom"
+import {Navigate, createBrowserRouter} from "react-router-dom"
 import App from "./App"
 import Login from "./Views/Login"
 import Signup from "./Views/Signup"
 import Profile from "./Views/Profile"
 import Notfound from "./Views/Notfound"
 import Welcome from "./Views/Welcome"
+import DefaultLayout from "./components/DefaultLayout"
+import GuestLayout from "./components/GuestLayout"
 const router = createBrowserRouter([
     {
-        path:'/home',
-        element: <App />
+        path: '/',
+        element: <DefaultLayout />,
+        children: [
+            {
+                path:'/profile',
+                element: <Profile />
+            },
+            {
+                path:'/welcome',
+                element: <Welcome />
+            },
+        ]
     },
     {
-        path:'/login',
-        element: <Login />
-    },
-    {
-        path:'/signup',
-        element: <Signup />
-    },
-    {
-        path:'/profile',
-        element: <Profile />
-    },
+        path: '/',
+        element: <GuestLayout />,
+        children: [
+            {
+                path:'/home',
+                element: <App />
+            },
+            {
+                path:'/login',
+                element: <Login />
+            },
+            {
+                path:'/signup',
+                element: <Signup />
+            },
+        ]
+    }, 
     {
         path:'*',
         element: <Notfound />
     },
-    {
-        path:'/welcome',
-        element: <Welcome />
-    },
+    
     
 ])
 

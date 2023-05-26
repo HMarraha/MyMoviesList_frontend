@@ -1,0 +1,68 @@
+.login-section {
+    background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
+    padding: 4.345rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-container {
+    max-width: 40%;
+    margin: 9.6rem auto;
+    border: 1px solid red;
+    text-align: center;
+    @include border(2px,solid,black,10px);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    background-color: white;
+    padding: 2rem;
+    .login {
+        text-align: center;
+        margin-right: 9rem;
+        @include font(('Karla',sans-serif),2rem);
+        transition: 350ms;
+        text-shadow: 2px 2px 5px blueviolet;
+        &:hover {
+            transform: translateX(-3px) translateY(-3px);
+        }
+    }
+    img {
+        filter: drop-shadow(8px 8px 10px gray);
+        @include border(1px,solid,black,5rem);
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+        transition: 350ms;
+        &:hover {
+            transform: translateX(-3px) translateY(-3px);
+        }
+    }
+    input {
+        display: block;
+        width: 60%;
+        padding: 0.5rem 1rem;
+        margin: 0.6rem auto;
+        @include border(1px,solid,black,10px);
+        outline: none;
+        &:focus {
+            border: 2px solid blueviolet;
+        }
+        &::placeholder {
+            @include font(('Cairo',sans-serif),1.1rem)
+        }
+    }
+    h1 {
+        text-align: start;
+        margin-left: 9rem;
+        @include font(('Cairo',sans-serif),1.25rem)
+    }
+    button {
+        padding: 1rem 11rem;
+        margin: 2rem 0;
+        @include border(1px,solid,blueviolet,10px);
+        cursor: pointer;
+        transition: 350ms;
+        &:hover {
+            background-color: blueviolet;
+        }
+    }
+    p {
+        @include font(('Karla',sans-serif),0.9rem);
+        opacity: 0.7;
+    }
+}

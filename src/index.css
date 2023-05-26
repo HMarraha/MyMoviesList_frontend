@@ -281,7 +281,7 @@ main {
 
 .hero {
   margin-top: 5.65rem;
-  background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
+  background-image: linear-gradient(rgba(103, 34, 128, 0.7019607843), rgba(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
@@ -387,6 +387,93 @@ main {
     margin-top: 4rem;
   }
 }
+.login-section {
+  background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
+  padding: 4.345rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-container {
+  max-width: 40%;
+  margin: 9.6rem auto;
+  border: 1px solid red;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 2rem;
+}
+.login-container .login {
+  text-align: center;
+  margin-right: 9rem;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: 350ms;
+  text-shadow: 2px 2px 5px blueviolet;
+}
+.login-container .login:hover {
+  transform: translateX(-3px) translateY(-3px);
+}
+.login-container img {
+  filter: drop-shadow(8px 8px 10px gray);
+  border: 1px solid black;
+  border-radius: 5rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: 350ms;
+}
+.login-container img:hover {
+  transform: translateX(-3px) translateY(-3px);
+}
+.login-container input {
+  display: block;
+  width: 60%;
+  padding: 0.5rem 1rem;
+  margin: 0.6rem auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline: none;
+}
+.login-container input:focus {
+  border: 2px solid blueviolet;
+}
+.login-container input::-moz-placeholder {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.login-container input::placeholder {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.login-container h1 {
+  text-align: start;
+  margin-left: 9rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.login-container button {
+  padding: 1rem 11rem;
+  margin: 2rem 0;
+  border: 1px solid blueviolet;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 350ms;
+}
+.login-container button:hover {
+  background-color: blueviolet;
+}
+.login-container p {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
 * {
   padding: 0;
   margin: 0;

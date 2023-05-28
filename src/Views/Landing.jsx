@@ -68,8 +68,8 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
             <div className='hero'>
                 <div className='hero-text'>
                     <h1>Welcome to MyMoviesList! You can track how many movies you've watched, still watching, and want to watch.</h1>
-                    <p>There are many features you can use glad to MyMoviesList such as adding ratings, comments and many more.</p>
-                    <p>Start now by signing up if you're new, if not you can login right now to your account.</p>
+                    <p className="p-1">There are many features you can use glad to MyMoviesList such as adding ratings, comments and many more.</p>
+                    <p className="p-2">Start now by signing up if you're new, if not you can login right now to your account.</p>
                     <div className='btn-container'>
                     <Link to="/login"><button className="btn hero-btn">Login</button></Link>
                         <Link to="/signup"><button className='btn hero-btn'>Signup</button></Link>

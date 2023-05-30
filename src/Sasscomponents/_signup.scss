@@ -1,19 +1,19 @@
-.login-section {
+.signup-section {
     background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
-    padding: 8.2rem;
+    padding: 4.38rem;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.login-container {
+.signup-container {
     max-width: 40%;
-    margin: 4rem auto;
+    margin: 2.27rem auto;
     border: 1px solid red;
     text-align: center;
     @include border(2px,solid,black,10px);
     box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
     background-color: white;
     padding: 2rem;
-    .login {
+    .signup {
         text-align: center;
         margin-right: 9rem;
         @include font(('Karla',sans-serif),2rem);
@@ -52,14 +52,12 @@
         @include font(('Cairo',sans-serif),1.25rem)
     }
     button {
-        max-width: 100%;
-        display: block;
-        padding: 1rem 11rem;
-        margin: 2rem auto;
         @include border(1px,solid,blueviolet,10px);
+        @include font(('Cairo',sans-serif),1.25rem);
+        padding: 1rem 11rem;
+        margin: 2rem 0;
         cursor: pointer;
         transition: 350ms;
-        @include font(('Cairo',sans-serif),1.25rem);
         background-color: transparent;
         box-shadow: 2px 2px 5px blueviolet;
         &:hover {
@@ -70,8 +68,13 @@
         @include font(('Karla',sans-serif),0.9rem);
         opacity: 0.7;
     }
-    .remember-me {
-        display: inline;
-        width: 5%;
+    .error {
+        padding: 2rem;
+        @include border(1px,solid,black,10px);
+        background-color: rgba(255,0,0,0.8);
+        color: white;
+        text-shadow: 1px 1px 5px black;
+        @include font(('Karla',sans-serif),1.25rem);
+        margin-top: 2rem;
     }
 }

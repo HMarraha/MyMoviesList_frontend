@@ -1,16 +1,38 @@
 import logo from "../assets/mmllogo.jpg"
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
-
-export default function Welcomenavbar({latest,handleLatest,icon,handleIcon,show,handleShow}) {
-  const styles = {
-    visibility: latest ? "hidden" : "visible",
-    transform: latest ? "translateY(-5%)" : "translateY(5%)",
-    transition: latest ? "0s" : "150ms ease-out",
-    opacity: latest ? "0" : "1",
-  }
-const translate = {
+import { FaPortrait } from "react-icons/fa"
+import { useStateContext } from "../contexts/contextprovide"
+import axiosClient from "../Views/axios"
+export default function Welcomenavbar({latest,handleLatest,icon,handleIcon,show,handleShow,logout,handleLogout,fetch}) {
+    const {user,setUser,setToken} = useStateContext()
+    const signout = (e) =>{
+        e.preventDefault()
+        const out = async () => {
+            try {
+                const response = await axiosClient.post('/logout')
+                setUser({})
+                setToken(null)
+            } catch (error) {
+                console.error(error)
+            }
+        };
+        out();
+    }
+    const styles = {
+      visibility: latest ? "hidden" : "visible",
+      transform: latest ? "translateY(-5%)" : "translateY(5%)",
+      transition: latest ? "0s" : "150ms ease-out",
+      opacity: latest ? "0" : "1",
+    }
+    const logoutstyle = {
+      visibility: logout ? "hidden" : "visible",
+      transform: logout ? "translateY(-5%)" : "translateY(5%)",
+      transition: logout ? "0s" : "150ms ease-out",
+      opacity: logout ? "0" : "1",
+    }
+    const translate = {
     transform: icon ? "translateX(0rem)" : "translate(30rem)",
     transition: "350ms ease-in"
 }
@@ -30,7 +52,7 @@ const role= {
         <header>
             <nav className='navbar'>
                 <a href='#'><img className='logo' src={logo} alt="Logo" /></a>
-                <div className='nav-links'> 
+                <div className='nav-links-container'> 
                     <ul className='nav-links'>
                         <div className="dropdown">
                         <li><a onClick={handleLatest} className='links navbar-links' href="#">Latest</a></li>
@@ -57,8 +79,20 @@ const role= {
                             <Link to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
                         </div>
                     </ul>
-                    <Link to="/login"><button className='navbar-btn' type='button'>Login</button></Link>
-                    <Link to="/signup"><button className='navbar-btn' type='button'>Sign up</button></Link>
+                    <div onClick={handleLogout} className="profiledisplay">
+                        <h1 className="profilename">{user.name}</h1>
+                        <i className="profileicon"><FaPortrait radius={49} color="white" size={60}/></i>
+                        <div style={logoutstyle} className="logout">
+                            <Link to="/profile">
+                                <button style={{cursor: 'pointer'}} className="logoutbtn">Profile</button>
+                            </Link>
+                                <button onClick={signout} style={{cursor: 'pointer'}} className="logoutbtn logout-btn">Sign out</button>
+                                <div className="logoutinfo">
+                                    <h1 className="profilename">{user.name}</h1>
+                                    <p className="profileemail">{user.email}</p>
+                                </div>
+                        </div>
+                    </div>
                     <i onClick={handleIcon} className="hamburger">{icon ? <FaTimes size="30px" color="white"/> : <FaBars size="30px" color="white" />}</i>   
                 </div>
             </nav>

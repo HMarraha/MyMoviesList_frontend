@@ -6,10 +6,11 @@ main  {
     position: relative;
 }
 .hero {
+    margin-top: 5.65rem;
     background-image: linear-gradient(#672280b3,rgb(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    height: 80vh;
     position: fixed;
     max-width: 70%;
     z-index: -1;
@@ -17,6 +18,7 @@ main  {
     .hero-text {
         padding-top: 10rem;
         max-width: 60%;
+        margin: auto;
         h1 {
             @include font(('Cario',sans-serif),2.125rem);
             @include textdeco();
@@ -24,13 +26,13 @@ main  {
         p {
             @include font(('Cario',sans-serif),1.5rem);
             @include textdeco();
+            margin-top: 2rem;
         }
         .btn-container {
             @include flex(space-evenly,center,10px,row); 
-            margin-bottom: 10rem;
+            margin-top: 6rem;
         }
         .btn {
-            padding: 1.250rem 10rem;
             background: transparent;
             cursor: pointer;
             @include border(5px,solid,white,10px);
@@ -146,6 +148,24 @@ main  {
                 flex-wrap: wrap;
                 margin-top: 4rem;
                 margin-bottom: 105rem;
+            }
+        }
+    }
+}
+@media (min-width: 415px) {
+    .hero {
+        .hero-text {
+            .btn {
+                padding: 1.250rem 10rem;
+            }
+        }
+    }
+}
+@media (max-width: 414px) {
+    .hero {
+        .hero-text {
+            .btn {
+                padding: 1.250rem 5rem;
             }
         }
     }

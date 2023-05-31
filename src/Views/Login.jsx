@@ -32,7 +32,7 @@ export default function Login() {
       <section className="login-section">
         <div className="login-container">
           <form action='#' method='post' onSubmit={handleSubmit}>
-            <img src={smalllogo} alt="" />
+            <Link to='/home'><img src={smalllogo} alt="" /></Link>
             <h1 className='login'>Login</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Email:</h1>

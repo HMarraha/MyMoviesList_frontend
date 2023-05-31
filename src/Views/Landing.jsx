@@ -54,8 +54,8 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
                             </div>
                             <li style={role} ><a className='link navbar-link' href="#">About</a></li>
                             <li style={role} ><a className='link navbar-link' href="#">FAQS</a></li>
-                            <Link to="/login"><button style={role}  className='mobile-btn' type='button'>Sign in</button></Link>
-                            <Link to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
+                            <Link style={{textDecoration: "none"}} to="/login"><button style={role}  className='mobile-btn' type='button'>Sign in</button></Link>
+                            <Link style={{textDecoration: "none"}} to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
                         </div>
                     </ul>
                     <Link to="/login"><button className='navbar-btn' type='button'>Login</button></Link>

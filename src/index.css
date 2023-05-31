@@ -70,7 +70,7 @@ header {
 }
 .nav-links .hamburger {
   position: absolute;
-  left: 6rem;
+  left: 0rem;
   display: none;
   cursor: pointer;
 }
@@ -144,6 +144,17 @@ header {
   width: 15rem;
 }
 
+@media (max-width: 1393px) {
+  .nav-links {
+    gap: 2rem;
+    margin-right: 0;
+  }
+}
+@media (max-width: 1221px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
 @media (max-width: 1150px) {
   .nav-links .links {
     display: none;
@@ -157,7 +168,7 @@ header {
     justify-content: flex-start;
     align-items: flex-start;
     position: fixed;
-    top: 5.8rem;
+    top: 6.7rem;
     right: 0;
     max-width: 100%;
     padding: 5rem;
@@ -304,13 +315,13 @@ main {
   text-align: start;
 }
 .hero .hero-text p {
-  margin-top: 2rem;
   font-family: "Cario", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   color: white;
   text-shadow: 2px 2px 5px black;
   text-align: start;
+  margin-top: 2rem;
 }
 .hero .hero-text .btn-container {
   display: flex;
@@ -321,9 +332,6 @@ main {
   margin-top: 6rem;
 }
 .hero .hero-text .btn {
-  margin-top: 2rem;
-  padding: 1.25rem 10rem;
-  margin: 10rem, 2rem;
   background: transparent;
   cursor: pointer;
   border: 5px solid white;
@@ -362,12 +370,14 @@ main {
   transform: scaleX(1);
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1570px) {
   .hero {
     max-width: 100%;
     top: 0;
     left: 0;
+    right: 0;
     padding: 0;
+    height: auto;
   }
   .hero .hero-text {
     margin-bottom: 15rem;
@@ -378,7 +388,11 @@ main {
     text-align: center;
     padding: 0;
   }
-  .hero .hero-text p {
+  .hero .hero-text .p-1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero .hero-text .p-2 {
     font-size: 1rem;
     text-align: center;
   }
@@ -387,16 +401,89 @@ main {
     margin-top: 4rem;
   }
 }
+@media (max-height: 745px) {
+  .hero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .hero .hero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .hero .hero-text h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0;
+  }
+  .hero .hero-text .p-1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero .hero-text .p-2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero .hero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+  }
+}
+@media (max-height: 656px) {
+  .hero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .hero .hero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .hero .hero-text h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0;
+  }
+  .hero .hero-text .p-1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero .hero-text .p-2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .hero .hero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-bottom: 105rem;
+  }
+}
+@media (min-width: 415px) {
+  .hero .hero-text .btn {
+    padding: 1.25rem 10rem;
+  }
+}
+@media (max-width: 414px) {
+  .hero .hero-text .btn {
+    padding: 1.25rem 5rem;
+  }
+}
 .login-section {
   background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
-  padding: 4.345rem;
+  padding: 8.2rem;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .login-container {
   max-width: 40%;
-  margin: 9.6rem auto;
+  margin: 4rem auto;
   border: 1px solid red;
   text-align: center;
   border: 2px solid black;
@@ -437,7 +524,7 @@ main {
   outline: none;
 }
 .login-container input:focus {
-  border: 2px solid blueviolet;
+  border: 1px solid blueviolet;
 }
 .login-container input::-moz-placeholder {
   font-family: "Cairo", sans-serif;
@@ -457,12 +544,19 @@ main {
   font-size: 1.25rem;
 }
 .login-container button {
+  max-width: 100%;
+  display: block;
   padding: 1rem 11rem;
-  margin: 2rem 0;
+  margin: 2rem auto;
   border: 1px solid blueviolet;
   border-radius: 10px;
   cursor: pointer;
   transition: 350ms;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  background-color: transparent;
+  box-shadow: 2px 2px 5px blueviolet;
 }
 .login-container button:hover {
   background-color: blueviolet;
@@ -473,7 +567,759 @@ main {
   font-size: 0.9rem;
   opacity: 0.7;
 }
+.login-container .remember-me {
+  display: inline;
+  width: 5%;
+}
 
+.signup-section {
+  background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
+  padding: 4.38rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.signup-container {
+  max-width: 40%;
+  margin: 2.27rem auto;
+  border: 1px solid red;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 2rem;
+}
+.signup-container .signup {
+  text-align: center;
+  margin-right: 9rem;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: 350ms;
+  text-shadow: 2px 2px 5px blueviolet;
+}
+.signup-container .signup:hover {
+  transform: translateX(-3px) translateY(-3px);
+}
+.signup-container img {
+  filter: drop-shadow(8px 8px 10px gray);
+  border: 1px solid black;
+  border-radius: 5rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: 350ms;
+}
+.signup-container img:hover {
+  transform: translateX(-3px) translateY(-3px);
+}
+.signup-container input {
+  display: block;
+  width: 60%;
+  padding: 0.5rem 1rem;
+  margin: 0.6rem auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline: none;
+}
+.signup-container input:focus {
+  border: 1px solid blueviolet;
+}
+.signup-container input::-moz-placeholder {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.signup-container input::placeholder {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.signup-container h1 {
+  text-align: start;
+  margin-left: 9rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.signup-container button {
+  border: 1px solid blueviolet;
+  border-radius: 10px;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 1rem 11rem;
+  margin: 2rem 0;
+  cursor: pointer;
+  transition: 350ms;
+  background-color: transparent;
+  box-shadow: 2px 2px 5px blueviolet;
+}
+.signup-container button:hover {
+  background-color: blueviolet;
+}
+.signup-container p {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+.signup-container .error {
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+
+main {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.welcomehero {
+  margin-top: 5.65rem;
+  background-image: linear-gradient(rgba(103, 34, 128, 0.7019607843), rgba(166, 38, 211, 0.7)), url(./assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  position: fixed;
+  max-width: 70%;
+  z-index: -1;
+  filter: drop-shadow(8px 8px 10px gray);
+}
+.welcomehero .welcomehero-text {
+  padding-top: 10rem;
+  max-width: 60%;
+  margin: auto;
+}
+.welcomehero .welcomehero-text h1 {
+  font-family: "Cario", sans-serif;
+  font-weight: bold;
+  font-size: 2.125rem;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: start;
+  text-align: center;
+}
+.welcomehero .welcomehero-text p {
+  font-family: "Cario", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  text-align: start;
+  margin-top: 13rem;
+}
+.welcomehero .welcomehero-text .btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.welcomehero .welcomehero-text .btn-container .btn {
+  background: transparent;
+  cursor: pointer;
+  border: 5px solid white;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  transition: color 0.4s linear;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+.welcomehero .welcomehero-text .btn-container .btn:hover {
+  color: black;
+  text-shadow: 2px 2px 5px blueviolet;
+}
+.welcomehero .welcomehero-text .btn-container .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  border-radius: 0px;
+}
+.welcomehero .welcomehero-text .btn-container .welcomehero-btn::before {
+  transform: scaleX(0);
+}
+.welcomehero .welcomehero-text .btn-container .welcomehero-btn:hover::before {
+  transform: scaleX(1);
+}
+.welcomehero .welcomehero-text .btn-container .searchbar {
+  border: 1px solid black;
+  border-radius: 10px;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: start;
+}
+.welcomehero .welcomehero-text .btn-container .searchbar:focus {
+  outline: none;
+}
+
+@media (max-width: 1570px) {
+  .welcomehero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .welcomehero .welcomehero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .welcomehero .welcomehero-text h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+  }
+  .welcomehero .welcomehero-text p {
+    font-family: "Cario", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-align: start;
+    margin-top: 2rem;
+  }
+  .welcomehero .welcomehero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-bottom: 105rem;
+  }
+  .welcomehero .welcomehero-text .btn-container .btn {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-height: 745px) {
+  .welcomehero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .welcomehero .welcomehero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .welcomehero .welcomehero-text h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+  }
+  .welcomehero .welcomehero-text p {
+    font-family: "Cario", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-align: start;
+    margin-top: 2rem;
+  }
+  .welcomehero .welcomehero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-bottom: 105rem;
+  }
+  .welcomehero .welcomehero-text .btn {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-height: 868px) {
+  .welcomehero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .welcomehero .welcomehero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .welcomehero .welcomehero-text h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+  }
+  .welcomehero .welcomehero-text p {
+    font-family: "Cario", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-align: start;
+    margin-top: 2rem;
+  }
+  .welcomehero .welcomehero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-bottom: 105rem;
+  }
+  .welcomehero .welcomehero-text .btn {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-height: 656px) {
+  .welcomehero {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    height: auto;
+  }
+  .welcomehero .welcomehero-text {
+    margin-bottom: 15rem;
+    padding-top: 5rem;
+  }
+  .welcomehero .welcomehero-text h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+  }
+  .welcomehero .welcomehero-text p {
+    font-family: "Cario", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-align: start;
+    margin-top: 2rem;
+  }
+  .welcomehero .welcomehero-text .btn-container {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-bottom: 105rem;
+  }
+  .welcomehero .welcomehero-text .btn {
+    display: block;
+    width: 100%;
+  }
+}
+@media (min-width: 415px) {
+  .welcomehero .welcomehero-text .btn {
+    padding: 1.5rem 15.5rem;
+  }
+}
+@media (max-width: 942px) {
+  .welcomehero .welcomehero-text .btn {
+    padding: 1.25rem 5rem;
+  }
+}
+@media (min-width: 1569px) {
+  .welcomehero .welcomehero-text .btn {
+    padding: 1.25rem 2rem;
+  }
+}
+header {
+  background: linear-gradient(#672280, #A626D3) right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.loading {
+  width: 20%;
+  margin: auto;
+  margin-top: 20rem;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: 10ms ease-in;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-direction: row;
+  position: sticky;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.nav-links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.profiledisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding: 0.5rem 2rem;
+}
+.profiledisplay .logout {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2px;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-image: linear-gradient(#672280, #A626D3);
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 1rem 1rem;
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.profiledisplay .logout .logoutbtn {
+  width: 100%;
+  padding: 0rem 5rem;
+  background-color: white;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  transition: 350ms;
+}
+.profiledisplay .logout .logoutbtn:hover {
+  background-color: blueviolet;
+}
+.profiledisplay .logout .logout-btn {
+  padding: 0 2rem;
+}
+
+.profilename {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.logoutinfo {
+  margin-top: 3rem;
+}
+
+.profileemail {
+  color: white;
+}
+
+.hamburger {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-direction: row;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+  list-style: none;
+  margin-right: 3.5rem;
+  gap: 3rem;
+  position: relative;
+}
+.nav-links .dropdown {
+  position: relative;
+}
+.nav-links .latest {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  width: 180%;
+  top: calc(100% + 1rem);
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.nav-links .latest li {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  text-align: start;
+}
+.nav-links .latest li:hover {
+  transform: translateX(2px) translateY(-2px);
+}
+.nav-links .latest a {
+  text-decoration: none;
+  color: black;
+  text-shadow: 2px 2px 5px blueviolet;
+}
+.nav-links .hamburger {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+.nav-links .mobilenav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: row;
+}
+.nav-links .mobile-btn {
+  display: none;
+}
+.nav-links .link {
+  display: none;
+}
+.nav-links .links {
+  text-decoration: none;
+  color: white;
+  transition: color 0.4s linear;
+  position: relative;
+  padding: 1.125rem;
+}
+.nav-links .links:hover {
+  color: blueviolet;
+}
+.nav-links .links::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+.nav-links .navbar-links::before {
+  transform: scaleY(0);
+}
+.nav-links .navbar-links:hover::before {
+  transform: scaleY(1);
+}
+.nav-links .navbar-btn {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 1s;
+  box-shadow: 1px 2px white;
+}
+.nav-links .navbar-btn:hover {
+  background-color: white;
+  transform: translateX(-5px) translateY(5px);
+  color: blueviolet;
+}
+.nav-links .latestli {
+  display: none;
+}
+
+.logo {
+  width: 15rem;
+}
+
+@media (max-width: 1393px) {
+  .nav-links {
+    gap: 2rem;
+    margin-right: 0;
+  }
+}
+@media (max-width: 1221px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
+@media (max-width: 1150px) {
+  .profiledisplay {
+    display: none;
+  }
+  .profileicon {
+    display: none;
+  }
+  .profilename {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .nav-links .links {
+    display: none;
+    padding: 1rem 8.3rem;
+    width: 100%;
+  }
+  .nav-links .mobilenav {
+    background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: fixed;
+    top: 6.7rem;
+    right: 0;
+    max-width: 100%;
+    padding: 5rem;
+    gap: 1rem;
+    height: 100vh;
+  }
+  .nav-links .mobilelatest {
+    text-align: center;
+    padding: 0;
+  }
+  .nav-links .mobilelatest .latestli {
+    color: white;
+    display: block;
+    text-decoration: none;
+    transition: color 0.4s linear;
+    position: relative;
+    padding: 1rem 5rem;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+  .nav-links .mobilelatest .latestli:hover {
+    color: blueviolet;
+  }
+  .nav-links .mobilelatest .latestli::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  }
+  .nav-links .mobilelatest .latest-links::before {
+    transform: scaleX(0);
+  }
+  .nav-links .mobilelatest .latest-links:hover::before {
+    transform: scaleX(1);
+  }
+  .nav-links .mobile-btn {
+    display: block;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 7.3rem;
+    transition: 1s;
+    box-shadow: 1px 2px white;
+    max-width: 100%;
+  }
+  .nav-links .mobile-btn:hover {
+    background-color: white;
+    transform: translateX(-5px) translateY(5px);
+    color: blueviolet;
+  }
+  .nav-links .navbar-btn {
+    display: none;
+  }
+  .nav-links .hamburger {
+    display: block;
+  }
+  .nav-links .dropdown {
+    display: none;
+    opacity: 0;
+  }
+  .nav-links .link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    transition: color 0.4s linear;
+    position: relative;
+    padding: 1rem 8rem;
+    max-width: 100%;
+  }
+  .nav-links .link:hover {
+    color: blueviolet;
+  }
+  .nav-links .link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  }
+  .nav-links .navbar-link::before {
+    transform: scaleY(0);
+  }
+  .nav-links .navbar-link:hover::before {
+    transform: scaleY(1);
+  }
+}
+@media (min-width: 35em) {
+  header {
+    width: 100%;
+  }
+}
 * {
   padding: 0;
   margin: 0;

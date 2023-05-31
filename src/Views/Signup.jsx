@@ -36,7 +36,7 @@ export default function Signup() {
       <section className="signup-section">
         <div className="signup-container">
           <form method="post" onSubmit={handleSubmit}>
-            <img  src={smalllogo} alt="" />
+            <Link to='/home'><img  src={smalllogo} alt="" /></Link>
             <h1 className='signup'>Sign up</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Username :</h1>

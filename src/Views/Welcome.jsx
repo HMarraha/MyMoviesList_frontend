@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Welcomenavbar from '../subcomponents/welcomenavbar'
 import Welcomehero from '../subcomponents/Welcomehero'
+import Weclomepopular from '../subcomponents/weclomepopular'
 import { useStateContext } from '../contexts/contextprovide'
 import axiosClient from './axios'
 export default function Welcome() {
@@ -55,6 +56,7 @@ export default function Welcome() {
       fetch={fetch}
       />
       <Welcomehero />
+      <Weclomepopular />
       </>
       )
     }

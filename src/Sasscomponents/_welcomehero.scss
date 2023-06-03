@@ -1,18 +1,14 @@
 
 main  {
     width: 70%;
-    margin: auto;
     text-align: center;
-    position: relative;
 }
 .welcomehero {
-    margin-top: 5.65rem;
     background-image: linear-gradient(#672280b3,rgb(166, 38, 211, 0.7)), url(./assets/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 80vh;
-    position: fixed;
-    max-width: 70%;
+    width: 100%;
     z-index: -1;
     filter: drop-shadow(8px 8px 10px gray);
     .welcomehero-text {
@@ -69,13 +65,11 @@ main  {
     }
 }
 @media (max-width: 1570px) {
+    main {
+        width: 100%;
+    }
     .welcomehero {
-        max-width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
         padding: 0;
-        height: auto;
         .welcomehero-text {
             margin-bottom: 15rem;
             padding-top: 5rem;

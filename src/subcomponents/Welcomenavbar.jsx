@@ -49,8 +49,7 @@ const role= {
 }
   return (
     <>
-        <header>
-            <nav className='navbar'>
+        <header className="navbar">
                 <a href='#'><img className='logo' src={logo} alt="Logo" /></a>
                 <div className='nav-links-container'> 
                     <ul className='nav-links'>
@@ -95,7 +94,6 @@ const role= {
                     </div>
                     <i onClick={handleIcon} className="hamburger">{icon ? <FaTimes size="30px" color="white"/> : <FaBars size="30px" color="white" />}</i>   
                 </div>
-            </nav>
         </header>
     </>
   )

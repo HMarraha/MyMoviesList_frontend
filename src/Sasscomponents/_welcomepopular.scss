@@ -1,0 +1,50 @@
+.popular {
+    max-width: 70%;
+    margin: auto;
+    margin-top: 7rem;
+    @include flex(start,center,10px,row);
+    button {
+        background-color: transparent;
+        @include border(1px,solid,black,10px);
+        @include font(('Karla',sans-serif),1.25rem);
+        cursor: pointer;
+        padding: 1rem;
+    }
+    .btn-1 {
+        background-color: mix(#672280,#A626D3,0.5);
+        border-right: none;
+    }
+    h1 {
+        @include font(('Cairo',sans-serif),2rem)
+    }
+}
+.card-container {
+    @include flex(space-between,top,10px,row);
+    max-width: 70%;
+    margin: 2rem auto;
+    overflow-x: scroll;
+    padding-top: 2rem;
+    .movieimage {
+        @include border(1px,solid,rgbe(0,0,0,0),10px);
+        box-shadow: 2px 2px 5px black;
+        cursor: pointer;
+        transition: 350ms;
+        &:hover {
+            transform: scale(1.1);
+            z-index: 9999;
+        }
+    }
+    .movietitle {
+        @include font(('Cairo',sans-serif),1.25rem);
+        padding-top: 2rem;
+        transition: 350ms;
+        &:hover {
+            transform: scale(1.01);
+            z-index: 9999;
+        }
+    }
+    .moviedate {
+        @include font(('Karla',sans-serif),1rem);
+        color: black
+    }
+}

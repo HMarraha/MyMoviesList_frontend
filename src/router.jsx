@@ -7,6 +7,7 @@ import Notfound from "./Views/Notfound"
 import Welcome from "./Views/Welcome"
 import DefaultLayout from "./components/DefaultLayout"
 import GuestLayout from "./components/GuestLayout"
+import Description from "./Views/Description"
 const router = createBrowserRouter([
     {
         path: '/',
@@ -44,8 +45,12 @@ const router = createBrowserRouter([
             },
             {
                 path:'/welcome',
-                element: <Welcome />
+                element: <Welcome />,
             },
+            {
+                path: '/description',
+                element: <Description />
+            }
         ]
     },
     

@@ -1,9 +1,9 @@
-header {
+.navbar {
     background: linear-gradient(#672280,#A626D3) right;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%
+    z-index: 9999;
+    @include flex(space-between,center,20px,row);
+    width: 100%;
+    margin: auto;
 }
 .loading {
     width: 20%;
@@ -11,13 +11,6 @@ header {
     margin-top: 20rem;
     @include font(('Karla',sans-serif),5rem);
     transition: 10ms ease-in;
-}
-.navbar {
-    @include flex(space-between,center,20px,row);
-    position: sticky;
-    width: 100%;
-    margin: auto;
-    padding: 20px;
 }
 .nav-links-container {
     @include flex(space-between,center,10px,row);
@@ -75,7 +68,6 @@ header {
     list-style: none;
     margin-right: 3.5rem;
     gap: 3rem;
-    position: relative;
     .dropdown {
         position: relative;
     }

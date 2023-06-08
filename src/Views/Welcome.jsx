@@ -4,6 +4,7 @@ import Welcomehero from '../subcomponents/Welcomehero'
 import Weclomepopular from '../subcomponents/weclomepopular'
 import { useStateContext } from '../contexts/contextprovide'
 import axiosClient from './axios'
+import About from '../subcomponents/About'
 export default function Welcome() {
   const [loading,setLoading] = useState(true)
   const [latest,setLatest] = useState(true)
@@ -57,6 +58,7 @@ export default function Welcome() {
       />
       <Welcomehero />
       <Weclomepopular />
+      <About />
       </>
       )
     }

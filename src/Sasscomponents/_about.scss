@@ -1,0 +1,24 @@
+.about-container {
+    @include flex(space-between,center,10rem,row);
+    max-width: 70%;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 4rem;
+    background-image: linear-gradient(to right,#672280,#A626D3,), url(./assets/background.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    img {
+        width: 20rem;
+    }
+    h1 {
+        @include font(('Karla',sans-serif),4rem);
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 2px 2px 5px black;
+        padding: 2rem
+    }
+    p {
+        @include font(('Cairo',sans-serif),2rem);
+        color: white;
+    }
+}

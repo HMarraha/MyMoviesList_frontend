@@ -815,7 +815,7 @@ main {
     left: 0;
     right: 0;
     padding: 0;
-    height: auto;
+    height: 100vh;
   }
   .welcomehero .welcomehero-text {
     margin-bottom: 15rem;
@@ -852,7 +852,7 @@ main {
     left: 0;
     right: 0;
     padding: 0;
-    height: auto;
+    height: 100vh;
   }
   .welcomehero .welcomehero-text {
     margin-bottom: 15rem;
@@ -889,7 +889,7 @@ main {
     left: 0;
     right: 0;
     padding: 0;
-    height: auto;
+    height: 100vh;
   }
   .welcomehero .welcomehero-text {
     margin-bottom: 15rem;
@@ -925,6 +925,17 @@ main {
   }
 }
 @media (max-width: 942px) {
+  .welcomehero {
+    height: 100vh;
+  }
+  .welcomehero .welcomehero-text .btn {
+    padding: 1.25rem 5rem;
+  }
+}
+@media (max-width: 642px) {
+  .welcomehero {
+    height: 120vh;
+  }
   .welcomehero .welcomehero-text .btn {
     padding: 1.25rem 5rem;
   }
@@ -932,6 +943,11 @@ main {
 @media (min-width: 1569px) {
   .welcomehero .welcomehero-text .btn {
     padding: 1.25rem 2rem;
+  }
+}
+@media (max-height: 641px) {
+  .welcomehero {
+    height: 140vh;
   }
 }
 .navbar {
@@ -944,6 +960,10 @@ main {
   flex-direction: row;
   width: 100%;
   margin: auto;
+}
+
+.logo {
+  mix-blend-mode: hard-light;
 }
 
 .loading {
@@ -1384,7 +1404,7 @@ main {
   background-size: contain;
 }
 .about-container img {
-  width: 20rem;
+  width: 25rem;
 }
 .about-container h1 {
   font-family: "Karla", sans-serif;
@@ -1400,26 +1420,72 @@ main {
   font-weight: bold;
   font-size: 2rem;
   color: white;
+  text-align: start;
 }
 
+@media (max-width: 1569px) {
+  .about-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    flex-direction: column;
+  }
+  .about-container img {
+    width: 20rem;
+    text-align: center;
+  }
+  .about-container h1 {
+    text-align: center;
+  }
+  .about-container p {
+    text-align: center;
+  }
+}
+@media (max-width: 1393px) {
+  .about-container {
+    max-width: 100%;
+  }
+  .about-container img {
+    width: 15rem;
+  }
+  .about-container h1 {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  .about-container p {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 942px) {
+  .about-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    flex-direction: column;
+  }
+  .about-container img {
+    width: 15rem;
+  }
+  .about-container h1 {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  .about-container p {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-::-webkit-scrollbar {
-  width: 1rem;
-}
-
-::-webkit-scrollbar-track {
-  background: #a626d3;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8A2BE2;
-  border-radius: 100vw;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hwb(271 8% 50%);
 }/*# sourceMappingURL=index.css.map */

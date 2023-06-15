@@ -2,18 +2,6 @@ import React, { useEffect, useState } from 'react'
 import logo from "../assets/smalllogo.png"
 import tmbdClient from '../Views/tmdb'
 export default function About() {
-    const [img,setImg] = useState([]) 
-    useEffect(()=> {
-        const getURL = async () => {
-            try {
-                const response = await tmbdClient.get('/popular/movie')
-                setImg(response.data.results)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        getURL()
-    })
   return (
     <>
         <div className="about-container">

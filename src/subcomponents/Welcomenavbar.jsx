@@ -1,4 +1,5 @@
 import logo from "../assets/mmllogo.jpg"
+import smalllogo from "../assets/smalllogo.png"
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
@@ -56,7 +57,7 @@ const role= {
                         <div className="dropdown">
                         <li><a onClick={handleLatest} className='links navbar-links' href="#">Latest</a></li>
                          <div style={styles} className="latest">
-                            <li><a href="#">Popular</a></li>  
+                            <li><a href='#'>Popular</a></li>  
                             <li><a href="#">Movies</a></li>
                             <li><a href="#">TV Shows</a></li>
                          </div>
@@ -74,8 +75,8 @@ const role= {
                             </div>
                             <li style={role} ><a className='link navbar-link' href="#">About</a></li>
                             <li style={role} ><a className='link navbar-link' href="#">FAQS</a></li>
-                            <Link to="/login"><button style={role}  className='mobile-btn' type='button'>Sign in</button></Link>
-                            <Link to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
+                            <Link style={{textDecoration: 'none'}} to="/profile"><button style={role}  className='mobile-btn' type='button'>Profile</button></Link>
+                            <Link style={{textDecoration: 'none'}} to="/signup"><button style={role} onClick={signout}  className='mobile-btn' type='button'>Logout</button></Link>
                         </div>
                     </ul>
                     <div onClick={handleLogout} className="profiledisplay">

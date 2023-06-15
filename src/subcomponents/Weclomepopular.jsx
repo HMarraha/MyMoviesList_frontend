@@ -6,10 +6,6 @@ import tmbdClient from '../Views/tmdb'
 export default function Weclomepopular() {
     const [popularMovies,setPopularMovies] = useState([])
     const [popularTvShows,setPopularTvShows] = useState([])
-    const [latestMovies,setLatestMovies] = useState([])
-    const [latestTvShows,setLatestTvShows] = useState([])
-    const [movies,setMovies] = useState([])
-    const [tvShows,setTvShows] = useState([])
     const [showPopularMovies,setShowPopularMovies] = useState(true)
     const [showPopularTvShows,setShowPopularTvShows] = useState(false)
     useEffect(()=> {

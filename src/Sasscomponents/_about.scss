@@ -8,17 +8,63 @@
     background-repeat: no-repeat;
     background-size: contain;
     img {
-        width: 20rem;
+        width: 25rem;
     }
     h1 {
         @include font(('Karla',sans-serif),4rem);
         text-transform: uppercase;
         color: white;
         text-shadow: 2px 2px 5px black;
-        padding: 2rem
+        padding: 2rem;
     }
     p {
         @include font(('Cairo',sans-serif),2rem);
         color: white;
+        text-align: start;
+    }
+}
+@media (max-width: 1569px) {
+    .about-container {
+        max-width: 100%;
+        @include flex(space-between,center,5rem,column);
+        img {
+            width: 20rem;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+    }
+}
+@media (max-width: 1393px) {
+    .about-container {
+        max-width: 100%;
+        img {
+            width: 15rem;
+        }
+        h1 {
+            @include font(('Karla',sans-serif),3rem);
+        }
+        p {
+            @include font(('Cairo',sans-serif),1.75rem);
+        }
+    }
+}
+@media (max-width: 942px) {
+    .about-container {
+        max-width: 100%;
+        @include flex(space-between,center,5rem,column);
+        img {
+            width: 15rem;
+        }
+        h1 {
+            @include font(('Karla',sans-serif),2rem);
+        }
+        p {
+            @include font(('Cairo',sans-serif),1.5rem);
+        }
     }
 }

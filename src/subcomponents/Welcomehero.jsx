@@ -10,7 +10,7 @@ export default function Welcomehero() {
                     <p className="p-1">Search from our wide collection of Movies/TV Shows and add them to your lists.</p>
                     <div className='btn-container'>
                       <input className="searchbar" type="text" placeholder="Search Movies/TV Shows here"/>
-                      <Link to="/signup"><button className='btn welcomehero-btn'>Search</button></Link>
+                      <Link style={{textDecoration: 'none'}} to="/signup"><button className='btn welcomehero-btn'>Search</button></Link>
                     </div>    
                 </div>
             </div>

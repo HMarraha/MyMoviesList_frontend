@@ -15,16 +15,3 @@
     margin: 0;
     box-sizing: border-box;
 }
-::-webkit-scrollbar {
-    width: 1rem;
-}
-::-webkit-scrollbar-track {
-    background: mix(#672280, #A626D3, 0.5);
-}
-::-webkit-scrollbar-thumb {
-    background: $purpleColor;
-    border-radius: 100vw;
-    &:hover {
-        background: hwb(271 8% 50%);
-    }
-}

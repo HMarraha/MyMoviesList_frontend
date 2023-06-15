@@ -7,6 +7,7 @@
     background-image: linear-gradient(to right,#672280,#A626D3,), url(./assets/background.jpg);
     background-repeat: no-repeat;
     background-size: contain;
+    filter: drop-shadow(8px 8px 10px gray);
     img {
         width: 25rem;
     }

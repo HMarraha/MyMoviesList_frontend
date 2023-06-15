@@ -42,4 +42,21 @@
         color: black
     }
 }
-
+@media (max-width: 745px) {
+    .popular {
+        max-width: 90%;
+        button {
+            padding-inline: 0rem;
+            @include font(('Karla',sans-serif),1rem);
+        }
+    }
+}
+@media (max-width: 474px) {
+    .popular {
+        max-width: 100%;
+        margin-right: 0.2rem;
+        button {
+            @include font(('Karla',sans-serif),0.8rem);
+        }
+    }
+}

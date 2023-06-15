@@ -959,7 +959,7 @@ main {
   gap: 20px;
   flex-direction: row;
   width: 100%;
-  margin: auto;
+  position: relative;
 }
 
 .logo {
@@ -1111,6 +1111,9 @@ main {
   gap: 3rem;
   flex-direction: row;
 }
+.nav-links .mobilenav .closed {
+  display: none;
+}
 .nav-links .mobile-btn {
   display: none;
 }
@@ -1210,12 +1213,19 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     position: fixed;
-    top: 6.7rem;
+    top: 0rem;
     right: 0;
     max-width: 100%;
     padding: 5rem;
     gap: 1rem;
     height: 100vh;
+    z-index: -1;
+  }
+  .nav-links .mobilenav .closed {
+    display: block;
+    position: fixed;
+    top: 2.3rem;
+    right: 1.1rem;
   }
   .nav-links .mobilelatest {
     text-align: center;
@@ -1389,6 +1399,28 @@ main {
   color: black;
 }
 
+@media (max-width: 745px) {
+  .popular {
+    max-width: 90%;
+  }
+  .popular button {
+    padding-inline: 0rem;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 474px) {
+  .popular {
+    max-width: 100%;
+    margin-right: 0.2rem;
+  }
+  .popular button {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+}
 .about-container {
   display: flex;
   justify-content: space-between;
@@ -1402,6 +1434,7 @@ main {
   background-image: linear-gradient(to right, #672280, #A626D3), url(./assets/background.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+  filter: drop-shadow(8px 8px 10px gray);
 }
 .about-container img {
   width: 25rem;
@@ -1482,6 +1515,127 @@ main {
     font-family: "Cairo", sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
+  }
+}
+.faq-container {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  max-width: 70%;
+  margin: 2rem auto;
+  text-align: center;
+}
+.faq-container .question-container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding-block: 2rem;
+  margin-top: 2rem;
+  filter: drop-shadow(8px 8px 10px gray);
+  box-shadow: 8px 8px 10px gray;
+}
+.faq-container .question-container .question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  flex-direction: row;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding-inline: 2rem;
+}
+.faq-container .question-container .answer {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  padding-inline: 2rem;
+  text-align: start;
+  transition: all 1s ease-in;
+  display: block;
+}
+.faq-container .question-container .noanswer {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  padding-inline: 2rem;
+  text-align: start;
+  transition: all 1s ease-in;
+  display: none;
+}
+
+@media (max-width: 745px) {
+  .faq-container {
+    max-width: 90%;
+  }
+  .faq-container .question-container .question {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+.footer-container {
+  max-width: 100%;
+  text-align: center;
+  background: linear-gradient(#672280, #A626D3);
+  width: 100%;
+}
+.footer-container .content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  flex-direction: row;
+  padding: 6rem;
+}
+.footer-container .content-container h1 {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+}
+.footer-container .content-container .container-2 .contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+}
+.footer-container .content-container .container-2 .contact .contacticon {
+  transition: 150ms ease-in;
+}
+.footer-container .content-container .container-2 .contact .contacticon:hover {
+  transform: translateY(-5px);
+}
+.footer-container .copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+}
+.footer-container .copyright h1 {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media (max-width: 745px) {
+  .footer-container .content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-direction: column;
+  }
+}
+@media (max-width: 445px) {
+  .footer-container .copyright h1 {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
   }
 }
 * {

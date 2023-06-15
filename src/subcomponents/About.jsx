@@ -4,7 +4,7 @@ import tmbdClient from '../Views/tmdb'
 export default function About() {
   return (
     <>
-        <div className="about-container">
+        <div id="aboutid" className="about-container">
             <div>
             <h1>About</h1>
             <p>MyMoviesList or MML for short, is a website for movies/tvshows tracking where you can track what movies/tvshows you're currently watching, you're planning to watch later or you've already watched.</p>

@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import Welcomenavbar from '../subcomponents/welcomenavbar'
 import Welcomehero from '../subcomponents/Welcomehero'
-import Weclomepopular from '../subcomponents/weclomepopular'
+import Welcomepopular from '../subcomponents/Welcomepopular'
 import { useStateContext } from '../contexts/contextprovide'
 import axiosClient from './axios'
 import About from '../subcomponents/About'
+import Welcomemovies from '../subcomponents/Welcomemovies'
+import Faq from '../subcomponents/Faq'
+import Welcometvshows from '../subcomponents/Welcometvshows'
+import Footer from '../subcomponents/Footer'
 export default function Welcome() {
   const [loading,setLoading] = useState(true)
   const [latest,setLatest] = useState(true)
@@ -57,8 +61,12 @@ export default function Welcome() {
       fetch={fetch}
       />
       <Welcomehero />
-      <Weclomepopular />
+      <Welcomepopular />
       <About />
+      <Welcomemovies />
+      <Faq />
+      <Welcometvshows />
+      <Footer />
       </>
       )
     }

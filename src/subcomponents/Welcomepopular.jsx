@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import tmbdClient from '../Views/tmdb'
+import { Button } from '@mui/material'
 
 export default function Weclomepopular() {
     const [popularMovies,setPopularMovies] = useState([])
@@ -29,7 +30,7 @@ export default function Weclomepopular() {
             }
         }
         getURL()
-    })
+    },[])
     const handlePopularMovies = () => {
         setShowPopularMovies(true)
         setShowPopularTvShows(false)
@@ -42,13 +43,15 @@ export default function Weclomepopular() {
   if (showPopularMovies) {
     return (
         <>
+        <div id="welcomepopularid" className="popular-container">
             <div className="popular">
-            <h1>Popular:</h1>
-            <button style={{backgroundColor: 'blueviolet'}} onClick={handlePopularMovies} type="button" className='btn-1'>Movies</button>
-            <button onClick={handlePopularTvShows} type="button" className='btn-2'>TV Shows</button>
-        </div>
-        <div className="card-container">
-            {popularMovies.map(popularMovie => <Card key={popularMovie.id} {...popularMovie} show={showPopularMovies} />)}   
+                <h1>Popular:</h1>
+                <Button onClick={handlePopularMovies} variant='contained' color='secondary'>Movies</Button>
+                <Button onClick={handlePopularTvShows} color='secondary'>TV Shows</Button>
+            </div>
+            <div className="card-container">
+                {popularMovies.map(popularMovie => <Card key={popularMovie.id} {...popularMovie} show={showPopularMovies} />)}   
+            </div>
         </div>
         </>
     )
@@ -56,13 +59,15 @@ export default function Weclomepopular() {
   if (showPopularTvShows) {
     return (
         <>
-            <div className="popular">
-            <h1>Popular:</h1>
-            <button onClick={handlePopularMovies} type="button" className='btn-1'>Movies</button>
-            <button style = {{backgroundColor: 'blueviolet'}} onClick={handlePopularTvShows} type="button" className='btn-2'>TV Shows</button>
-            </div>
-            <div className="card-container">
-                {popularTvShows.map(popularTvShow => <Card key={popularTvShow.id} {...popularTvShow} show={showPopularMovies} />)}   
+            <div id="welcomepopularid" className="popular-container">
+                <div className="popular">
+                <h1>Popular:</h1>
+                <Button onClick={handlePopularMovies} color='secondary'>Movies</Button>
+                <Button onClick={handlePopularTvShows} variant='contained' color='secondary'>TV Shows</Button>
+                </div>
+                <div className="card-container">
+                    {popularTvShows.map(popularTvShow => <Card key={popularTvShow.id} {...popularTvShow} show={showPopularMovies} />)}   
+                </div>
             </div>
         </>
     )

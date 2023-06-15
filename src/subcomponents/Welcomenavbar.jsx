@@ -48,33 +48,36 @@ const role= {
     transition: "350ms ease-in",
     textDecotration : "none",
 }
+
+
   return (
     <>
-        <header className="navbar">
+        <header id='navbar' className="navbar">
                 <a href='#'><img className='logo' src={logo} alt="Logo" /></a>
                 <div className='nav-links-container'> 
                     <ul className='nav-links'>
                         <div className="dropdown">
-                        <li><a onClick={handleLatest} className='links navbar-links' href="#">Latest</a></li>
+                        <li><a onClick={handleLatest} className='links navbar-links' href="#navbar">Latest</a></li>
                          <div style={styles} className="latest">
-                            <li><a href='#'>Popular</a></li>  
-                            <li><a href="#">Movies</a></li>
-                            <li><a href="#">TV Shows</a></li>
+                            <li><a style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li>  
+                            <li><a href='#welcomemoviesid'>Movies</a></li>
+                            <li><a href="#welcometvshowsid">TV Shows</a></li>
                          </div>
                         </div>
-                            <li><a className='links navbar-links' href="#">About</a></li>
-                            <li><a className='links navbar-links' href="#">FAQS</a></li>
+                            <li><a className='links navbar-links' href="#aboutid">About</a></li>
+                            <li><a className='links navbar-links' href="#faqid">FAQS</a></li>
                         <div style={translate} className="mobilenav">
                             <div>
-                            <li><a onClick={handleShow} className='link navbar-link' href="#">Latest</a></li>
+                                <i onClick={handleIcon} className="closed"><FaTimes color="white" size="30px"/></i>
+                            <li><a onClick={handleShow} className='link navbar-link' href="#navbar">Latest</a></li>
                             <div style={latestStyle} className="mobilelatest"> 
-                                <li ><a className="latestli latest-links" href="#">Popular</a></li>  
-                                <li ><a className="latestli latest-links" href="#">Movies</a></li>
-                                <li ><a className="latestli latest-links" href="#">TV Shows</a></li>
+                                <li ><a className="latestli latest-links" href="#welcomepopularid">Popular</a></li>  
+                                <li ><a className="latestli latest-links" href="#welcomemoviesid">Movies</a></li>
+                                <li ><a className="latestli latest-links" href="#welcometvshowsid">TV Shows</a></li>
                             </div> 
                             </div>
-                            <li style={role} ><a className='link navbar-link' href="#">About</a></li>
-                            <li style={role} ><a className='link navbar-link' href="#">FAQS</a></li>
+                            <li style={role} ><a className='link navbar-link' href="#aboutid">About</a></li>
+                            <li style={role} ><a className='link navbar-link' href="#faqid">FAQS</a></li>
                             <Link style={{textDecoration: 'none'}} to="/profile"><button style={role}  className='mobile-btn' type='button'>Profile</button></Link>
                             <Link style={{textDecoration: 'none'}} to="/signup"><button style={role} onClick={signout}  className='mobile-btn' type='button'>Logout</button></Link>
                         </div>

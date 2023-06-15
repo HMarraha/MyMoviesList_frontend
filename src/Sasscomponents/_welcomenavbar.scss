@@ -3,7 +3,7 @@
     z-index: 9999;
     @include flex(space-between,center,20px,row);
     width: 100%;
-    margin: auto;
+    position: relative;
 }
 .logo {
     mix-blend-mode: hard-light;
@@ -106,6 +106,9 @@
     }
     .mobilenav {
         @include flex(space-evenly,center,3rem,row);
+        .closed {
+            display: none;
+        }
     }
     .mobile-btn {
         display: none;
@@ -194,12 +197,19 @@
             justify-content: flex-start;
             align-items: flex-start;
             position: fixed;
-            top: 6.7rem;
+            top: 0rem;
             right: 0;
             max-width: 100%;
             padding: 5rem;
             gap: 1rem;
             height: 100vh;
+            z-index: -1;
+            .closed {
+                display: block;
+                position: fixed;
+                top: 2.3rem;
+                right: 1.1rem;
+            }
         }
         .mobilelatest {
             text-align: center;

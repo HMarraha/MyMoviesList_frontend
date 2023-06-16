@@ -1,12 +1,10 @@
 import logo from "../assets/mmllogo.jpg"
-import smalllogo from "../assets/smalllogo.png"
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import {FaBars,FaTimes} from "react-icons/fa"
 import { FaPortrait } from "react-icons/fa"
 import { useStateContext } from "../contexts/contextprovide"
 import axiosClient from "../Views/axios"
-export default function Welcomenavbar({latest,handleLatest,icon,handleIcon,show,handleShow,logout,handleLogout,fetch}) {
+export default function Welcomenavbar({closeLatest,latest,handleLatest,icon,handleIcon,show,handleShow,logout,handleLogout,fetch}) {
     const {user,setUser,setToken} = useStateContext()
     const signout = (e) =>{
         e.preventDefault()
@@ -59,9 +57,9 @@ const role= {
                         <div className="dropdown">
                         <li><a onClick={handleLatest} className='links navbar-links' href="#navbar">Latest</a></li>
                          <div style={styles} className="latest">
-                            <li><a style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li>  
-                            <li><a href='#welcomemoviesid'>Movies</a></li>
-                            <li><a href="#welcometvshowsid">TV Shows</a></li>
+                            <li><a onClick={closeLatest} style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li>  
+                            <li><a onClick={closeLatest} href='#welcomemoviesid'>Movies</a></li>
+                            <li><a onClick={closeLatest} href="#welcometvshowsid">TV Shows</a></li>
                          </div>
                         </div>
                             <li><a className='links navbar-links' href="#aboutid">About</a></li>

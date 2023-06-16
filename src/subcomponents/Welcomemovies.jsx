@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import tmbdClient from '../Views/tmdb'
-import Card from './Card'
 import Button from "@mui/material/Button"
-import { useStateContext } from '../contexts/contextprovide'
 import Moviescard from './Moviescard'
 
 const Welcomemovies = () => {

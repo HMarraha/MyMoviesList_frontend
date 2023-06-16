@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
 import logo from "../assets/smalllogo.png"
-import tmbdClient from '../Views/tmdb'
 export default function About() {
   return (
     <>

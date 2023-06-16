@@ -1,0 +1,79 @@
+.backdropimage {
+    width: 100%;
+    background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+.description-container {
+    @include flex(center,top,2rem,row);
+    @include border(1px,solid,purple,10px);
+    color: white;
+    filter: drop-shadow(8px 8px 10px gray);
+    text-shadow: 2px 2px 5px black;
+    box-shadow: 5px 5px 8px $purpleColor;
+    width: 70%;
+    margin: 2rem auto;
+    padding: 4rem;
+    background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
+    img {
+        border-radius: 10px;
+    }
+    .movietitle {
+        @include flex(center,center,2rem,row);
+        @include font(('Cairo',sans-serif),1.25rem);
+    }
+    .genres {
+        @include flex(center,center,2rem,row);
+        @include font(('Cairo',sans-serif),1.25rem);
+        text-align: center
+    }
+    .vote {
+        @include font(('Cairo',sans-serif),3rem);
+        @include border(1px,solid,black,100%);
+        box-shadow: 5px 5px 8px rgb(3,37,65);
+        background-color: rgb(3,37,65);
+        text-align: center;
+        width: 50%;
+        margin-block: 2rem;
+        margin-left: 10rem;
+    }
+    .summary {
+        @include font(('Cairo',sans-serif),1.5rem);
+        margin-top: 3rem;
+    }
+    .buttons {
+        margin-left: 4rem;
+        margin-top: 1rem;
+        .watch {
+            margin-left: 1rem;
+            background-color: rgb(3,37,65);
+        }
+    }
+    .list {
+        @include font(('Cairo',sans-serif),1.75rem);
+        text-align: center;
+    }
+}
+.movie-credits {
+    background-color: white;
+    text-align: center;
+    h1 {
+        @include font(('Karla',sans-serif),3rem);
+        text-align: start;
+        margin-left: 11rem;
+    }
+    .cast {
+        @include flex(center,center,1rem,row);
+        max-width: 82%;
+        margin: auto;
+        overflow-x: scroll;
+        img {
+            border-radius: 10px;
+        }
+        p {
+            @include font(('Karla',sans-serif),1.5rem)
+        }
+    }
+}

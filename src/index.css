@@ -1524,13 +1524,13 @@ main {
   max-width: 70%;
   margin: 2rem auto;
   text-align: center;
+  filter: drop-shadow(8px 8px 10px gray);
 }
 .faq-container .question-container {
   border: 1px solid gray;
   border-radius: 10px;
   padding-block: 2rem;
   margin-top: 2rem;
-  filter: drop-shadow(8px 8px 10px gray);
   box-shadow: 8px 8px 10px gray;
 }
 .faq-container .question-container .question {
@@ -1551,7 +1551,7 @@ main {
   margin-top: 1.75rem;
   padding-inline: 2rem;
   text-align: start;
-  transition: all 1s ease-in;
+  transition: all 1s cubic-bezier(1, 0, 1, 0);
   display: block;
 }
 .faq-container .question-container .noanswer {
@@ -1561,7 +1561,7 @@ main {
   margin-top: 1.75rem;
   padding-inline: 2rem;
   text-align: start;
-  transition: all 1s ease-in;
+  transition: all 1s cubic-bezier(0, 1, 0, 1);
   display: none;
 }
 
@@ -1638,8 +1638,126 @@ main {
     font-size: 1rem;
   }
 }
+.backdropimage {
+  width: 100%;
+  background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.description-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 2rem;
+  flex-direction: row;
+  border: 1px solid purple;
+  border-radius: 10px;
+  color: white;
+  filter: drop-shadow(8px 8px 10px gray);
+  text-shadow: 2px 2px 5px black;
+  box-shadow: 5px 5px 8px #8A2BE2;
+  width: 70%;
+  margin: 2rem auto;
+  padding: 4rem;
+  background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+}
+.description-container img {
+  border-radius: 10px;
+}
+.description-container .movietitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.description-container .genres {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.description-container .vote {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  border: 1px solid black;
+  border-radius: 100%;
+  box-shadow: 5px 5px 8px rgb(3, 37, 65);
+  background-color: rgb(3, 37, 65);
+  text-align: center;
+  width: 50%;
+  margin-block: 2rem;
+  margin-left: 10rem;
+}
+.description-container .summary {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+.description-container .buttons {
+  margin-left: 4rem;
+  margin-top: 1rem;
+}
+.description-container .buttons .watch {
+  margin-left: 1rem;
+  background-color: rgb(3, 37, 65);
+}
+.description-container .list {
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.movie-credits {
+  background-color: white;
+  text-align: center;
+}
+.movie-credits h1 {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: start;
+  margin-left: 11rem;
+}
+.movie-credits .cast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  max-width: 82%;
+  margin: auto;
+  overflow-x: scroll;
+}
+.movie-credits .cast img {
+  border-radius: 10px;
+}
+.movie-credits .cast p {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }/*# sourceMappingURL=index.css.map */

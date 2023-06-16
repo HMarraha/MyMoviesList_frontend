@@ -22,9 +22,10 @@ const Faq = () => {
     const [showAnswer,setShowAnswer] = useState(false)
     const handleShowAnswer = (i) => {
         if (showAnswer === i) {
-            setShowAnswer(true)
+            setShowAnswer(false)
+        } else {
+            setShowAnswer(i)
         }
-        setShowAnswer(i)
     }
   return (
     <>

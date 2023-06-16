@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="content-container">
           <div className="container-1">
-            <img className='logo' src={logo} alt="" />
+            <a href='#navbar'><img className='logo' src={logo} alt="" /></a>
             <h1>Keep Tracking!</h1>
           </div>
           <div className="container-2">

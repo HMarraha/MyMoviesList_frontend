@@ -31,7 +31,9 @@ export default function Welcome() {
 
     fetchUserData();
   }, []);
-
+  const closeLatest = () => {
+    setLatest(true)
+  }
   const handleLogout = () => {
     setLogout(prevLogout => !prevLogout)
   }
@@ -50,6 +52,7 @@ export default function Welcome() {
       return (
       <>
       <Welcomenavbar 
+      closeLatest={closeLatest}
       latest={latest} 
       handleLatest={handleLatest} 
       icon={icon} 

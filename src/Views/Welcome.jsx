@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Welcomenavbar from '../subcomponents/welcomenavbar'
+import Welcomenavbar from '../subcomponents/Welcomenavbar'
 import Welcomehero from '../subcomponents/Welcomehero'
 import Welcomepopular from '../subcomponents/Welcomepopular'
 import { useStateContext } from '../contexts/contextprovide'
@@ -10,11 +10,11 @@ import Faq from '../subcomponents/Faq'
 import Welcometvshows from '../subcomponents/Welcometvshows'
 import Footer from '../subcomponents/Footer'
 export default function Welcome() {
-  const [loading,setLoading] = useState(true)
-  const [latest,setLatest] = useState(true)
-  const [logout,setLogout] = useState(true)
-  const [icon,setIcon] = useState(false)
-  const [show,setShow] = useState(true)
+  const {loading,setLoading} = useStateContext()
+  const {latest,setLatest} = useStateContext()
+  const {logout,setLogout} = useStateContext()
+  const {icon,setIcon} = useStateContext()
+  const {show,setShow} = useStateContext()
   const {setUser} = useStateContext()
   
    useEffect(() => {
@@ -51,18 +51,6 @@ export default function Welcome() {
     } else {
       return (
       <>
-      <Welcomenavbar 
-      closeLatest={closeLatest}
-      latest={latest} 
-      handleLatest={handleLatest} 
-      icon={icon} 
-      handleIcon={handleIcon} 
-      show={show} 
-      handleShow={handleShow}
-      logout={logout}
-      handleLogout={handleLogout}
-      fetch={fetch}
-      />
       <Welcomehero />
       <Welcomepopular />
       <About />

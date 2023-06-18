@@ -56,24 +56,129 @@
         text-align: center;
     }
 }
+.media {
+    margin-top: 4rem;
+}
 .movie-credits {
+    max-width: 82%;
+    margin: auto;
+    @include border(1px,solid,white,10px);
     background-color: white;
     text-align: center;
     h1 {
         @include font(('Karla',sans-serif),3rem);
-        text-align: start;
-        margin-left: 11rem;
+    }
+    .cast-container {
+        overflow-y: hidden;
+        white-space: nowrap;
     }
     .cast {
-        @include flex(center,center,1rem,row);
+        display: inline-flex;
         max-width: 82%;
         margin: auto;
-        overflow-x: scroll;
+        overflow: scroll;
+        .actor {
+            flex: 0 0 auto;
+            margin-right: 1.25rem;
+        }
+        .actor:last-child {
+            margin-right: 0;
+        }
         img {
             border-radius: 10px;
         }
         p {
-            @include font(('Karla',sans-serif),1.5rem)
+            @include font(('Karla',sans-serif),1.2rem)
         }
+        .nopfp {
+            width: 13rem;
+            height: 31.5vh;
+        }
+    }
+    .display-content {
+        margin-top: 4rem;
+        overflow-y: hidden;
+        white-space: nowrap;
+        max-width: 82%;
+        margin: auto;
+    }
+    .youtube-video {
+        display: inline-flex;
+        flex: 0 0 auto;
+        margin-right: 1.25rem;
+        iframe {
+            width: 98rem;
+            height: 50rem;
+        }
+    }
+    .additional {
+        max-width: 82%;
+        margin: auto;
+        @include flex(center,center,2rem,row);
+        .status,.budget,.revenue,.og-language {
+            margin-top: 4rem;
+            @include border(1px,solid,black,10px);
+            padding: 2rem 2rem;
+            box-shadow: 8px 8px 12px gray;
+            @include font(('Cairo',sans-serif),1.5rem);
+            p {
+                color: gray;
+            }
+        }
+    }
+    .original-language {
+        text-transform: uppercase;
+    }
+    .reviewflex {
+        overflow-x: auto;
+    }
+    .reviews {
+        margin-top: 4rem;
+    }
+    .review {
+        display: inline-flex;
+        transform: translate(50px);
+        margin: auto;
+        padding: 2rem 8rem;
+        .thereview {
+            @include border(1px,solid,black,10px);
+            margin-top: 1rem;
+            box-shadow: 8px 8px 12px gray;
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        
+    }
+    .author-details {
+        width: 75rem;
+        padding: 1rem;
+        @include flex(start,center,1rem,row);
+        .reviewpfp {
+            @include border(1px,solid,white,20rem);
+            width: 4rem;
+        }
+        .reviewauthor {
+            text-align: start;
+        }
+        .noreviewpfp {
+            width: 4rem;
+        }
+        h1 {
+           @include font(('Karla',sans-serif),1rem);
+        }
+        p {
+            @include font(('Karla',sans-serif),1rem);
+            color: gray;
+        }
+        .time {
+            @include flex(start,center,1rem,row);
+        }
+    }
+    .reviewcontent {
+        text-align: start;
+        padding: 1rem;
+        @include font(('Karla',sans-serif),1rem)
     }
 }

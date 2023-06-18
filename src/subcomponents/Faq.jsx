@@ -32,7 +32,7 @@ const Faq = () => {
         <div id="faqid" className="faq-container">
                 <h1>FAQ</h1>
            {data.map((item,i) => (
-            <div className="question-container">
+            <div key={i} className="question-container">
             <div className="question">
                 <h4>{item.question}</h4>
                 <button onClick={() => handleShowAnswer(i)} style={{background: 'none', border: 'none',cursor: 'pointer'}}><i>{showAnswer === i ? <FaTimes size='1.5rem' /> : <FaPlus size='1.5rem' />}</i></button>

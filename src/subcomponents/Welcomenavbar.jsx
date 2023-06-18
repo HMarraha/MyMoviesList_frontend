@@ -51,13 +51,13 @@ const role= {
   return (
     <>
         <header id='navbar' className="navbar">
-                <a href='#'><img className='logo' src={logo} alt="Logo" /></a>
+               <Link to='/welcome'> <a href='#'><img className='logo' src={logo} alt="Logo" /></a></Link>
                 <div className='nav-links-container'> 
                     <ul className='nav-links'>
                         <div className="dropdown">
-                        <li><a onClick={handleLatest} className='links navbar-links' href="#navbar">Latest</a></li>
+                        <Link style={{textDecoration: 'none'}} to='/welcome'><li><a onClick={handleLatest} className='links navbar-links' href="#navbar">Latest</a></li></Link>
                          <div style={styles} className="latest">
-                            <li><a onClick={closeLatest} style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li>  
+                            <Link to='#welcomepopularid'><li><a onClick={closeLatest} style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li></Link>
                             <li><a onClick={closeLatest} href='#welcomemoviesid'>Movies</a></li>
                             <li><a onClick={closeLatest} href="#welcometvshowsid">TV Shows</a></li>
                          </div>

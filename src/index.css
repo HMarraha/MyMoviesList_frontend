@@ -1722,7 +1722,15 @@ main {
   text-align: center;
 }
 
+.media {
+  margin-top: 4rem;
+}
+
 .movie-credits {
+  max-width: 82%;
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 10px;
   background-color: white;
   text-align: center;
 }
@@ -1730,18 +1738,23 @@ main {
   font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 3rem;
-  text-align: start;
-  margin-left: 11rem;
+}
+.movie-credits .cast-container {
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 .movie-credits .cast {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: row;
+  display: inline-flex;
   max-width: 82%;
   margin: auto;
-  overflow-x: scroll;
+  overflow: scroll;
+}
+.movie-credits .cast .actor {
+  flex: 0 0 auto;
+  margin-right: 1.25rem;
+}
+.movie-credits .cast .actor:last-child {
+  margin-right: 0;
 }
 .movie-credits .cast img {
   border-radius: 10px;
@@ -1749,7 +1762,119 @@ main {
 .movie-credits .cast p {
   font-family: "Karla", sans-serif;
   font-weight: bold;
+  font-size: 1.2rem;
+}
+.movie-credits .cast .nopfp {
+  width: 13rem;
+  height: 31.5vh;
+}
+.movie-credits .display-content {
+  margin-top: 4rem;
+  overflow-y: hidden;
+  white-space: nowrap;
+  max-width: 82%;
+  margin: auto;
+}
+.movie-credits .youtube-video {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-right: 1.25rem;
+}
+.movie-credits .youtube-video iframe {
+  width: 98rem;
+  height: 50rem;
+}
+.movie-credits .additional {
+  max-width: 82%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+}
+.movie-credits .additional .status, .movie-credits .additional .budget, .movie-credits .additional .revenue, .movie-credits .additional .og-language {
+  margin-top: 4rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2rem 2rem;
+  box-shadow: 8px 8px 12px gray;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
   font-size: 1.5rem;
+}
+.movie-credits .additional .status p, .movie-credits .additional .budget p, .movie-credits .additional .revenue p, .movie-credits .additional .og-language p {
+  color: gray;
+}
+.movie-credits .original-language {
+  text-transform: uppercase;
+}
+.movie-credits .reviewflex {
+  overflow-x: auto;
+}
+.movie-credits .reviews {
+  margin-top: 4rem;
+}
+.movie-credits .review {
+  display: inline-flex;
+  transform: translate(50px);
+  margin: auto;
+  padding: 2rem 8rem;
+}
+.movie-credits .review .thereview {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 8px 8px 12px gray;
+  margin-right: 20px;
+}
+.movie-credits .review .thereview:last-child {
+  margin-right: 0;
+}
+.movie-credits .author-details {
+  width: 75rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+}
+.movie-credits .author-details .reviewpfp {
+  border: 1px solid white;
+  border-radius: 20rem;
+  width: 4rem;
+}
+.movie-credits .author-details .reviewauthor {
+  text-align: start;
+}
+.movie-credits .author-details .noreviewpfp {
+  width: 4rem;
+}
+.movie-credits .author-details h1 {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.movie-credits .author-details p {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: gray;
+}
+.movie-credits .author-details .time {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+}
+.movie-credits .reviewcontent {
+  text-align: start;
+  padding: 1rem;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 * {

@@ -11,6 +11,44 @@ const Description = () => {
   const [movies,setMovies] = useState({})
   const [shows,setShows] = useState({})
   const [cast,setCast] = useState([])
+  const [media, setMedia] = useState([])
+  const [itsBackdrops,setItsBackdrops] = useState([])
+  const [itsPosters,setItsPosters] = useState([])
+  const [reviews,setReviews] = useState([])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/movie/${id}/reviews`)
+        setReviews(response.data.results)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/movie/${id}/images`)
+        setItsBackdrops(response.data.backdrops)
+        setItsPosters(response.data.posters)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/movie/${id}/videos`)
+        setMedia(response.data.results)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
   useEffect(() => {
     const getURL = async () => {
       try {
@@ -43,11 +81,12 @@ const Description = () => {
         }
     }
     getURL()
-  },[])
+  },[id])
   if (movies.original_title) {
     return (
       <>
-          <Moviedescription {...movies} Large={Large} IMG_BASE_URL={IMG_BASE_URL} cast={cast}/>
+          <Moviedescription {...movies} Large={Large} IMG_BASE_URL={IMG_BASE_URL} cast={cast} 
+          media={media} itsBackdrops={itsBackdrops} itsPosters={itsPosters} reviews={reviews}/>
       </>
     )
   }

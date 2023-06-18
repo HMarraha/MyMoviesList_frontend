@@ -8,8 +8,28 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
+    const [loading,setLoading] = useState(true)
+    const [latest,setLatest] = useState(true)
+    const [logout,setLogout] = useState(true)
+    const [icon,setIcon] = useState(false)
+    const [show,setShow] = useState(true)
     const [user, setUser] = useState({});
     const [token, _setToken] = useState(localStorage.getItem('TOKEN') || null);
+    const closeLatest = () => {
+        setLatest(true)
+      }
+      const handleLogout = () => {
+        setLogout(prevLogout => !prevLogout)
+      }
+        const handleLatest = () => {
+          setLatest(prevLatest => !prevLatest)
+        }
+        const handleIcon = () => {
+          setIcon(prevIcon => !prevIcon)
+        }
+        const handleShow = () => {
+          setShow(prevShow => !prevShow)
+        }
     const setToken = (token) => {
         _setToken(token)
         if (token) {
@@ -25,6 +45,21 @@ export const ContextProvider = ({ children }) => {
                 token,
                 setUser,
                 setToken,
+                loading,
+                setLoading,
+                latest,
+                setLatest,
+                logout,
+                setLogout,
+                show,
+                setShow,
+                icon,
+                setIcon,
+                closeLatest,
+                handleLogout,
+                handleLatest,
+                handleIcon,
+                handleShow,
             }}
         >
             {children}

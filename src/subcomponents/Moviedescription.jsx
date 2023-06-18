@@ -233,6 +233,50 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
             </div>
             <div className="additional-info">
               <h1>Additional Info:</h1>
+              <div className="additional">
+                <div className="status">
+                  <h2>Status:</h2>
+                  <p>{status}</p>
+                </div>
+                <div className="budget">
+                  <h2>Budget:</h2>
+                  <p>{`${budget}$`}</p>
+                </div>
+                <div className="revenue">
+                  <h2>Revenue:</h2>
+                  <p>{`${revenue}$`}</p>
+                </div>
+                <div className="og-language">
+                  <h2>Original Language:</h2>
+                  <p className='original-language'>{original_language}</p>
+                </div>
+              </div>
+            </div>
+            <div className="reviews">
+              <h1>Reviews:</h1>
+              <div className="reviewflex">
+                <div className="review">
+                    {reviews?.map(item => (
+                      <div className='thereview'>
+                        <div className="author-details">
+                          <div className="authorpfp">
+                            {item.author_details.avatar_path ? 
+                            <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
+                            <img src={nopfp} alt="nopfp" /> }
+                          </div>
+                          <div className="author-name">
+                            <h1 className='reviewauthor'>{item.author}</h1>
+                            <div className="time">
+                              <p>{item.author_details.rating}.00</p>
+                              <p>{item.created_at.slice(0,10)}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p className='reviewcontent'>{item.content}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
             </div>
         </div>
       </>
@@ -305,6 +349,53 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                   })}
               </div>
             </div>
+            <div className="additional-info">
+              <h1>Additional Info:</h1>
+              <div className="additional">
+                <div className="status">
+                  <h2>Status:</h2>
+                  <p>{status}</p>
+                </div>
+                <div className="budget">
+                  <h2>Budget:</h2>
+                  <p>{`${budget}$`}</p>
+                </div>
+                <div className="revenue">
+                  <h2>Revenue:</h2>
+                  <p>{`${revenue}$`}</p>
+                </div>
+                <div className="og-language">
+                  <h2>Original Language:</h2>
+                  <p className='original-language'>{original_language}</p>
+                </div>
+              </div>
+            </div>
+            <div className="reviews">
+              <h1>Reviews:</h1>
+              <div className="reviewflex">
+                <div className="review">
+                    {reviews?.map(item => (
+                      <div className='thereview'>
+                        <div className="author-details">
+                          <div className="authorpfp">
+                            {item.author_details.avatar_path ? 
+                            <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
+                            <img src={nopfp} alt="nopfp" /> }
+                          </div>
+                          <div className="author-name">
+                            <h1 className='reviewauthor'>{item.author}</h1>
+                            <div className="time">
+                              <p>{item.author_details.rating}.00</p>
+                              <p>{item.created_at.slice(0,10)}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p className='reviewcontent'>{item.content}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
         </div>
       </>
     )
@@ -374,6 +465,53 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                          </div>
                         ) 
                   })}
+              </div>
+            </div>
+            <div className="additional-info">
+              <h1>Additional Info:</h1>
+              <div className="additional">
+                <div className="status">
+                  <h2>Status:</h2>
+                  <p>{status}</p>
+                </div>
+                <div className="budget">
+                  <h2>Budget:</h2>
+                  <p>{`${budget}$`}</p>
+                </div>
+                <div className="revenue">
+                  <h2>Revenue:</h2>
+                  <p>{`${revenue}$`}</p>
+                </div>
+                <div className="og-language">
+                  <h2>Original Language:</h2>
+                  <p className='original-language'>{original_language}</p>
+                </div>
+              </div>
+            </div>
+            <div className="reviews">
+              <h1>Reviews:</h1>
+              <div className="reviewflex">
+                <div className="review">
+                    {reviews?.map(item => (
+                      <div className='thereview'>
+                        <div className="author-details">
+                          <div className="authorpfp">
+                            {item.author_details.avatar_path ? 
+                            <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
+                            <img src={nopfp} alt="nopfp" /> }
+                          </div>
+                          <div className="author-name">
+                            <h1 className='reviewauthor'>{item.author}</h1>
+                            <div className="time">
+                              <p>{item.author_details.rating}.00</p>
+                              <p>{item.created_at.slice(0,10)}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <p className='reviewcontent'>{item.content}</p>
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
         </div>

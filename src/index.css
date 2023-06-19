@@ -1688,6 +1688,17 @@ main {
   font-size: 1.25rem;
   text-align: center;
 }
+.description-container .seasons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+}
 .description-container .vote {
   font-family: "Cairo", sans-serif;
   font-weight: bold;
@@ -1724,6 +1735,51 @@ main {
 
 .media {
   margin-top: 4rem;
+}
+
+.lastepisodetoair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  margin: 4rem 9rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding-right: 2rem;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.letainfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  gap: 2rem;
+  flex-direction: row;
+}
+
+.letaoverview {
+  text-align: start;
+  margin-top: 2rem;
+  font-weight: 300;
+}
+
+.letaseason {
+  color: gray;
+}
+
+.letaruntime {
+  color: gray;
+}
+
+.lastepisodetoairimg {
+  width: 20rem;
+  height: 30vh;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
 .movie-credits {
@@ -1794,14 +1850,17 @@ main {
   flex-direction: row;
 }
 .movie-credits .additional .status, .movie-credits .additional .budget, .movie-credits .additional .revenue, .movie-credits .additional .og-language {
-  margin-top: 4rem;
-  border: 1px solid black;
+  border: 1px solid purple;
   border-radius: 10px;
-  padding: 2rem 2rem;
-  box-shadow: 8px 8px 12px gray;
   font-family: "Cairo", sans-serif;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+  color: white;
+  filter: drop-shadow(8px 8px 10px gray);
+  text-shadow: 2px 2px 5px black;
+  margin-top: 4rem;
+  padding: 2rem 2rem;
 }
 .movie-credits .additional .status p, .movie-credits .additional .budget p, .movie-credits .additional .revenue p, .movie-credits .additional .og-language p {
   color: gray;
@@ -1822,10 +1881,16 @@ main {
   padding: 2rem 8rem;
 }
 .movie-credits .review .thereview {
-  border: 1px solid black;
+  border: 1px solid purple;
   border-radius: 10px;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  background-image: linear-gradient(rgba(103, 34, 128, 0.8), rgba(166, 38, 211, 0.8));
+  color: white;
+  filter: drop-shadow(8px 8px 10px gray);
+  text-shadow: 2px 2px 5px black;
   margin-top: 1rem;
-  box-shadow: 8px 8px 12px gray;
   margin-right: 20px;
 }
 .movie-credits .review .thereview:last-child {
@@ -1869,12 +1934,24 @@ main {
   gap: 1rem;
   flex-direction: row;
 }
+.movie-credits .author-details .reviewrating {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+}
 .movie-credits .reviewcontent {
   text-align: start;
   padding: 1rem;
   font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 1rem;
+}
+.movie-credits .noprofilepic {
+  width: 4rem;
+  border: 1px solid white;
+  border-radius: 20rem;
 }
 
 * {

@@ -29,6 +29,11 @@
         @include font(('Cairo',sans-serif),1.25rem);
         text-align: center
     }
+    .seasons {
+        @include flex(center,center,2rem,row);
+        @include font(('Cairo',sans-serif),1.25rem);
+        text-align: center
+    }
     .vote {
         @include font(('Cairo',sans-serif),3rem);
         @include border(1px,solid,black,100%);
@@ -58,6 +63,33 @@
 }
 .media {
     margin-top: 4rem;
+}
+.lastepisodetoair {
+    @include flex(center,center,2rem,row);
+    margin: 4rem 9rem;
+    @include border(1px,solid,white,10px);
+    padding-right: 2rem;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
+    @include font(('Cairo',sans-serif),1.1rem)
+}
+.letainfo {
+    @include flex(space-between,top,2rem,row);
+}
+.letaoverview {
+    text-align: start;
+    margin-top: 2rem;
+    font-weight: 300;
+}
+.letaseason {
+    color: gray;
+}
+.letaruntime {
+    color: gray;
+}
+.lastepisodetoairimg {
+    width: 20rem;
+    height: 30vh;
+    @include border(1px,solid,white,10px)
 }
 .movie-credits {
     max-width: 82%;
@@ -116,11 +148,14 @@
         margin: auto;
         @include flex(center,center,2rem,row);
         .status,.budget,.revenue,.og-language {
+            @include border(1px,solid,purple,10px);
+            @include font(('Cairo',sans-serif),1.25rem);
+            background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
+            color: white;
+            filter: drop-shadow(8px 8px 10px gray);
+            text-shadow: 2px 2px 5px black;
             margin-top: 4rem;
-            @include border(1px,solid,black,10px);
             padding: 2rem 2rem;
-            box-shadow: 8px 8px 12px gray;
-            @include font(('Cairo',sans-serif),1.5rem);
             p {
                 color: gray;
             }
@@ -141,9 +176,13 @@
         margin: auto;
         padding: 2rem 8rem;
         .thereview {
-            @include border(1px,solid,black,10px);
+            @include border(1px,solid,purple,10px);
+            @include font(('Cairo',sans-serif),1.25rem);
+            background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
+            color: white;
+            filter: drop-shadow(8px 8px 10px gray);
+            text-shadow: 2px 2px 5px black;
             margin-top: 1rem;
-            box-shadow: 8px 8px 12px gray;
             margin-right: 20px;
             &:last-child {
                 margin-right: 0;
@@ -175,10 +214,17 @@
         .time {
             @include flex(start,center,1rem,row);
         }
+        .reviewrating {
+            @include flex(start,center,0,row);
+        }
     }
     .reviewcontent {
         text-align: start;
         padding: 1rem;
         @include font(('Karla',sans-serif),1rem)
+    }
+    .noprofilepic {
+        width: 4rem;
+        @include border(1px,solid,white,20rem);
     }
 }

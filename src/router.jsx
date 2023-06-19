@@ -48,9 +48,13 @@ const router = createBrowserRouter([
                 element: <Welcome />,
             },
             {
-                path: '/description/:id/',
+                path: '/description/movies/:id/',
                 element: <Description />
             },
+            {
+                path: '/description/tvshows/:id/:original_name',
+                element: <Description />
+            }
         ]
     },
     

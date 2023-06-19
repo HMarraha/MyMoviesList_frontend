@@ -6,8 +6,8 @@ const Tvshowscard = ({id,first_air_date,original_name,poster_path}) => {
     return (
      <>  
          <section>
-             <Link to={`/description/${id}`}><img className='movieimage' src={`${IMG_BASE_URL}${poster_path}`} alt="img" /></Link>
-             <Link style={{textDecoration : 'none', color: 'black'}} to={`/description/${id}`}><h1 className='movietitle'>{original_name}</h1></Link>
+             <Link to={`/description/tvshows/${id}/${original_name}`}><img className='movieimage' src={`${IMG_BASE_URL}${poster_path}`} alt="img" /></Link>
+             <Link style={{textDecoration : 'none', color: 'black'}} to={`/description/tvshows/${id}/${original_name}`}><h1 className='movietitle'>{original_name}</h1></Link>
              <p className='moviedate'>{first_air_date}</p>
          </section>
      </>

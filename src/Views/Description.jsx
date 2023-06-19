@@ -7,7 +7,7 @@ import Tvshowsdescription from '../subcomponents/Tvshowsdescription'
 const Description = () => {
   const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500'
   const Large = 'https://image.tmdb.org/t/p/original'
-  const { id } = useParams()
+  const { id,original_name } = useParams()
   const [movies,setMovies] = useState({})
   const [shows,setShows] = useState({})
   const [cast,setCast] = useState([])
@@ -15,6 +15,42 @@ const Description = () => {
   const [itsBackdrops,setItsBackdrops] = useState([])
   const [itsPosters,setItsPosters] = useState([])
   const [reviews,setReviews] = useState([])
+  const [tvCast,setTvCast] = useState([])
+  const [tvMedia,setTvMedia] = useState([])
+  const [tvReviews,setTvReviews] = useState([])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/tv/${id}/reviews`)
+        setTvReviews(response.data.results)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/tv/${id}/videos`)
+        setTvMedia(response.data.results)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
+  useEffect(() => {
+    const getURL = async () => {
+      try {
+        const response = await tmbdClient.get(`/tv/${id}/credits`)
+        setTvCast(response.data.cast)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    getURL()
+  },[])
   useEffect(() => {
     const getURL = async () => {
       try {
@@ -93,7 +129,9 @@ const Description = () => {
   else if (shows.original_name) {
     return (
       <>     
-        <Tvshowsdescription {...shows} Large={Large} IMG_BASE_URL={IMG_BASE_URL}/>
+        <Tvshowsdescription {...shows} Large={Large} IMG_BASE_URL={IMG_BASE_URL} cast={tvCast}
+        media={tvMedia} reviews={tvReviews}
+        />
       </>
     )
   } 

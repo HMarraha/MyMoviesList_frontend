@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import tmbdClient from '../Views/tmdb'
 import { Button } from '@mui/material'
+import Moviescard from './Moviescard'
+import Tvshowscard from './Tvshowscard'
 
 export default function Weclomepopular() {
     const [popularMovies,setPopularMovies] = useState([])
@@ -49,7 +51,7 @@ export default function Weclomepopular() {
                 <Button onClick={handlePopularTvShows} color='secondary'>TV Shows</Button>
             </div>
             <div className="card-container">
-                {popularMovies.map(popularMovie => <Card key={popularMovie.id} {...popularMovie} show={showPopularMovies} />)}   
+                {popularMovies.map(popularMovie => <Moviescard key={popularMovie.id} {...popularMovie} show={showPopularMovies} />)}   
             </div>
         </div>
         </>
@@ -65,7 +67,7 @@ export default function Weclomepopular() {
                 <Button onClick={handlePopularTvShows} variant='contained' color='secondary'>TV Shows</Button>
                 </div>
                 <div className="card-container">
-                    {popularTvShows.map(popularTvShow => <Card key={popularTvShow.id} {...popularTvShow} show={showPopularMovies} />)}   
+                    {popularTvShows.map(popularTvShow => <Tvshowscard key={popularTvShow.id} {...popularTvShow} show={showPopularMovies} />)}   
                 </div>
             </div>
         </>

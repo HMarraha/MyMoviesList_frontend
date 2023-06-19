@@ -4,6 +4,7 @@ import Add from "@mui/icons-material/Add"
 import Link from "@mui/icons-material/Link"
 import { ButtonGroup } from "@mui/material"
 import nopfp from "../assets/OIP.jpg"
+import Star from "@mui/icons-material/Star"
 import tmbdClient from '../Views/tmdb'
 const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,Large,IMG_BASE_URL,backdrop_path,poster_path,original_title,original_language,genres,overview,runtime,release_date,vote_average,status,revenue,budget,production_companies,production_countries}) => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
@@ -99,9 +100,9 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                       return (    
                         <div key={item.id} className='youtube-video'>
                            <iframe src={`${YOUTUBE_URL}${item.key}`}
-                          title="YouTube video player" frameborder="0" allow="accelerometer; 
+                          title="YouTube video player" frameBorder="0" allow="accelerometer; 
                           autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                          allowfullscreen></iframe>
+                          allowFullScreen></iframe>
                          </div>
                         ) 
                     }
@@ -134,17 +135,17 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div className='thereview'>
+                      <div key={item.key} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
-                            {item.author_details.avatar_path ? 
+                            {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
                             <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
-                            <img src={nopfp} alt="nopfp" /> }
+                            <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
                           </div>
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
                             <div className="time">
-                              <p>{item.author_details.rating}.00</p>
+                              <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
                               <p>{item.created_at.slice(0,10)}</p>
                             </div>
                           </div>
@@ -222,9 +223,9 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                       return (    
                         <div key={item.id} className='youtube-video'>
                            <iframe src={`${YOUTUBE_URL}${item.key}`}
-                          title="YouTube video player" frameborder="0" allow="accelerometer; 
+                          title="YouTube video player" frameBorder="0" allow="accelerometer; 
                           autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                          allowfullscreen></iframe>
+                          allowFullScreen></iframe>
                          </div>
                         ) 
                     }
@@ -257,12 +258,12 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div className='thereview'>
+                      <div key={item.key} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
-                            {item.author_details.avatar_path ? 
+                            {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
                             <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
-                            <img src={nopfp} alt="nopfp" /> }
+                            <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
                           </div>
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
@@ -375,12 +376,12 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div className='thereview'>
+                      <div key={item.key} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
-                            {item.author_details.avatar_path ? 
+                            {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
                             <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
-                            <img src={nopfp} alt="nopfp" /> }
+                            <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
                           </div>
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
@@ -493,12 +494,12 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div className='thereview'>
+                      <div key={item.key} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
-                            {item.author_details.avatar_path ? 
+                            {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
                             <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
-                            <img src={nopfp} alt="nopfp" /> }
+                            <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
                           </div>
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>

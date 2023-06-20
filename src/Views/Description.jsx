@@ -7,7 +7,7 @@ import Tvshowsdescription from '../subcomponents/Tvshowsdescription'
 const Description = () => {
   const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500'
   const Large = 'https://image.tmdb.org/t/p/original'
-  const { id,original_name } = useParams()
+  const { id,original_name,original_title } = useParams()
   const [movies,setMovies] = useState({})
   const [shows,setShows] = useState({})
   const [cast,setCast] = useState([])
@@ -118,7 +118,7 @@ const Description = () => {
     }
     getURL()
   },[id])
-  if (movies.original_title) {
+  if (original_title) {
     return (
       <>
           <Moviedescription {...movies} Large={Large} IMG_BASE_URL={IMG_BASE_URL} cast={cast} 
@@ -126,7 +126,7 @@ const Description = () => {
       </>
     )
   }
-  else if (shows.original_name) {
+  else if (original_name === shows.original_name) {
     return (
       <>     
         <Tvshowsdescription {...shows} Large={Large} IMG_BASE_URL={IMG_BASE_URL} cast={tvCast}
@@ -134,7 +134,7 @@ const Description = () => {
         />
       </>
     )
-  } 
+  }
 }
 
 export default Description

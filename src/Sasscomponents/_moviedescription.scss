@@ -65,7 +65,7 @@
     margin-top: 4rem;
 }
 .lastepisodetoair {
-    @include flex(center,center,2rem,row);
+    @include flex(start,center,2rem,row);
     margin: 4rem 9rem;
     @include border(1px,solid,white,10px);
     padding-right: 2rem;
@@ -78,18 +78,50 @@
 .letaoverview {
     text-align: start;
     margin-top: 2rem;
-    font-weight: 300;
+    width: 100%;
+    font-weight: 400;
 }
 .letaseason {
     color: gray;
 }
 .letaruntime {
     color: gray;
+    font-weight: 400;
 }
 .lastepisodetoairimg {
     width: 20rem;
-    height: 30vh;
+    height: 31vh;
     @include border(1px,solid,white,10px)
+}
+.noimage {
+    width: 20rem;
+    @include border(1px,solid,white,10px)
+}
+.seasondesc {
+    @include flex(start,top,1rem,row);
+    margin: 4rem 9rem;
+    @include border(1px,solid,white,10px);
+    padding-right: 2rem;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
+    @include font(('Cairo',sans-serif),1.1rem)
+}
+.seasonimg {
+    width: 20rem;
+    @include border(1px,solid,white,10px)
+}
+.seasoninfo {
+    text-align: start;
+    .seasonname {
+        font-size: 2rem;
+        padding-right: 2rem;
+    }
+    .seasonpremiere {
+        font-weight: 400;
+    }
+    .seasonoverview {
+        font-weight: 400;
+        margin-top: 5rem;
+    }
 }
 .movie-credits {
     max-width: 82%;
@@ -101,6 +133,7 @@
         @include font(('Karla',sans-serif),3rem);
     }
     .cast-container {
+        margin-top: 4rem;
         overflow-y: hidden;
         white-space: nowrap;
     }
@@ -108,7 +141,7 @@
         display: inline-flex;
         max-width: 82%;
         margin: auto;
-        overflow: scroll;
+        overflow-x: auto;
         .actor {
             flex: 0 0 auto;
             margin-right: 1.25rem;
@@ -147,6 +180,7 @@
         max-width: 82%;
         margin: auto;
         @include flex(center,center,2rem,row);
+        flex: 1;
         .status,.budget,.revenue,.og-language {
             @include border(1px,solid,purple,10px);
             @include font(('Cairo',sans-serif),1.25rem);
@@ -157,7 +191,9 @@
             margin-top: 4rem;
             padding: 2rem 2rem;
             p {
-                color: gray;
+                color: white;
+                font-weight: 400;
+                text-shadow: none;
             }
         }
     }
@@ -221,7 +257,8 @@
     .reviewcontent {
         text-align: start;
         padding: 1rem;
-        @include font(('Karla',sans-serif),1rem)
+        @include font(('Karla',sans-serif),1rem);
+        text-shadow: none;
     }
     .noprofilepic {
         width: 4rem;

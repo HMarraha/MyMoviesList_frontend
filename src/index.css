@@ -1576,6 +1576,7 @@ main {
   }
 }
 .footer-container {
+  margin-top: 4rem;
   max-width: 100%;
   text-align: center;
   background: linear-gradient(#672280, #A626D3);
@@ -1739,7 +1740,7 @@ main {
 
 .lastepisodetoair {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 2rem;
   flex-direction: row;
@@ -1764,7 +1765,8 @@ main {
 .letaoverview {
   text-align: start;
   margin-top: 2rem;
-  font-weight: 300;
+  width: 100%;
+  font-weight: 400;
 }
 
 .letaseason {
@@ -1773,13 +1775,57 @@ main {
 
 .letaruntime {
   color: gray;
+  font-weight: 400;
 }
 
 .lastepisodetoairimg {
   width: 20rem;
-  height: 30vh;
+  height: 31vh;
   border: 1px solid white;
   border-radius: 10px;
+}
+
+.noimage {
+  width: 20rem;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.seasondesc {
+  display: flex;
+  justify-content: start;
+  align-items: top;
+  gap: 1rem;
+  flex-direction: row;
+  margin: 4rem 9rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding-right: 2rem;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.seasonimg {
+  width: 20rem;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.seasoninfo {
+  text-align: start;
+}
+.seasoninfo .seasonname {
+  font-size: 2rem;
+  padding-right: 2rem;
+}
+.seasoninfo .seasonpremiere {
+  font-weight: 400;
+}
+.seasoninfo .seasonoverview {
+  font-weight: 400;
+  margin-top: 5rem;
 }
 
 .movie-credits {
@@ -1796,6 +1842,7 @@ main {
   font-size: 3rem;
 }
 .movie-credits .cast-container {
+  margin-top: 4rem;
   overflow-y: hidden;
   white-space: nowrap;
 }
@@ -1803,7 +1850,7 @@ main {
   display: inline-flex;
   max-width: 82%;
   margin: auto;
-  overflow: scroll;
+  overflow-x: auto;
 }
 .movie-credits .cast .actor {
   flex: 0 0 auto;
@@ -1848,6 +1895,7 @@ main {
   align-items: center;
   gap: 2rem;
   flex-direction: row;
+  flex: 1;
 }
 .movie-credits .additional .status, .movie-credits .additional .budget, .movie-credits .additional .revenue, .movie-credits .additional .og-language {
   border: 1px solid purple;
@@ -1863,7 +1911,9 @@ main {
   padding: 2rem 2rem;
 }
 .movie-credits .additional .status p, .movie-credits .additional .budget p, .movie-credits .additional .revenue p, .movie-credits .additional .og-language p {
-  color: gray;
+  color: white;
+  font-weight: 400;
+  text-shadow: none;
 }
 .movie-credits .original-language {
   text-transform: uppercase;
@@ -1947,6 +1997,7 @@ main {
   font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 1rem;
+  text-shadow: none;
 }
 .movie-credits .noprofilepic {
   width: 4rem;

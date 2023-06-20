@@ -6,8 +6,8 @@ const Moviescard = ({id,release_date,original_title,poster_path}) => {
     return (
      <>  
          <section>
-             <Link to={`/description/movies/${id}`}><img className='movieimage' src={`${IMG_BASE_URL}${poster_path}`} alt="img" /></Link>
-             <Link style={{textDecoration : 'none', color: 'black'}} to={`/description/movies/${id}`}><h1 className='movietitle'>{original_title}</h1></Link>
+             <Link to={`/description/movies/${id}/${original_title}`}><img className='movieimage' src={`${IMG_BASE_URL}${poster_path}`} alt="img" /></Link>
+             <Link style={{textDecoration : 'none', color: 'black'}} to={`/description/movies/${id}/${original_title}`}><h1 className='movietitle'>{original_title}</h1></Link>
              <p className='moviedate'>{release_date}</p>
          </section>
      </>

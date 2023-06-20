@@ -4,7 +4,10 @@ import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Add from "@mui/icons-material/Add"
 import { ButtonGroup } from "@mui/material"
-const Tvshowsdescription = ({last_episode_to_air,last_air_date,reviews,revenue,budget,status,media,cast,IMG_BASE_URL,Large,backdrop_path,episode_run_time,first_air_date,genres,number_of_episodes,number_of_seasons,original_name,original_language,vote_average,poster_path,overview,homepage}) => {
+import nopfp from "../assets/OIP.jpg"
+import noimage from "../assets/noimage.jpg"
+import Star from "@mui/icons-material/Star"
+const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,revenue,budget,status,media,cast,IMG_BASE_URL,Large,backdrop_path,episode_run_time,first_air_date,genres,number_of_episodes,number_of_seasons,original_name,original_language,vote_average,poster_path,overview,homepage}) => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
   const YOUTUBE_URL = 'https://www.youtube.com/embed/'
   const [showTrailer,setShowTrailer] = useState(true)
@@ -90,7 +93,10 @@ const Tvshowsdescription = ({last_episode_to_air,last_air_date,reviews,revenue,b
             <div className="media">
               <h1>Last Episode to Air:</h1>
               <div className="lastepisodetoair">
-                <img className='lastepisodetoairimg' src={`${IMG_BASE_URL}${last_episode_to_air.still_path}`} alt="" />
+                {last_episode_to_air.still_path ? 
+                <img className='lastepisodetoairimg' src={`${IMG_BASE_URL}${last_episode_to_air.still_path}`} alt="" /> :
+                <img className='noimage' src={noimage} alt="" />
+                }    
                 <div className="lastepisodetoairinfo">
                   <div className="letainfo">
                     <div>
@@ -105,51 +111,46 @@ const Tvshowsdescription = ({last_episode_to_air,last_air_date,reviews,revenue,b
                 </div>
               </div>
             </div>
-
-            <div className="additional-info">
-              <h1>Additional Info:</h1>
-              <div className="additional">
-                <div className="status">
-                  <h2>Status:</h2>
-                  <p>{status}</p>
+            <div className="seasonsdesc">
+              <h1>Available Seasons:</h1>
+              {seasons?.map(season => (
+                <div key={season.id} className="seasondesc">       
+                    {season.poster_path ?
+                    <img className='seasonimg' src={`${IMG_BASE_URL}${season.poster_path}`} alt="" /> :
+                    <img className='noimage' src={noimage} alt="" />
+                    }
+                    <div className="seasoninfo">
+                      <p><span className='seasonname'>{season.name}</span> {season.air_date && <span className='seasonyear'>({season.air_date.slice(0,4)}) </span>} 
+                       | <span className='seasonepisodes'>{season.episode_count} Episodes</span></p>
+                      <p className='seasonpremiere'>Season {season.season_number} of {original_name} Aired on {season.air_date}</p>
+                      <p className='seasonoverview'>{season.overview}</p>
+                    </div>    
                 </div>
-                <div className="budget">
-                  <h2>Budget:</h2>
-                  <p>{`${budget}$`}</p>
-                </div>
-                <div className="revenue">
-                  <h2>Revenue:</h2>
-                  <p>{`${revenue}$`}</p>
-                </div>
-                <div className="og-language">
-                  <h2>Original Language:</h2>
-                  <p className='original-language'>{original_language}</p>
-                </div>
-              </div>
+              ))}
             </div>
             <div className="reviews">
               <h1>Reviews:</h1>
               <div className="reviewflex">
                 <div className="review">
-                    {reviews?.map(item => (
-                      <div key={item.key} className='thereview'>
-                        <div className="author-details">
-                          <div className="authorpfp">
-                            {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
-                            <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
-                            <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
-                          </div>
-                          <div className="author-name">
-                            <h1 className='reviewauthor'>{item.author}</h1>
-                            <div className="time">
-                              <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
-                              <p>{item.created_at.slice(0,10)}</p>
+                  {reviews?.map(item => (
+                        <div key={item.key} className='thereview'>
+                          <div className="author-details">
+                            <div className="authorpfp">
+                              {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
+                              <img className='reviewpfp' src={`${IMG_BASE_URL_SMALL}${item.author_details.avatar_path}`} alt="" /> :
+                              <img className='noprofilepic' src={nopfp} alt="nopfp" /> }
+                            </div>
+                            <div className="author-name">
+                              <h1 className='reviewauthor'>{item.author}</h1>
+                              <div className="time">
+                                <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
+                                <p>{item.created_at.slice(0,10)}</p>
+                              </div>
                             </div>
                           </div>
+                          <p className='reviewcontent'>{item.content}</p>
                         </div>
-                        <p className='reviewcontent'>{item.content}</p>
-                      </div>
-                    ))}
+                      ))}
                 </div>
               </div>
             </div>

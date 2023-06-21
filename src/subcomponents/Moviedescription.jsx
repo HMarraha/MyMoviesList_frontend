@@ -268,7 +268,7 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
                             <div className="time">
-                              <p>{item.author_details.rating}.00</p>
+                              <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
                               <p>{item.created_at.slice(0,10)}</p>
                             </div>
                           </div>
@@ -386,7 +386,7 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
                             <div className="time">
-                              <p>{item.author_details.rating}.00</p>
+                              <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
                               <p>{item.created_at.slice(0,10)}</p>
                             </div>
                           </div>
@@ -504,7 +504,7 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                           <div className="author-name">
                             <h1 className='reviewauthor'>{item.author}</h1>
                             <div className="time">
-                              <p>{item.author_details.rating}.00</p>
+                              <p className='reviewrating'>{item.author_details.rating}.00<Star /></p>
                               <p>{item.created_at.slice(0,10)}</p>
                             </div>
                           </div>

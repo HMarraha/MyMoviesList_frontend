@@ -1,0 +1,130 @@
+.profile {
+    @include flex(center,top,10rem,row);
+    .sidebar {
+        filter: drop-shadow(8px 8px 10px  gray);
+        @include flex(top,start,0,column);
+        width: 30%;
+        margin-right: auto;
+        margin-top: 4rem;
+        height: 50vh;
+        margin-left: 2rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .sidebuttoncontainer {
+            width: 80%;
+            margin-inline: auto;
+            margin-top: 2rem;
+            Button {
+                border: none;
+                padding: 1rem;
+                width: 100%;
+            }
+        }
+    }
+    .dashboard {
+        width: 80%;
+        margin-right: 10rem;
+        margin-top: 4rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .title {
+            @include font(('Karla',sans-serif),2rem);
+            text-align: center;
+            margin-top: 1rem
+        }
+    }
+    .moviestvshows {
+        @include flex(center,top,4rem,row);
+        padding: 2rem;
+        @include font(('Cairo',sans-serif),1rem);
+        .moviesdashboard {
+            @include flex(center,top,2rem,row);
+            background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
+            padding: 2rem;
+            h1 {
+                font-weight: 400;
+                color: white;
+            }
+            p {
+                color: white;
+                font-size: 1.5rem;
+            }
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 10px;
+        }
+        .tvshowsdashboard {
+            @include flex(center,top,2rem,row);
+            background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
+            padding: 2rem;
+            h1 {
+                font-weight: 400;
+                color: white;
+            }
+            p {
+                color: white;
+                font-size: 1.5rem;
+            }
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 10px;
+        }
+    }
+    .list {
+        font-size: 5rem;
+        border-radius: 10rem;
+        padding: 1rem;
+        background-color: rgb(110, 216, 230);
+        color: white;
+        margin-top: 0.5rem;
+    }
+    .list2 {
+        font-size: 5rem;
+        border-radius: 10rem;
+        padding: 1rem;
+        background-color: orange;
+        color: white;
+        margin-top: 0.5rem;
+    }
+    .list3 {
+        font-size: 5rem;
+        border-radius: 10rem;
+        padding: 1rem;
+        background-color: purple;
+        color: white;
+        margin-top: 0.5rem;
+    }
+    .wlists {
+        @include flex(center,center,2rem,row);
+        padding: 2rem;
+        .watchedlist,.watchinglist,.wanttowatchlist {
+            @include flex(center,top,2rem,row);
+            @include font(('Cairo',sans-serif),0.85rem);
+            background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
+            padding: 2rem;
+            h1 {
+                font-weight: 400;
+                color: white;
+            }
+            p {
+                color: white;
+                font-size: 1.5rem;
+            }
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 10px;
+        }
+    }
+    .movieslist {
+        width: 80%;
+        box-shadow: 5px 5px 8px gray;
+        margin-right: 10rem;
+        margin-top: 4rem;
+    }
+    .tvshowslist {
+        width: 80%;
+        box-shadow: 5px 5px 8px gray;
+        margin-right: 10rem;
+        margin-top: 4rem;
+    }
+    .titles {
+        @include font(('Karla',sans-serif),2rem);
+        text-align: center;
+        margin-top: 1rem;
+    }
+}

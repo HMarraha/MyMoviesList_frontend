@@ -2005,6 +2005,173 @@ main {
   border-radius: 20rem;
 }
 
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 10rem;
+  flex-direction: row;
+}
+.profile .sidebar {
+  filter: drop-shadow(8px 8px 10px gray);
+  display: flex;
+  justify-content: top;
+  align-items: start;
+  gap: 0;
+  flex-direction: column;
+  width: 30%;
+  margin-right: auto;
+  margin-top: 4rem;
+  height: 50vh;
+  margin-left: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profile .sidebar .sidebuttoncontainer {
+  width: 80%;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+.profile .sidebar .sidebuttoncontainer Button {
+  border: none;
+  padding: 1rem;
+  width: 100%;
+}
+.profile .dashboard {
+  width: 80%;
+  margin-right: 10rem;
+  margin-top: 4rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profile .dashboard .title {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.profile .moviestvshows {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 4rem;
+  flex-direction: row;
+  padding: 2rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.profile .moviestvshows .moviesdashboard {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 2rem;
+  flex-direction: row;
+  background-image: linear-gradient(rgb(103, 34, 128), rgb(166, 38, 211));
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+.profile .moviestvshows .moviesdashboard h1 {
+  font-weight: 400;
+  color: white;
+}
+.profile .moviestvshows .moviesdashboard p {
+  color: white;
+  font-size: 1.5rem;
+}
+.profile .moviestvshows .tvshowsdashboard {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 2rem;
+  flex-direction: row;
+  background-image: linear-gradient(rgb(103, 34, 128), rgb(166, 38, 211));
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+.profile .moviestvshows .tvshowsdashboard h1 {
+  font-weight: 400;
+  color: white;
+}
+.profile .moviestvshows .tvshowsdashboard p {
+  color: white;
+  font-size: 1.5rem;
+}
+.profile .list {
+  font-size: 5rem;
+  border-radius: 10rem;
+  padding: 1rem;
+  background-color: rgb(110, 216, 230);
+  color: white;
+  margin-top: 0.5rem;
+}
+.profile .list2 {
+  font-size: 5rem;
+  border-radius: 10rem;
+  padding: 1rem;
+  background-color: orange;
+  color: white;
+  margin-top: 0.5rem;
+}
+.profile .list3 {
+  font-size: 5rem;
+  border-radius: 10rem;
+  padding: 1rem;
+  background-color: purple;
+  color: white;
+  margin-top: 0.5rem;
+}
+.profile .wlists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  padding: 2rem;
+}
+.profile .wlists .watchedlist, .profile .wlists .watchinglist, .profile .wlists .wanttowatchlist {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 0.85rem;
+  background-image: linear-gradient(rgb(103, 34, 128), rgb(166, 38, 211));
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+.profile .wlists .watchedlist h1, .profile .wlists .watchinglist h1, .profile .wlists .wanttowatchlist h1 {
+  font-weight: 400;
+  color: white;
+}
+.profile .wlists .watchedlist p, .profile .wlists .watchinglist p, .profile .wlists .wanttowatchlist p {
+  color: white;
+  font-size: 1.5rem;
+}
+.profile .movieslist {
+  width: 80%;
+  box-shadow: 5px 5px 8px gray;
+  margin-right: 10rem;
+  margin-top: 4rem;
+}
+.profile .tvshowslist {
+  width: 80%;
+  box-shadow: 5px 5px 8px gray;
+  margin-right: 10rem;
+  margin-top: 4rem;
+}
+.profile .titles {
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
 * {
   padding: 0;
   margin: 0;

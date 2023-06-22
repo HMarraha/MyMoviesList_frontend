@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
-export default function Card({id,poster_path,original_title,release_date,original_name,first_air_date,show}) {
+import React from 'react'
+import { Link } from '@mui/material'
+const Card = ({id,poster_path,original_title,release_date,original_name,first_air_date,show}) => {
     const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w200'
    return (
     <>  
@@ -11,3 +12,4 @@ export default function Card({id,poster_path,original_title,release_date,origina
     </>
   )
 }
+export default Card

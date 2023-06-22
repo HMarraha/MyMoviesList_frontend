@@ -115,6 +115,8 @@
         box-shadow: 5px 5px 8px gray;
         margin-right: 10rem;
         margin-top: 4rem;
+        overflow-y: scroll;
+        height: 80vh;
     }
     .tvshowslist {
         width: 80%;
@@ -127,4 +129,7 @@
         text-align: center;
         margin-top: 1rem;
     }
+    .addmovie {
+        margin-left: 31rem;
+    }   
 }

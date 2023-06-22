@@ -8,6 +8,7 @@ import Welcome from "./Views/Welcome"
 import DefaultLayout from "./components/DefaultLayout"
 import GuestLayout from "./components/GuestLayout"
 import Description from "./Views/Description"
+import Search from "./Views/Search"
 const router = createBrowserRouter([
     {
         path: '/',
@@ -54,7 +55,11 @@ const router = createBrowserRouter([
             {
                 path: '/description/tvshows/:id/:original_name',
                 element: <Description />
-            }
+            },
+            {
+                path: '/search',
+                element: <Search />,
+            },
         ]
     },
     

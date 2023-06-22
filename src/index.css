@@ -2157,6 +2157,8 @@ main {
   box-shadow: 5px 5px 8px gray;
   margin-right: 10rem;
   margin-top: 4rem;
+  overflow-y: scroll;
+  height: 80vh;
 }
 .profile .tvshowslist {
   width: 80%;
@@ -2170,6 +2172,29 @@ main {
   font-size: 2rem;
   text-align: center;
   margin-top: 1rem;
+}
+.profile .addmovie {
+  margin-left: 31rem;
+}
+
+.searchmovies {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.searchinput {
+  width: 80%;
+  padding: 1rem;
+  margin-left: 2rem;
+}
+
+.searchbutton {
+  height: 5.2vh;
+  width: 8rem;
 }
 
 * {

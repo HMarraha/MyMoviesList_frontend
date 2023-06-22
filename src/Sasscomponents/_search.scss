@@ -1,0 +1,13 @@
+.searchmovies {
+    @include flex(start,center,2rem,row);
+    margin-top: 2rem;
+}
+.searchinput {
+    width: 80%;
+    padding: 1rem;
+    margin-left: 2rem;
+}
+.searchbutton {
+    height: 5.2vh;
+    width: 8rem;
+}

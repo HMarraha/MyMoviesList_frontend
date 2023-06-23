@@ -10,6 +10,7 @@ import Edit from '@mui/icons-material/Edit'
 import Delete from '@mui/icons-material/Delete'
 import Dashboardtable from './Dashboardtable'
 import Add from '@mui/icons-material/Add'
+import Tvshowstable from './Tvshowstable'
 const Sidebar = () => {
   const [dashboard, setDashboard] = useState(true)
   const [movieList,setMovieList] = useState(false)
@@ -221,21 +222,35 @@ const Sidebar = () => {
           <div className="tvshowslist">
             <h1 className='titles'>TvShows Lists:</h1>
               {tvShowsWatched ? 
-              <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
-              <Button onClick={showWatched} variant='contained' style={{width: '100%'}}>Watched</Button>
-              <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
-              <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
-              </ButtonGroup> : tvShowsWatching ?
-              <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
-              <Button onClick={showWatched} style={{width: '100%'}}>Watched</Button>
-              <Button onClick={showWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
-              <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
-              </ButtonGroup> : 
-              <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
-                  <Button onClick={showWatched} style={{width: '100%'}}>Watched</Button>
-                  <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
-                  <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
-              </ButtonGroup>
+              <div>
+                <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
+                <Button onClick={showWatched} variant='contained' style={{width: '100%'}}>Watched</Button>
+                <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
+                <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
+                </ButtonGroup> 
+                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <Tvshowstable {...tvShow} />  
+              </div>
+              : tvShowsWatching ?
+              <div>
+                <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
+                <Button onClick={showWatched} style={{width: '100%'}}>Watched</Button>
+                <Button onClick={showWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
+                <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
+                </ButtonGroup> 
+                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <Tvshowstable {...tvShow} />   
+              </div> 
+              :
+              <div>
+                <ButtonGroup style={{width: '100%',padding: '2rem'}} color='secondary'>
+                    <Button onClick={showWatched} style={{width: '100%'}}>Watched</Button>
+                    <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
+                    <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
+                </ButtonGroup>
+                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <Tvshowstable {...tvShow} />
+              </div>
               }
           </div>
       </div>

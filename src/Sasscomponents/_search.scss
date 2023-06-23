@@ -1,13 +1,35 @@
+.titles {
+    @include font(('Cairo',sans-serif),2rem);
+    margin-left: 60rem;
+}
 .searchmovies {
-    @include flex(start,center,2rem,row);
+    @include flex(start,top,2rem,row);
+    width: 90%;
+    margin: auto;
+    margin-block: 2rem;
+    .searchtitle {
+        @include font(('Cairo',sans-serif),1.25rem)
+    }
+    .searchoverview {
+        @include font(('Cairo',sans-serif),1rem)
+    }
+    .buttons {
+        margin-top: 2rem;
+        Button {
+            margin-left: 2rem;
+        }
+    }
+}
+.searchformovie {
     margin-top: 2rem;
-}
-.searchinput {
-    width: 80%;
-    padding: 1rem;
-    margin-left: 2rem;
-}
-.searchbutton {
-    height: 5.2vh;
-    width: 8rem;
+    @include flex(center,center,2rem,row);
+    .searchinput {
+        width: 80%;
+        padding: 1rem;
+        margin-left: 2rem;
+    }
+    .searchbutton {
+        height: 6vh;
+        width: 8rem;
+    }
 }

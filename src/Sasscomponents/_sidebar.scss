@@ -95,7 +95,7 @@
         padding: 2rem;
         .watchedlist,.watchinglist,.wanttowatchlist {
             @include flex(center,top,2rem,row);
-            @include font(('Cairo',sans-serif),0.85rem);
+            @include font(('Cairo',sans-serif),0.8rem);
             background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
             padding: 2rem;
             h1 {

@@ -27,8 +27,8 @@ const Search = () => {
     const [tvSearchResults, setTvSearchResults] = useState([])
     const [tvSearching,setTvSearching] = useState(false)
     const [tvPage,setTvPage] = useState(1)
-    const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}` + apiKey
-    const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}` + apiKey
+    const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}?` + apiKey
+    const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
     const getURL = async (url) => {
         try {
             const response = await tmbdClient.get(url)
@@ -113,7 +113,7 @@ const Search = () => {
     return (
 
         <>
-            <h1 className='titles'>Search for movies:</h1>
+            <h1 className='searchtitles'>Search for movies:</h1>
             <form className='searchformovie' onSubmit={handleSubmit} >
                 <TextField style={{width: '40%',marginLeft: '25rem'}} onChange={handleChange} id="outlined-basic" label="Search Movie" variant="outlined" />
                 <Button type='submit' className='searchbutton' variant='contained' color='secondary'>Search</Button>
@@ -129,7 +129,7 @@ const Search = () => {
                 {searching ? searchResults?.map(item => (
                     <div key={item.id} className="searchmovies">
                         <Link to={`/description/movies/${item.id}/${item.original_title}`}>
-                        {item.poster_path ? <img src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
+                        {item.poster_path ? <img style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
                         </Link>
                         <div>
                         <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/movies/${item.id}/${item.original_title}`}>
@@ -146,7 +146,7 @@ const Search = () => {
                 )) : movie?.map(item => (
                     <div key={item.id} className="searchmovies">
                         <Link to={`/description/movies/${item.id}/${item.original_title}`}>
-                            {item.poster_path ? <img src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img src={nopfp} alt="" />}
+                            {item.poster_path ? <img style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
                         </Link>
                         <div>
                         <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/movies/${item.id}/${item.original_title}`}>
@@ -154,9 +154,9 @@ const Search = () => {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
+                                <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ const Search = () => {
 if (tvShowsList) {
     return (
         <>
-        <h1 className='titles'>Search for tvshows:</h1>
+        <h1 className='searchtitles'>Search for tvshows:</h1>
         <form className='searchformovie' onSubmit={handleTvSubmit} >
                 <TextField style={{width: '40%',marginLeft: '25rem'}} onChange={handleTvChange} id="outlined-basic" label="Search TvShow" variant="outlined" />
                 <Button type='submit' className='searchbutton' variant='contained' color='secondary'>Search</Button>
@@ -188,7 +188,7 @@ if (tvShowsList) {
                 {tvSearching ? tvSearchResults?.map(item => (
                     <div key={item.id} className="searchmovies">
                         <Link to={`/description/movies/${item.id}/${item.original_name}`}>
-                        {item.poster_path ? <img src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
+                        {item.poster_path ? <img style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
                         </Link>
                         <div>
                         <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/movies/${item.id}/${item.original_name}`}>
@@ -205,7 +205,7 @@ if (tvShowsList) {
                 )) : tvShow?.map(item => (
                     <div key={item.id} className="searchmovies">
                         <Link to={`/description/tvshows/${item.id}/${item.original_name}`}>
-                            {item.poster_path ? <img src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img src={nopfp} alt="" />}
+                            {item.poster_path ? <img style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
                         </Link>
                         <div>
                         <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/tvshows/${item.id}/${item.original_name}`}>
@@ -213,7 +213,7 @@ if (tvShowsList) {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button onClick={addToWatchedList} className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
                             </div>

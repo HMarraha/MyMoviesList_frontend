@@ -732,6 +732,7 @@ main {
   font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 1.125rem;
+  width: 50rem;
 }
 .welcomehero .welcomehero-text .btn-container .btn:hover {
   color: black;
@@ -758,19 +759,6 @@ main {
 }
 .welcomehero .welcomehero-text .btn-container .welcomehero-btn:hover::before {
   transform: scaleX(1);
-}
-.welcomehero .welcomehero-text .btn-container .searchbar {
-  border: 1px solid black;
-  border-radius: 10px;
-  font-family: "Karla", sans-serif;
-  font-weight: bold;
-  font-size: 1.25rem;
-  width: 100%;
-  padding: 1.5rem;
-  text-align: start;
-}
-.welcomehero .welcomehero-text .btn-container .searchbar:focus {
-  outline: none;
 }
 
 @media (max-width: 1570px) {
@@ -1013,22 +1001,11 @@ main {
   right: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
-.profiledisplay .logout .logoutbtn {
-  width: 100%;
-  padding: 0rem 5rem;
-  background-color: white;
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  transition: 350ms;
+.profiledisplay .logout .profilebtn {
+  background-color: rgb(3, 37, 65);
 }
-.profiledisplay .logout .logoutbtn:hover {
-  background-color: #8A2BE2;
-}
-.profiledisplay .logout .logout-btn {
-  padding: 0 2rem;
+.profiledisplay .logout .signout {
+  background-color: rgb(3, 37, 65);
 }
 
 .profilename {
@@ -2138,7 +2115,7 @@ main {
   flex-direction: row;
   font-family: "Cairo", sans-serif;
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   background-image: linear-gradient(rgb(103, 34, 128), rgb(166, 38, 211));
   padding: 2rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -2177,7 +2154,7 @@ main {
   margin-left: 31rem;
 }
 
-.titles {
+.searchtitles {
   font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 2rem;

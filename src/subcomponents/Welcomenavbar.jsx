@@ -4,6 +4,7 @@ import {FaBars,FaTimes} from "react-icons/fa"
 import { FaPortrait } from "react-icons/fa"
 import { useStateContext } from "../contexts/contextprovide"
 import axiosClient from "../Views/axios"
+import { Button } from "@mui/material"
 export default function Welcomenavbar({closeLatest,latest,handleLatest,icon,handleIcon,show,handleShow,logout,handleLogout,fetch}) {
     const {user,setUser,setToken} = useStateContext()
     const signout = (e) =>{
@@ -85,9 +86,9 @@ const role= {
                         <i className="profileicon"><FaPortrait radius={49} color="white" size={60}/></i>
                         <div style={logoutstyle} className="logout">
                             <Link to="/profile">
-                                <button style={{cursor: 'pointer'}} className="logoutbtn">Profile</button>
+                                <Button className="profilebtn" style={{width : '15rem',height: '3rem'}} variant="contained">Profile</Button>
                             </Link>
-                                <button onClick={signout} style={{cursor: 'pointer'}} className="logoutbtn logout-btn">Sign out</button>
+                                <Button className="signout" onClick={signout} style={{width : '15rem',marginTop: '1rem',height: '3rem'}} variant="contained">Sign out</Button>
                                 <div className="logoutinfo">
                                     <h1 className="profilename">{user.name}</h1>
                                     <p className="profileemail">{user.email}</p>

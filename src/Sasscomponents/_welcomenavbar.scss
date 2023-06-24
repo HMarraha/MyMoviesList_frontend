@@ -35,20 +35,13 @@
         top: 6rem;
         right: 1rem;
         box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-        .logoutbtn {
-            width: 100%;
-            padding: 0rem 5rem;
-            background-color: white;
-            @include font(('Cairo',sans-serif),1.5rem);
-            @include border(1px,solid,rgba(0,0,0,0.5),10px);
-            transition: 350ms;
-            &:hover {
-                background-color: $purpleColor;
-            }  
+        .profilebtn {
+            background-color: rgb(3,37,65);
         }
-        .logout-btn {
-            padding: 0 2rem;
+        .signout {
+           background-color: rgb(3,37,65);
         }
+        
     }
 }
 .profilename {

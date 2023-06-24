@@ -36,6 +36,7 @@ main  {
                 position: relative;
                 transition: color 0.4s linear;
                 @include font(('Karla',sans-serif),1.125rem);
+                width: 50rem;
             }
             .btn:hover {
                 color: black;
@@ -50,16 +51,6 @@ main  {
             }
             .welcomehero-btn:hover::before {
                 transform: scaleX(1);
-            }
-            .searchbar {
-                @include border(1px,solid,black,10px);
-                @include font(('Karla',sans-serif),1.25rem);
-                width: 100%;
-                padding: 1.5rem;
-                text-align: start;
-                &:focus {
-                    outline: none;
-                }
             }
         }
     }

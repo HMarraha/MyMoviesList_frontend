@@ -11,7 +11,7 @@ import Add from '@mui/icons-material/Add'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField'
-
+import axiosClient from './axios'
 const Search = () => {
     const apiKey = import.meta.env.VITE_TMDB_API_KEY
     const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
@@ -137,9 +137,9 @@ const Search = () => {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@ const Search = () => {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button onClick={addMovie} color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
                             </div>
@@ -196,9 +196,9 @@ if (tvShowsList) {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
                             </div>
                         </div>
                     </div>
@@ -213,9 +213,9 @@ if (tvShowsList) {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button onClick={addToWatchedList} className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
                             </div>
                         </div>
                     </div>

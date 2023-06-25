@@ -154,7 +154,7 @@ const Search = () => {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button onClick={addMovie} color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
                                 <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
                             </div>

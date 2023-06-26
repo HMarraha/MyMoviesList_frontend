@@ -50,8 +50,6 @@ export default function Login() {
             onChange={e=>setPassword(e.target.value)}
             required/>
             <button type="submit">Login</button>
-            <input className='remember-me' type="checkbox" id="remember-me" name="remember-me"/>
-            <label className='remember' htmlFor='remember-me'>Remember me</label>
             <p>
               Not Registered? <Link style={{textDecoration: "none" }} to="/signup">Create an account</Link>
             </p>

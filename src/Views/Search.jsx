@@ -187,11 +187,11 @@ if (tvShowsList) {
         <div className="movieslist">
                 {tvSearching ? tvSearchResults?.map(item => (
                     <div key={item.id} className="searchmovies">
-                        <Link to={`/description/movies/${item.id}/${item.original_name}`}>
+                        <Link to={`/description/tvshows/${item.id}/${item.original_name}`}>
                         {item.poster_path ? <img style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
                         </Link>
                         <div>
-                        <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/movies/${item.id}/${item.original_name}`}>
+                        <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/tvshows/${item.id}/${item.original_name}`}>
                             <p className='searchtitle'>{item.original_name}</p>
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>

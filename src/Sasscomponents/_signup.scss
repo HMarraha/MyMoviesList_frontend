@@ -5,7 +5,7 @@
     background-size: cover;
 }
 .signup-container {
-    max-width: 40%;
+    width: 60%;
     margin: 2.27rem auto;
     border: 1px solid red;
     text-align: center;
@@ -13,16 +13,6 @@
     box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
     background-color: white;
     padding: 2rem;
-    .signup {
-        text-align: center;
-        margin-right: 9rem;
-        @include font(('Karla',sans-serif),2rem);
-        transition: 350ms;
-        text-shadow: 2px 2px 5px blueviolet;
-        &:hover {
-            transform: translateX(-3px) translateY(-3px);
-        }
-    }
     img {
         filter: drop-shadow(8px 8px 10px gray);
         @include border(1px,solid,black,5rem);
@@ -34,7 +24,7 @@
     }
     input {
         display: block;
-        width: 60%;
+        width: 80%;
         padding: 0.5rem 1rem;
         margin: 0.6rem auto;
         @include border(1px,solid,black,10px);
@@ -46,9 +36,19 @@
             @include font(('Cairo',sans-serif),1.1rem)
         }
     }
+    .signup {
+        text-align: center;
+        margin: auto;
+        @include font(('Karla',sans-serif),2rem);
+        transition: 350ms;
+        text-shadow: 2px 2px 5px blueviolet;
+        &:hover {
+            transform: translateX(-3px) translateY(-3px);
+        }
+    }
     h1 {
         text-align: start;
-        margin-left: 9rem;
+        margin-left: 5rem;
         @include font(('Cairo',sans-serif),1.25rem)
     }
     button {
@@ -76,5 +76,50 @@
         text-shadow: 1px 1px 5px black;
         @include font(('Karla',sans-serif),1.25rem);
         margin-top: 2rem;
+    }
+}
+@media (max-width: 1000px) {
+    .signup-container {
+        width: 100%;
+        margin-left: 0;
+        input {
+            width: 100%;
+        }
+        h1 {
+            margin-left: 0;
+        }
+    }
+
+}
+@media (max-width: 650px) {
+    .signup-container {
+        button {
+            padding: 1rem 5rem;
+        }   
+        h1 {
+            margin-left: 0;
+        }
+    }
+}
+@media (max-width: 450px) {
+    .signup-container {
+        button {
+            padding: 1rem 2rem;
+        }   
+        h1 {
+            margin-left: 0;
+            font-size: 1rem;
+        }
+        img {
+            width: 4rem;
+        }
+        .signup {
+            font-size: 1rem;
+        }
+    }
+}
+@media (min-height: 1400px) {
+    .signup-section {
+        padding-block: 18rem;
     }
 }

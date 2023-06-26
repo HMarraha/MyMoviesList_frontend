@@ -3,6 +3,12 @@ import {FaBars,FaTimes} from "react-icons/fa"
 import {Link} from "react-router-dom"
 import logo from "../assets/mmllogo.jpg"
 import "../index.css"
+import Weclomepopular from "../subcomponents/Welcomepopular"
+import About from "../subcomponents/About"
+import Welcomemovies from "../subcomponents/Welcomemovies"
+import Faq from "../subcomponents/Faq"
+import Welcometvshows from "../subcomponents/Welcometvshows"
+import Footer from "../subcomponents/Footer"
 export default function Landing({latest,handleLatest,icon,handleIcon,show,handleShow}) {
     const styles = {
         visibility: latest ? "hidden" : "visible",
@@ -36,24 +42,24 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
                         <div className="dropdown">
                         <li><a onClick={handleLatest} className='links navbar-links' href="#">Latest</a></li>
                          <div style={styles} className="latest">
-                            <li><a href="#">Popular</a></li>  
-                            <li><a href="#">Movies</a></li>
-                            <li><a href="#">TV Shows</a></li>
+                            <li><a href="#welcomepopularid">Popular</a></li>  
+                            <li><a href="#welcomemoviesid">Movies</a></li>
+                            <li><a href="#welcometvshowsid">TV Shows</a></li>
                          </div>
                         </div>
-                            <li><a className='links navbar-links' href="#">About</a></li>
-                            <li><a className='links navbar-links' href="#">FAQS</a></li>
+                            <li><a className='links navbar-links' href="#aboutid">About</a></li>
+                            <li><a className='links navbar-links' href="#faqid">FAQS</a></li>
                         <div style={translate} className="mobilenav">
                             <div>
                             <li><a onClick={handleShow} className='link navbar-link' href="#">Latest</a></li>
                             <div style={latestStyle} className="mobilelatest"> 
-                                <li ><a className="latestli latest-links" href="#">Popular</a></li>  
-                                <li ><a className="latestli latest-links" href="#">Movies</a></li>
-                                <li ><a className="latestli latest-links" href="#">TV Shows</a></li>
+                                <li ><a className="latestli latest-links" href="#welcomepopularid">Popular</a></li>  
+                                <li ><a className="latestli latest-links" href="#welcomemoviesid">Movies</a></li>
+                                <li ><a className="latestli latest-links" href="#welcometvshowsid">TV Shows</a></li>
                             </div> 
                             </div>
-                            <li style={role} ><a className='link navbar-link' href="#">About</a></li>
-                            <li style={role} ><a className='link navbar-link' href="#">FAQS</a></li>
+                            <li style={role} ><a className='link navbar-link' href="#aboutid">About</a></li>
+                            <li style={role} ><a className='link navbar-link' href="#faqid">FAQS</a></li>
                             <Link style={{textDecoration: "none"}} to="/login"><button style={role}  className='mobile-btn' type='button'>Sign in</button></Link>
                             <Link style={{textDecoration: "none"}} to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
                         </div>
@@ -77,6 +83,12 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
                 </div>
             </div>
         </main>
+        <Weclomepopular />
+        <About />
+        <Welcomemovies />
+        <Faq />
+        <Welcometvshows />
+        <Footer />
     </>
   )
 }

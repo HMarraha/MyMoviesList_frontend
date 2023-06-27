@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import List from "@mui/icons-material/List"
 import Dashboard from "@mui/icons-material/Dashboard"
@@ -8,10 +8,13 @@ import { ButtonGroup, Link } from '@mui/material'
 import nopfp from '../../assets/noimage.jpg'
 import Edit from '@mui/icons-material/Edit'
 import Delete from '@mui/icons-material/Delete'
-import Dashboardtable from './Dashboardtable'
 import Add from '@mui/icons-material/Add'
-import Tvshowstable from './Tvshowstable'
+import { useStateContext } from '../../contexts/contextprovide'
+import axiosClient from '../../Views/axios'
+
 const Sidebar = () => {
+  const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
+  const {watchedMovie,setWatchedMovie} = useStateContext()
   const [dashboard, setDashboard] = useState(true)
   const [movieList,setMovieList] = useState(false)
   const [tvShowsList,setTvShowsList] = useState(false)
@@ -29,6 +32,18 @@ const Sidebar = () => {
   const [movie,setMovie] = useState([])
   const totalMovies = totalWantToWatchMovies + totalWatchedMovies + totalWatchingMovies
   const totalTvShows = totalWantToWatchTvShows + totalWatchedTvShows + totalWatchingTvShows
+  useEffect(() => {
+    const getWatchedMovie = async () => {
+      try {
+        const response = await axiosClient.get('/movies')
+        setWatchedMovie(response.data)
+      } catch(error) {
+        console.error(error)
+      }
+    }
+    getWatchedMovie()
+  },[])
+  console.log(watchedMovie)
   const handleDashboard = () => {
     setDashboard(true)
     setMovieList(false)
@@ -179,8 +194,20 @@ const Sidebar = () => {
               <Button onClick={displayWatching} style={{width: '100%'}}>Watching</Button>
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-              <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
-              <Dashboardtable {...movie} />             
+              <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a> 
+              {watchedMovie.length === 0 ? <h1 className='nowatchedmovieadded'>Wow! that's a very empty list you have there.</h1> :
+                (
+                  watchedMovie?.map(item => (
+                    <div className="watchedmoviedetails">
+                      <img src={`${IMG_BASE_URL_SMALL}${item.image}`} alt="" />
+                      <p>{item.title}</p>
+                      <p>{item.overview}</p>
+                      <Button><Edit /></Button>
+                      <Button><Delete /></Button>
+                    </div>
+                  ))
+                )
+              }            
             </div>
                : moviesWatching ?
                <div>
@@ -190,7 +217,6 @@ const Sidebar = () => {
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
-               <Dashboardtable {...movie} />
                </div>
                : 
                <div>
@@ -200,7 +226,6 @@ const Sidebar = () => {
                   <Button onClick={displayWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
-              <Dashboardtable {...movie} />
               </div>
               }
           </div>
@@ -219,7 +244,7 @@ const Sidebar = () => {
               <Button variant='contained' onClick={handleTvShowsList} color="secondary" startIcon={<List />}>TvShows Lists</Button>
             </div>
           </aside>
-          <div className="tvshowslist">
+          <div className="movieslist">
             <h1 className='titles'>TvShows Lists:</h1>
               {tvShowsWatched ? 
               <div>
@@ -228,8 +253,7 @@ const Sidebar = () => {
                 <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
-                <Tvshowstable {...tvShow} />  
+                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a> 
               </div>
               : tvShowsWatching ?
               <div>
@@ -238,8 +262,7 @@ const Sidebar = () => {
                 <Button onClick={showWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
-                <Tvshowstable {...tvShow} />   
+                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>  
               </div> 
               :
               <div>
@@ -249,7 +272,6 @@ const Sidebar = () => {
                     <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup>
                 <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
-                <Tvshowstable {...tvShow} />
               </div>
               }
           </div>

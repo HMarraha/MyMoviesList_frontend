@@ -5,7 +5,7 @@ import axiosClient from './axios'
 import { useStateContext } from '../contexts/contextprovide'
 import { useState } from 'react'
 export default function Login() {
-  const {setUser, setToken} = useStateContext()
+  const {token,setUser, setToken} = useStateContext()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error,setError] = useState({__html: ''})

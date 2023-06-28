@@ -2266,6 +2266,60 @@ main {
   margin-left: 31rem;
 }
 
+.tableheads {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Karla", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+.tableheads .tableheadsposter {
+  margin-left: 0.6rem;
+}
+.tableheads .tableheadstitle {
+  margin-left: 0.4rem;
+}
+.tableheads .tableheadsoverview {
+  margin-left: 20rem;
+}
+.tableheads .tableheadsactions {
+  margin-left: 25.5rem;
+}
+
+.addedmoviedetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+.addedmoviedetails img {
+  width: 4rem;
+}
+.addedmoviedetails .actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+}
+
+.nomovieadded {
+  text-align: center;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-top: 4rem;
+}
+
 .searchtitles {
   font-family: "Cairo", sans-serif;
   font-weight: bold;
@@ -2294,6 +2348,11 @@ main {
   font-size: 1rem;
 }
 .searchmovies .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
   margin-top: 2rem;
 }
 .searchmovies .buttons Button {

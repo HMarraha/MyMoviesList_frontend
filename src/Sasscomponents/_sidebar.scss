@@ -133,3 +133,36 @@
         margin-left: 31rem;
     }   
 }
+.tableheads {
+    @include flex(flex-start,center,2rem,row);
+    @include font(('Karla',sans-serif),1rem);
+    margin-top: 1rem;
+    .tableheadsposter {
+        margin-left: 0.6rem;
+    }
+    .tableheadstitle {
+        margin-left: 0.4rem;
+    }
+    .tableheadsoverview {
+        margin-left: 20rem;
+    }
+    .tableheadsactions {
+        margin-left: 25.5rem;
+    }
+}
+.addedmoviedetails {
+    @include flex(center,center,2rem,row);
+    @include font(('Cairo',sans-serif),1rem);
+    margin-top: 2rem;
+    img {
+        width: 4rem;
+    }
+    .actions {
+        @include flex(center,center,0,row);
+    }
+}
+.nomovieadded {
+    text-align: center;
+    @include font(('Cairo',sans-serif),3rem);
+    margin-top: 4rem;
+}

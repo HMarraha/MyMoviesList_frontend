@@ -14,6 +14,7 @@
         @include font(('Cairo',sans-serif),1rem)
     }
     .buttons {
+        @include flex(center,center,2rem,row);
         margin-top: 2rem;
         Button {
             margin-left: 2rem;
@@ -32,4 +33,15 @@
         height: 6vh;
         width: 8rem;
     }
+}
+.success {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 99999;
+    background-color: green;
+    color: white;
+    @include font(('Cairo',sans-serif),1rem);
+    padding: 1rem 5rem;
+    @include border(1px,solid,green,10px);
 }

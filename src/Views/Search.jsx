@@ -12,6 +12,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField'
 import axiosClient from './axios'
 import { useStateContext } from '../contexts/contextprovide'
+import { FaMinus } from 'react-icons/fa'
 const Search = () => {
     const apiKey = import.meta.env.VITE_TMDB_API_KEY
     const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
@@ -27,24 +28,45 @@ const Search = () => {
     const [tvSearchResults, setTvSearchResults] = useState([])
     const [tvSearching,setTvSearching] = useState(false)
     const [tvPage,setTvPage] = useState(1)
-    const [moviePoster,setMoviePoster] = useState('')
-    const [movieTitle,setMovieTitle] = useState('')
-    const [movieGenre,setMovieGenre] = useState('')
-    const [movieDuration,setMovieDuration] = useState('')
-    const [movieYear,setMovieYear] = useState('')
     const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}?` + apiKey
     const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
-    const addMovie = async (event, movie) => {
-        event.preventDefault();
-      
+    const [clickedButton,setClickedButton] = useState(false)
+    const addWantToWatchMovie = async(e,item) => {
+        e.preventDefault()
         const formData = new FormData();
-        formData.append('image', movie.poster_path);
-        formData.append('title', movie.original_title);
-        formData.append('overview', movie.overview);
+        formData.append('wanttowatchimage', item.poster_path)
+        formData.append('wanttowatchtitle', item.original_title)
+        formData.append('wanttowatchoverview', item.overview)
+
+        try {
+            const response = await axiosClient.post('/wanttowatchmovies', formData)
+        } catch(error) {
+            console.error(error)
+        }
+    }
+    const addWatchingMovie = async (e, item) => {
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append('watchingimage', item.poster_path)
+        formData.append('watchingtitle', item.original_title)
+        formData.append('watchingoverview', item.overview)
+
+        try {
+            const response = await axiosClient.post('/watchingmovies', formData)
+        } catch(error) {
+            console.error(error)
+        }
+    }
+    const addMovie = async (e, item) => {
+        e.preventDefault();
+        setClickedButton(!clickedButton)
+        const formData = new FormData();
+        formData.append('image', item.poster_path);
+        formData.append('title', item.original_title);
+        formData.append('overview', item.overview);
       
         try {
           const response = await axiosClient.post('/movies', formData);
-          console.log(response);
         } catch (error) {
           console.error(error);
         }
@@ -165,9 +187,8 @@ const Search = () => {
                     </div>
                 )) : movie?.map(item => (
                         <div key={item.id} className="searchmovies">
-                            <form onSubmit={(event) => addMovie(event, item)}>
                             <Link to={`/description/movies/${item.id}/${item.original_title}`}>
-                                {item.poster_path ? <img id='image' name='image' style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img style={{width: '200px'}} src={nopfp} alt="" />}
+                                {item.poster_path ? <img id='image' name='image' style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img id='image' name='image' style={{width: '200px'}} src={nopfp} alt="" />}
                             </Link>
                             <div>
                             <Link style={{textDecoration: 'none',color: 'black'}} to={`/description/movies/${item.id}/${item.original_title}`}>
@@ -175,12 +196,19 @@ const Search = () => {
                             </Link>    
                                 <p className='searchoverview' name='overview' id='overview' >{item.overview}</p>
                                 <div className="buttons">
-                                    <Button type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                    <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
-                                    <Button className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
+                                <form onSubmit={(e) => {addMovie(e,item)}} >
+                                    {!clickedButton ? <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button> :
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<FaMinus />} variant='contained' size='large' >ًWatched</Button>
+                                    }
+                                </form>
+                                <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
+                                    <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
+                                    <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
+                                </form>
                                 </div>
                             </div>
-                            </form>
                         </div>
                 ))}
             </div>

@@ -10,6 +10,10 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
     const [watchedMovie,setWatchedMovie] = useState([])
     const [watchedTvShow,setWatchedTvShow] = useState([])
+    const [watchingMovie,setWatchingMovie] = useState([])
+    const [watchingTvShow,setWatchingTvShow] = useState([])
+    const [wantToWatchMovie,setWantToWatchMovie] = useState([])
+    const [wantToWatchTvShow,setWantToWatchTvShow] = useState([])
     const [loading,setLoading] = useState(true)
     const [latest,setLatest] = useState(true)
     const [logout,setLogout] = useState(true)
@@ -66,6 +70,14 @@ export const ContextProvider = ({ children }) => {
                 setWatchedMovie,
                 watchedTvShow,
                 setWatchedTvShow,
+                watchingMovie,
+                setWatchingMovie,
+                watchingTvShow,
+                setWatchingTvShow,
+                wantToWatchMovie,
+                setWantToWatchMovie,
+                wantToWatchTvShow,
+                setWantToWatchTvShow,
             }}
         >
             {children}

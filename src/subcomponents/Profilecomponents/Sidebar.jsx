@@ -11,10 +11,12 @@ import Delete from '@mui/icons-material/Delete'
 import Add from '@mui/icons-material/Add'
 import { useStateContext } from '../../contexts/contextprovide'
 import axiosClient from '../../Views/axios'
-
+import Empty from '@mui/icons-material/HourglassEmpty'
 const Sidebar = () => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
   const {watchedMovie,setWatchedMovie} = useStateContext()
+  const {watchingMovie,setWatchingMovie} = useStateContext()
+  const {wantToWatchMovie,setWantToWatchMovie} = useStateContext()
   const [dashboard, setDashboard] = useState(true)
   const [movieList,setMovieList] = useState(false)
   const [tvShowsList,setTvShowsList] = useState(false)
@@ -33,6 +35,28 @@ const Sidebar = () => {
   const totalMovies = totalWantToWatchMovies + totalWatchedMovies + totalWatchingMovies
   const totalTvShows = totalWantToWatchTvShows + totalWatchedTvShows + totalWatchingTvShows
   useEffect(() => {
+    const getWantToWatchMovie = async () => {
+      try {
+        const response = await axiosClient.get('/wanttowatchmovies')
+        setWantToWatchMovie(response.data)
+      } catch(error) {
+        console.error(error)
+      }
+    }
+    getWantToWatchMovie()
+  },[])
+  useEffect(() => {
+    const getWatchingMovie = async () => {
+      try {
+        const response = await axiosClient.get('/watchingmovies')
+        setWatchingMovie(response.data)
+      } catch(error) {
+        console.error(error)
+      }
+    }
+    getWatchingMovie()
+  },[])
+  useEffect(() => {
     const getWatchedMovie = async () => {
       try {
         const response = await axiosClient.get('/movies')
@@ -43,7 +67,6 @@ const Sidebar = () => {
     }
     getWatchedMovie()
   },[])
-  console.log(watchedMovie)
   const handleDashboard = () => {
     setDashboard(true)
     setMovieList(false)
@@ -195,15 +218,28 @@ const Sidebar = () => {
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a> 
-              {watchedMovie.length === 0 ? <h1 className='nowatchedmovieadded'>Wow! that's a very empty list you have there.</h1> :
+              <div className='tableheads'>
+                <p className='tableheadsposter'>Poster</p>
+                <p className='tableheadstitle'>Title</p>
+                <p className='tableheadsoverview'>Overview</p>
+                <p className='tableheadsactions'>Actions</p>
+               </div>
+              {watchedMovie.length === 0 ? (
+                <div>
+                <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
+                <Empty style={{fontSize : '10rem',marginLeft: '27rem'}} />
+                </div>
+              ):
                 (
                   watchedMovie?.map(item => (
-                    <div className="watchedmoviedetails">
+                    <div className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.image}`} alt="" />
                       <p>{item.title}</p>
                       <p>{item.overview}</p>
-                      <Button><Edit /></Button>
-                      <Button><Delete /></Button>
+                      <div className="actions">
+                        <Button><Edit /></Button>
+                        <Button><Delete /></Button>
+                      </div>
                     </div>
                   ))
                 )
@@ -217,6 +253,27 @@ const Sidebar = () => {
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+               <div className='tableheads'>
+                <p className='tableheadsposter'>Poster</p>
+                <p className='tableheadstitle'>Title</p>
+                <p className='tableheadsoverview'>Overview</p>
+                <p className='tableheadsactions'>Actions</p>
+               </div>
+               {watchingMovie.length === 0 ? <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1> :
+                (
+                  watchingMovie?.map(item => (
+                    <div className="addedmoviedetails">
+                      <img src={`${IMG_BASE_URL_SMALL}${item.watchingimage}`} alt="" />
+                      <p>{item.watchingtitle}</p>
+                      <p>{item.watchingoverview}</p>
+                      <div className="actions">
+                        <Button><Edit /></Button>
+                        <Button><Delete /></Button>
+                      </div>
+                    </div>
+                  ))
+                )
+              }      
                </div>
                : 
                <div>
@@ -226,6 +283,27 @@ const Sidebar = () => {
                   <Button onClick={displayWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+              <div className='tableheads'>
+                <p className='tableheadsposter'>Poster</p>
+                <p className='tableheadstitle'>Title</p>
+                <p className='tableheadsoverview'>Overview</p>
+                <p className='tableheadsactions'>Actions</p>
+               </div>
+              {wantToWatchMovie.length === 0 ? <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1> :
+                (
+                  wantToWatchMovie?.map(item => (
+                    <div className="addedmoviedetails">
+                      <img src={`${IMG_BASE_URL_SMALL}${item.wanttowatchimage}`} alt="" />
+                      <p>{item.wanttowatchtitle}</p>
+                      <p>{item.wanttowatchoverview}</p>
+                      <div className="actions">
+                        <Button><Edit /></Button>
+                        <Button><Delete /></Button>
+                      </div>
+                    </div>
+                  ))
+                )
+              }      
               </div>
               }
           </div>

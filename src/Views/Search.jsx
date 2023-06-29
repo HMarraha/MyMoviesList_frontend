@@ -30,7 +30,24 @@ const Search = () => {
     const [tvPage,setTvPage] = useState(1)
     const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}?` + apiKey
     const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
-    const [clickedButton,setClickedButton] = useState(false)
+    const [clickedButton,setClickedButton] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem('buttonState'));
+        return storedState || {};
+      })
+    const [isSuccessMessageVisible,setIsSuccessMessageVisible] = useState(false)
+    const disableButton = (index) => {
+        setClickedButton(prevState => {
+            const newState = {...prevState};
+            newState[index] = !newState[index];
+            localStorage.setItem('buttonState', JSON.stringify(newState))
+            return newState;
+          })
+          setIsSuccessMessageVisible(true);
+
+          setTimeout(() => {
+          setIsSuccessMessageVisible(false); 
+          }, 3000);
+    }
     const addWantToWatchMovie = async(e,item) => {
         e.preventDefault()
         const formData = new FormData();
@@ -59,7 +76,6 @@ const Search = () => {
     }
     const addMovie = async (e, item) => {
         e.preventDefault();
-        setClickedButton(!clickedButton)
         const formData = new FormData();
         formData.append('image', item.poster_path);
         formData.append('title', item.original_title);
@@ -185,7 +201,7 @@ const Search = () => {
                             </div>
                         </div>
                     </div>
-                )) : movie?.map(item => (
+                )) : movie?.map((item,index) => (
                         <div key={item.id} className="searchmovies">
                             <Link to={`/description/movies/${item.id}/${item.original_title}`}>
                                 {item.poster_path ? <img id='image' name='image' style={{borderRadius: '10px'}} src={`${IMG_BASE_URL_SMALL}${item.poster_path}`} alt="" /> : <img id='image' name='image' style={{width: '200px'}} src={nopfp} alt="" />}
@@ -197,8 +213,8 @@ const Search = () => {
                                 <p className='searchoverview' name='overview' id='overview' >{item.overview}</p>
                                 <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                    {!clickedButton ? <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button> :
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<FaMinus />} variant='contained' size='large' >ًWatched</Button>
+                                    {clickedButton[index] ? <Button onClick={()=>disableButton(index)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<FaMinus />} variant='contained' size='large' >ًWatched</Button>  :
+                                        <Button onClick={()=>disableButton(index)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                     }
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
@@ -216,6 +232,11 @@ const Search = () => {
                <Stack style={{marginLeft: '65rem',marginBlock: '2rem'}} spacing={2}>
                     <Pagination onChange={changePage} count={500} color="secondary" />
                 </Stack>
+                {isSuccessMessageVisible && (
+                    <div style={{backgroundColor : clickedButton[index] ? 'red' : 'green'}} className="success">
+                        {clickedButton[index] ? 'Movie Deleted Successfully' : 'Movie Added Successfully'}
+                    </div>
+                )}
         </>
  ) 
 }

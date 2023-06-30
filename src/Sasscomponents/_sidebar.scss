@@ -111,7 +111,7 @@
         }
     }
     .movieslist {
-        width: 80%;
+        width: 90%;
         box-shadow: 5px 5px 8px gray;
         margin-right: 10rem;
         margin-top: 4rem;
@@ -138,7 +138,7 @@
     @include font(('Karla',sans-serif),1rem);
     margin-top: 1rem;
     .tableheadsposter {
-        margin-left: 0.6rem;
+        margin-left: 1rem;
     }
     .tableheadstitle {
         margin-left: 0.4rem;
@@ -151,8 +151,11 @@
     }
 }
 .addedmoviedetails {
-    @include flex(center,center,2rem,row);
-    @include font(('Cairo',sans-serif),1rem);
+    @include flex(space-evenly,center,2rem,row);
+    @include font(('Cairo',sans-serif),0.9rem);
+    border-bottom: 1px solid black;
+    padding-bottom: 2rem;
+    margin-inline: 1rem;
     margin-top: 2rem;
     img {
         width: 4rem;

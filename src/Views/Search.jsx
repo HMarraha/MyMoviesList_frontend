@@ -30,25 +30,46 @@ const Search = () => {
     const [tvPage,setTvPage] = useState(1)
     const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}?` + apiKey
     const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
-    const [clickedButton,setClickedButton] = useState(() => {
-        const storedState = JSON.parse(localStorage.getItem('buttonState'));
-        return storedState || {};
-      })
-    const [isSuccessMessageVisible,setIsSuccessMessageVisible] = useState(false)
-    const disableButton = (index) => {
-        setClickedButton(prevState => {
-            const newState = {...prevState};
-            newState[index] = !newState[index];
-            localStorage.setItem('buttonState', JSON.stringify(newState))
-            return newState;
-          })
-          setIsSuccessMessageVisible(true);
+    const addWatchedTvShow = async (e,item) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('watchedtvshowimage', item.poster_path)
+        formData.append('watchedtvshowtitle', item.original_name)
+        formData.append('watchedtvshowoverview',item.overview)
 
-          setTimeout(() => {
-          setIsSuccessMessageVisible(false); 
-          }, 3000);
+        try {
+            const response = await axiosClient.post('/watchedtvshows', formData)
+        } catch(error) {
+            console.log(error)
+        }
     }
-    const addWantToWatchMovie = async(e,item) => {
+    const addWatchingTvShow = async (e,item) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('watchingtvshowimage', item.poster_path)
+        formData.append('watchingtvshowtitle', item.original_name)
+        formData.append('watchingtvshowoverview', item.overview)
+
+        try {
+            const response = await axiosClient.post('/watchingtvshows', formData)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const addWantToWatchTvShow = async (e,item) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('wanttowatchtvshowimage', item.poster_path)
+        formData.append('wanttowatchtvshowtitle', item.original_name)
+        formData.append('wanttowatchtvshowoverview', item.overview)
+
+        try {
+            const response = await axiosClient.post('/wanttowatchtvshows', formData)
+        } catch(error) {
+            console.error(error)
+        }
+    }
+    const addWantToWatchMovie = async (e,item) => {
         e.preventDefault()
         const formData = new FormData();
         formData.append('wanttowatchimage', item.poster_path)
@@ -195,9 +216,15 @@ const Search = () => {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                                <form onSubmit={(e) => {addMovie(e,item)}} >
+                                    <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
+                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
+                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -213,15 +240,13 @@ const Search = () => {
                                 <p className='searchoverview' name='overview' id='overview' >{item.overview}</p>
                                 <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                    {clickedButton[index] ? <Button onClick={()=>disableButton(index)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<FaMinus />} variant='contained' size='large' >ًWatched</Button>  :
-                                        <Button onClick={()=>disableButton(index)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                    }
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
-                                    <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWatching</Button>
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>      
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
-                                    <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large' color='secondary'>ًWant To Watch</Button>
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                                 </div>
                             </div>
@@ -232,11 +257,6 @@ const Search = () => {
                <Stack style={{marginLeft: '65rem',marginBlock: '2rem'}} spacing={2}>
                     <Pagination onChange={changePage} count={500} color="secondary" />
                 </Stack>
-                {isSuccessMessageVisible && (
-                    <div style={{backgroundColor : clickedButton[index] ? 'red' : 'green'}} className="success">
-                        {clickedButton[index] ? 'Movie Deleted Successfully' : 'Movie Added Successfully'}
-                    </div>
-                )}
         </>
  ) 
 }
@@ -267,9 +287,15 @@ if (tvShowsList) {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                            <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -284,9 +310,15 @@ if (tvShowsList) {
                         </Link>    
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                                <Button color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                            <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                </form>
+                                <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                </form>
                             </div>
                         </div>
                     </div>

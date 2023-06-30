@@ -7,37 +7,48 @@ import { ButtonGroup } from "@mui/material"
 import nopfp from "../assets/OIP.jpg"
 import noimage from "../assets/noimage.jpg"
 import Star from "@mui/icons-material/Star"
+import axiosClient from '../Views/axios'
 const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,revenue,budget,status,media,cast,IMG_BASE_URL,Large,backdrop_path,episode_run_time,first_air_date,genres,number_of_episodes,number_of_seasons,original_name,original_language,vote_average,poster_path,overview,homepage}) => {
-  const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
-  const YOUTUBE_URL = 'https://www.youtube.com/embed/'
-  const [showTrailer,setShowTrailer] = useState(true)
-  const [showPosters,setShowPosters] = useState(false)
-  const [showBackdrop,setShowBackdrop] = useState(false)
-  const [showVideos,setShowVidoes] = useState(false)
-  const trailer = () => {
-    setShowTrailer(true)
-    setShowPosters(false)
-    setShowBackdrop(false)
-    setShowVidoes(false)
-  }
-  const posters = () => {
-    setShowTrailer(false)
-    setShowPosters(true)
-    setShowBackdrop(false)
-    setShowVidoes(false)
-  }
-  const backdrop = () => {
-    setShowTrailer(false)
-    setShowPosters(false)
-    setShowBackdrop(true)
-    setShowVidoes(false)
-  }
-  const videos = () => {
-    setShowTrailer(false)
-    setShowPosters(false)
-    setShowBackdrop(false)
-    setShowVidoes(true)
-  }  
+  const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200' 
+  const addWatchedTvShow = async (e,poster_path,original_name,overview) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('watchedtvshowimage', poster_path)
+    formData.append('watchedtvshowtitle', original_name)
+    formData.append('watchedtvshowoverview',overview)
+
+    try {
+        const response = await axiosClient.post('/watchedtvshows', formData)
+    } catch(error) {
+        console.log(error)
+    }
+}
+const addWatchingTvShow = async (e,poster_path,original_name,overview) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('watchingtvshowimage', poster_path)
+    formData.append('watchingtvshowtitle', original_name)
+    formData.append('watchingtvshowoverview', overview)
+
+    try {
+        const response = await axiosClient.post('/watchingtvshows', formData)
+    } catch (error) {
+        console.error(error)
+    }
+}
+const addWantToWatchTvShow = async (e,poster_path,original_name,overview) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('wanttowatchtvshowimage', poster_path)
+    formData.append('wanttowatchtvshowtitle', original_name)
+    formData.append('wanttowatchtvshowoverview', overview)
+
+    try {
+        const response = await axiosClient.post('/wanttowatchtvshows', formData)
+    } catch(error) {
+        console.error(error)
+    }
+}
   return (
       <>
         <div className="movie-description">
@@ -66,9 +77,15 @@ const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,r
                  <p>Add to a List:</p>
                 </div>
                 <div className="buttons">
-                  <Button className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWatched</Button>
-                  <Button className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWatching</Button>
-                  <Button className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWant To Watch</Button>
+                  <form onSubmit={(e) => addWatchedTvShow(e,poster_path,original_name,overview)}>
+                    <Button type='submit' className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWatched</Button>
+                  </form>
+                  <form onSubmit={(e) => addWatchingTvShow(e,poster_path,original_name,overview)}>
+                    <Button type='submit' className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWatching</Button> 
+                  </form>
+                  <form onSubmit={(e) => addWantToWatchTvShow(e,poster_path,original_name,overview)}>
+                    <Button type='submit' className='watch' startIcon={<Add/>} variant='contained' size='large'>ًWant To Watch</Button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -133,7 +150,7 @@ const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,r
               <div className="reviewflex">
                 <div className="review">
                   {reviews?.map(item => (
-                        <div key={item.key} className='thereview'>
+                        <div key={item.id} className='thereview'>
                           <div className="author-details">
                             <div className="authorpfp">
                               {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 

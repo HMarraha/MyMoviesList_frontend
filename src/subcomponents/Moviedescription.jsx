@@ -6,6 +6,8 @@ import { ButtonGroup } from "@mui/material"
 import nopfp from "../assets/OIP.jpg"
 import Star from "@mui/icons-material/Star"
 import tmbdClient from '../Views/tmdb'
+import { useStateContext } from '../contexts/contextprovide'
+import axiosClient from '../Views/axios'
 const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,Large,IMG_BASE_URL,backdrop_path,poster_path,original_title,original_language,genres,overview,runtime,release_date,vote_average,status,revenue,budget,production_companies,production_countries}) => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
   const YOUTUBE_URL = 'https://www.youtube.com/embed/'
@@ -13,6 +15,45 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
   const [showPosters,setShowPosters] = useState(false)
   const [showBackdrop,setShowBackdrop] = useState(false)
   const [showVideos,setShowVidoes] = useState(false)
+  const addWantToWatchMovie = async (e,poster_path,original_title,overview) => {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('wanttowatchimage', poster_path)
+    formData.append('wanttowatchtitle', original_title)
+    formData.append('wanttowatchoverview', overview)
+
+    try {
+        const response = await axiosClient.post('/wanttowatchmovies', formData)
+    } catch(error) {
+        console.error(error)
+    }
+}
+const addWatchingMovie = async (e, poster_path,original_title,overview) => {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('watchingimage', poster_path)
+    formData.append('watchingtitle', original_title)
+    formData.append('watchingoverview', overview)
+
+    try {
+        const response = await axiosClient.post('/watchingmovies', formData)
+    } catch(error) {
+        console.error(error)
+    }
+}
+const addMovie = async (e, poster_path,original_title,overview) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', poster_path);
+    formData.append('title', original_title);
+    formData.append('overview', overview);
+  
+    try {
+      const response = await axiosClient.post('/movies', formData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const trailer = () => {
     setShowTrailer(true)
     setShowPosters(false)
@@ -62,9 +103,15 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                  <p>Add to a List:</p>
                 </div>
                 <div className="buttons">
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                  <form onSubmit={(e) => addMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                  </form>
+                  <form onSubmit={(e) => addWatchingMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                  </form>
+                  <form onSubmit={(e) => addWantToWatchMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -185,9 +232,15 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                  <p>Add to a List:</p>
                 </div>
                 <div className="buttons">
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                <form onSubmit={(e) => addMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                  </form>
+                  <form onSubmit={(e) => addWatchingMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                  </form>
+                  <form onSubmit={(e) => addWantToWatchMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -308,9 +361,15 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                  <p>Add to a List:</p>
                 </div>
                 <div className="buttons">
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                <form onSubmit={(e) => addMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                  </form>
+                  <form onSubmit={(e) => addWatchingMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                  </form>
+                  <form onSubmit={(e) => addWantToWatchMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -426,9 +485,15 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
                  <p>Add to a List:</p>
                 </div>
                 <div className="buttons">
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
-                  <Button className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                <form onSubmit={(e) => addMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                  </form>
+                  <form onSubmit={(e) => addWatchingMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatching</Button>
+                  </form>
+                  <form onSubmit={(e) => addWantToWatchMovie(e,poster_path,original_title,overview)}>
+                   <Button type='submit' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWant To Watch</Button>
+                  </form>
                 </div>
               </div>
             </div>

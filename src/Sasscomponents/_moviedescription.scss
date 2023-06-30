@@ -49,6 +49,7 @@
         margin-top: 3rem;
     }
     .buttons {
+        @include flex(center,center,1rem,row);
         margin-left: 4rem;
         margin-top: 1rem;
         .watch {

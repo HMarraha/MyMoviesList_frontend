@@ -2283,13 +2283,13 @@ main {
   margin-top: 1rem;
 }
 .tableheads .tableheadsposter {
-  margin-left: 1rem;
+  margin-left: 1.4rem;
 }
 .tableheads .tableheadstitle {
-  margin-left: 0.4rem;
+  margin-left: 0.7rem;
 }
 .tableheads .tableheadsoverview {
-  margin-left: 20rem;
+  margin-left: 22rem;
 }
 .tableheads .tableheadsactions {
   margin-left: 25.5rem;
@@ -2297,7 +2297,7 @@ main {
 
 .addedmoviedetails {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
   flex-direction: row;

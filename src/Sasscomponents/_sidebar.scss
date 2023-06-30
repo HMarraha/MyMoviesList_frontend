@@ -138,20 +138,20 @@
     @include font(('Karla',sans-serif),1rem);
     margin-top: 1rem;
     .tableheadsposter {
-        margin-left: 1rem;
+        margin-left: 1.4rem;
     }
     .tableheadstitle {
-        margin-left: 0.4rem;
+        margin-left: 0.7rem;
     }
     .tableheadsoverview {
-        margin-left: 20rem;
+        margin-left: 22rem;
     }
     .tableheadsactions {
         margin-left: 25.5rem;
     }
 }
 .addedmoviedetails {
-    @include flex(space-evenly,center,2rem,row);
+    @include flex(space-between,center,2rem,row);
     @include font(('Cairo',sans-serif),0.9rem);
     border-bottom: 1px solid black;
     padding-bottom: 2rem;

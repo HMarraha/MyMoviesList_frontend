@@ -46,6 +46,51 @@ const Sidebar = () => {
       console.error(error);
     }
   };
+  const deleteWatchingMovie = async (title) => {
+    try {
+      await axiosClient.delete(`/watchingmovies/${encodeURIComponent(title)}`);
+      console.log('Movie deleted successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteWantToWatchMovie = async (title) => {
+    try {
+      await axiosClient.delete(`/wanttowatchmovies/${encodeURIComponent(title)}`);
+      console.log('Movie deleted successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteWatchedTvShow = async (title) => {
+    try {
+      await axiosClient.delete(`/watchedtvshows/${encodeURIComponent(title)}`);
+      console.log('Movie deleted successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteWatchingTvShow = async (title) => {
+    try {
+      await axiosClient.delete(`/watchingtvshows/${encodeURIComponent(title)}`);
+      console.log('Movie deleted successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteWantToWatchTvShow = async (title) => {
+    try {
+      await axiosClient.delete(`/wanttowatchtvshows/${encodeURIComponent(title)}`);
+      console.log('Movie deleted successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     const getWatchedTvShow = async () => {
       try {
@@ -262,7 +307,7 @@ const Sidebar = () => {
               <Button onClick={displayWatching} style={{width: '100%'}}>Watching</Button>
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-              <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a> 
+              <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a> 
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
@@ -282,8 +327,7 @@ const Sidebar = () => {
                       <p>{item.title}</p>
                       <p>{item.overview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button onClick={() => deleteWatchedMovie(item.title)}><Delete /></Button>
+                        <Button color='secondary' onClick={() => deleteWatchedMovie(item.title)}><Delete /></Button>
                       </div>
                     </div>
                   ))
@@ -297,7 +341,7 @@ const Sidebar = () => {
               <Button onClick={displayWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-               <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+               <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
                <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
@@ -312,8 +356,7 @@ const Sidebar = () => {
                       <p>{item.watchingtitle}</p>
                       <p>{item.watchingoverview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button><Delete /></Button>
+                        <Button  color='secondary' onClick={() => deleteWatchingMovie(item.watchingtitle)}><Delete /></Button>
                       </div>
                     </div>
                   ))
@@ -327,7 +370,7 @@ const Sidebar = () => {
                   <Button onClick={displayWatching} style={{width: '100%'}}>Watching</Button>
                   <Button onClick={displayWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-              <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+              <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
@@ -342,8 +385,7 @@ const Sidebar = () => {
                       <p>{item.wanttowatchtitle}</p>
                       <p>{item.wanttowatchoverview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button><Delete /></Button>
+                        <Button  color='secondary' onClick={()=>deleteWantToWatchMovie(item.wanttowatchtitle)}><Delete /></Button>
                       </div>
                     </div>
                   ))
@@ -376,7 +418,7 @@ const Sidebar = () => {
                 <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -396,8 +438,7 @@ const Sidebar = () => {
                       <p>{item.watchedtvshowtitle}</p>
                       <p>{item.watchedtvshowoverview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button><Delete /></Button>
+                        <Button color='secondary' onClick={()=> deleteWatchedTvShow(item.watchedtvshowtitle)}><Delete /></Button>
                       </div>
                     </div>
                   ))
@@ -411,7 +452,7 @@ const Sidebar = () => {
                 <Button onClick={showWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>  
+                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>  
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -431,8 +472,7 @@ const Sidebar = () => {
                       <p>{item.watchingtvshowtitle}</p>
                       <p>{item.watchingtvshowoverview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button><Delete /></Button>
+                        <Button color='secondary' onClick={()=>deleteWatchingTvShow(item.watchingtvshowtitle)}><Delete /></Button>
                       </div>
                     </div>
                   ))
@@ -446,7 +486,7 @@ const Sidebar = () => {
                     <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
                     <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup>
-                <a href="/search"><Button startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -466,8 +506,7 @@ const Sidebar = () => {
                       <p>{item.wanttowatchtvshowtitle}</p>
                       <p>{item.wanttowatchtvshowoverview}</p>
                       <div className="actions">
-                        <Button><Edit /></Button>
-                        <Button><Delete /></Button>
+                        <Button color='secondary' onClick={()=>deleteWantToWatchTvShow(item.wanttowatchtvshowtitle)}><Delete /></Button>
                       </div>
                     </div>
                   ))

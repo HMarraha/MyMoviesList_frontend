@@ -20,6 +20,9 @@
     img {
         border-radius: 10px;
     }
+    .movieimage {
+        min-width: 35rem;
+    }
     .movietitle {
         @include flex(center,center,2rem,row);
         @include font(('Cairo',sans-serif),1.25rem);
@@ -50,10 +53,9 @@
     }
     .buttons {
         @include flex(center,center,1rem,row);
-        margin-left: 4rem;
         margin-top: 1rem;
+        padding-inline: 1rem;
         .watch {
-            margin-left: 1rem;
             background-color: rgb(3,37,65);
         }
     }
@@ -65,14 +67,19 @@
 .media {
     margin-top: 4rem;
 }
-.lastepisodetoair {
-    @include flex(start,center,2rem,row);
-    margin: 4rem 9rem;
-    @include border(1px,solid,white,10px);
-    padding-right: 2rem;
-    box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
-    @include font(('Cairo',sans-serif),1.1rem)
+.movie-credits {
+    .media {
+        .lastepisodetoair {
+            @include flex(start,center,2rem,row);
+            width: 80%;
+            margin: 4rem auto;
+            @include border(1px,solid,white,10px);
+            box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
+            @include font(('Cairo',sans-serif),1.1rem)
+        }
+    }
 }
+
 .letainfo {
     @include flex(space-between,top,2rem,row);
 }
@@ -100,9 +107,9 @@
 }
 .seasondesc {
     @include flex(start,top,1rem,row);
-    margin: 4rem 9rem;
+    width: 80%;
+    margin: 4rem auto;
     @include border(1px,solid,white,10px);
-    padding-right: 2rem;
     box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
     @include font(('Cairo',sans-serif),1.1rem)
 }
@@ -124,8 +131,9 @@
         margin-top: 5rem;
     }
 }
+
 .movie-credits {
-    max-width: 82%;
+    width: 82%;
     margin: auto;
     @include border(1px,solid,white,10px);
     background-color: white;
@@ -170,7 +178,6 @@
     }
     .youtube-video {
         display: inline-flex;
-        flex: 0 0 auto;
         margin-right: 1.25rem;
         iframe {
             width: 98rem;
@@ -209,9 +216,8 @@
     }
     .review {
         display: inline-flex;
-        transform: translate(50px);
         margin: auto;
-        padding: 2rem 8rem;
+        padding: 2rem 2rem;
         .thereview {
             @include border(1px,solid,purple,10px);
             @include font(('Cairo',sans-serif),1.25rem);
@@ -220,7 +226,7 @@
             filter: drop-shadow(8px 8px 10px gray);
             text-shadow: 2px 2px 5px black;
             margin-top: 1rem;
-            margin-right: 20px;
+            margin-right: 1.25rem;
             &:last-child {
                 margin-right: 0;
             }
@@ -264,5 +270,117 @@
     .noprofilepic {
         width: 4rem;
         @include border(1px,solid,white,20rem);
+    }
+}
+@media (max-width: 1660px) {
+    .description-container {
+        @include flex(center,top,2rem,column);
+        text-align: center;
+        .movieimage {
+            min-width: 0;
+            width: 30rem;
+            margin: auto;
+        }
+        .vote {
+            width: 30rem;
+            margin: 2rem auto;
+        }
+    }
+}
+@media (max-width: 1210px) {
+    .movie-credits {
+        .youtube-video{
+            iframe {
+                width: 50rem;
+                height: 30rem;
+            }
+        }
+        .postersize {
+            width: 20rem;
+        }
+        .additional {
+            @include flex(center,center,2rem,column);
+            .status,.budget,.revenue,.og-language {
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+        .review {
+            padding: 2rem 2rem;
+            .thereview {
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+@media (max-width: 1175px) {
+    .movie-credits {
+        .seasonsdesc {
+            .seasondesc {
+                @include flex(center,center,2rem,column);
+                .seasoninfo {
+                    text-align: center;
+                }
+            }
+        }
+        .media {
+            .lastepisodetoair {
+                @include flex(center,center,2rem,column);
+            }
+        }
+    }
+}
+@media (max-width: 905px) {
+    .description-container {
+        width: 100%;
+        .buttons {
+            @include flex(center,center,1rem,column);
+            width: 100%;
+        }
+        .vote {
+            width: 89%;
+        }
+        .movieimage {
+            width: 20rem;
+        }
+    }
+}
+@media (max-width: 830px) {
+    .movie-credits {
+        .media {
+            .lastepisodetoair {
+                width: 100%;
+            }
+        }
+        .seasonsdesc {
+            .seasondesc {
+                width: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 450px) {
+    .description-container {
+        width: 100%;
+        .movietitle {
+            @include font(('Cairo',sans-serif),1rem);
+        }
+        .movieimage {
+            width: 100%;
+        }
+    }
+    .movie-credits {
+        width: 100%;
+        .youtube-video {
+            iframe {
+                width: 25rem;
+                height: 15rem;
+            }
+        }
+        .media {
+            .buttongroup {
+                width: 80%;
+            }
+        }
     }
 }

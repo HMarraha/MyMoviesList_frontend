@@ -4,14 +4,19 @@ import List from "@mui/icons-material/List"
 import Dashboard from "@mui/icons-material/Dashboard"
 import Movie from "@mui/icons-material/MovieFilter"
 import Tv from "@mui/icons-material/Tv"
-import { ButtonGroup, Link } from '@mui/material'
-import nopfp from '../../assets/noimage.jpg'
-import Edit from '@mui/icons-material/Edit'
+import { ButtonGroup} from '@mui/material'
 import Delete from '@mui/icons-material/Delete'
 import Add from '@mui/icons-material/Add'
 import { useStateContext } from '../../contexts/contextprovide'
 import axiosClient from '../../Views/axios'
 import Empty from '@mui/icons-material/HourglassEmpty'
+import { forwardRef } from 'react'
+import {Snackbar, Alert} from '@mui/material'
+const SnackbarAlert = forwardRef(
+  function SnackbarAlert(props,ref) {
+      return <Alert elevation={6} ref={ref} {...props} />
+  }
+)
 const Sidebar = () => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
   const {watchedMovie,setWatchedMovie} = useStateContext()
@@ -37,12 +42,24 @@ const Sidebar = () => {
   const [movie,setMovie] = useState([])
   const totalMovies = totalWantToWatchMovies + totalWatchedMovies + totalWatchingMovies
   const totalTvShows = totalWantToWatchTvShows + totalWatchedTvShows + totalWatchingTvShows
+  const [isError,setIsError] = useState(false)
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+  const closeSnackbar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setIsSnackbarVisible(false)
+    }
   const deleteWatchedMovie = async (title) => {
     try {
       await axiosClient.delete(`/movies/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWatchedMovie(prevMovie => prevMovie.filter((movie) => movie.title !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -50,8 +67,12 @@ const Sidebar = () => {
     try {
       await axiosClient.delete(`/watchingmovies/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWatchingMovie(prevMovie => prevMovie.filter((movie) => movie.watchingtitle !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -59,8 +80,12 @@ const Sidebar = () => {
     try {
       await axiosClient.delete(`/wanttowatchmovies/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWantToWatchMovie(prevMovie => prevMovie.filter((movie) => movie.wanttowatchtitle !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -68,8 +93,12 @@ const Sidebar = () => {
     try {
       await axiosClient.delete(`/watchedtvshows/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWatchedTvShow(prevTvShow => prevTvShow.filter((tvshow) => tvshow.watchedtvshowtitle !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -77,8 +106,12 @@ const Sidebar = () => {
     try {
       await axiosClient.delete(`/watchingtvshows/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWatchingTvShow(prevTvShow => prevTvShow.filter((tvshow) => tvshow.watchingtvshowtitle !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -86,8 +119,12 @@ const Sidebar = () => {
     try {
       await axiosClient.delete(`/wanttowatchtvshows/${encodeURIComponent(title)}`);
       console.log('Movie deleted successfully!');
-      window.location.reload();
+      setWantToWatchTvShow(prevTvShow => prevTvShow.filter((tvshow) => tvshow.wanttowatchtvshowtitle !== title))
+      setIsError(false)
+      setIsSnackbarVisible(true)
     } catch (error) {
+      setIsError(true)
+      setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -307,7 +344,9 @@ const Sidebar = () => {
               <Button onClick={displayWatching} style={{width: '100%'}}>Watching</Button>
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-              <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a> 
+              <div className='addmovie'>
+                <a href="/search"><Button style={{width:'100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />} >Add Movie</Button></a> 
+              </div>
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
@@ -317,12 +356,12 @@ const Sidebar = () => {
               {watchedMovie.length === 0 ? (
                 <div>
                 <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
-                <Empty style={{fontSize : '10rem',marginLeft: '27rem'}} />
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
                 </div>
               ):
                 (
                   watchedMovie?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.image}`} alt="" />
                       <p>{item.title}</p>
                       <p>{item.overview}</p>
@@ -341,17 +380,25 @@ const Sidebar = () => {
               <Button onClick={displayWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-               <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+              <div className='addmovie'>
+               <a href="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></a>
+              </div>
                <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
                 <p className='tableheadsoverview'>Overview</p>
                 <p className='tableheadsactions'>Actions</p>
                </div>
-               {watchingMovie.length === 0 ? <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1> :
+               {watchingMovie.length === 0 ? (
+                <div>
+                <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
+                </div>
+              )
+               :
                 (
                   watchingMovie?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.watchingimage}`} alt="" />
                       <p>{item.watchingtitle}</p>
                       <p>{item.watchingoverview}</p>
@@ -370,17 +417,25 @@ const Sidebar = () => {
                   <Button onClick={displayWatching} style={{width: '100%'}}>Watching</Button>
                   <Button onClick={displayWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
-              <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add Movie</Button></a>
+              <div className='addmovie'>
+               <a href="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></a>
+              </div>
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
                 <p className='tableheadstitle'>Title</p>
                 <p className='tableheadsoverview'>Overview</p>
                 <p className='tableheadsactions'>Actions</p>
                </div>
-              {wantToWatchMovie.length === 0 ? <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1> :
+              {wantToWatchMovie.length === 0 ? (
+                <div>
+                <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
+                </div>
+              ) 
+              :
                 (
                   wantToWatchMovie?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.wanttowatchimage}`} alt="" />
                       <p>{item.wanttowatchtitle}</p>
                       <p>{item.wanttowatchoverview}</p>
@@ -395,6 +450,17 @@ const Sidebar = () => {
               }
           </div>
       </div>
+       <Snackbar open={isSnackbarVisible} 
+                 autoHideDuration={4000} 
+                 onClose={closeSnackbar} 
+                 anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center'
+                 }}>
+          <SnackbarAlert onClose={closeSnackbar} severity='success'>
+              Movie Deleted Successfully!
+          </SnackbarAlert>
+      </Snackbar>
       </>
     )
   }
@@ -418,7 +484,9 @@ const Sidebar = () => {
                 <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <div className='addmovie'>
+                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                </div>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -428,12 +496,12 @@ const Sidebar = () => {
                 {watchedTvShow.length === 0 ? (
                 <div>
                 <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
-                <Empty style={{fontSize : '10rem',marginLeft: '27rem'}} />
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
                 </div>
               ):
                 (
                   watchedTvShow?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.watchedtvshowimage}`} alt="" />
                       <p>{item.watchedtvshowtitle}</p>
                       <p>{item.watchedtvshowoverview}</p>
@@ -452,7 +520,9 @@ const Sidebar = () => {
                 <Button onClick={showWatching} variant='contained' style={{width: '100%'}}>Watching</Button>
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
-                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>  
+                <div className='addmovie'>
+                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                </div> 
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -462,12 +532,12 @@ const Sidebar = () => {
                 {watchingTvShow.length === 0 ? (
                 <div>
                 <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
-                <Empty style={{fontSize : '10rem',marginLeft: '27rem'}} />
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
                 </div>
               ):
                 (
                   watchingTvShow?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.watchingtvshowimage}`} alt="" />
                       <p>{item.watchingtvshowtitle}</p>
                       <p>{item.watchingtvshowoverview}</p>
@@ -486,7 +556,9 @@ const Sidebar = () => {
                     <Button onClick={showWatching} style={{width: '100%'}}>Watching</Button>
                     <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup>
-                <a href="/search"><Button variant='contained' color='secondary' startIcon={<Add />} className='addmovie'>Add TvShow</Button></a>
+                <div className='addmovie'>
+                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                </div>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
                   <p className='tableheadstitle'>Title</p>
@@ -496,12 +568,12 @@ const Sidebar = () => {
                 {wantToWatchTvShow.length === 0 ? (
                 <div>
                 <h1 className='nomovieadded'>Wow! a very empty list you have here.</h1>
-                <Empty style={{fontSize : '10rem',marginLeft: '27rem'}} />
+                <Empty style={{fontSize : '10rem',marginLeft: '30.5rem'}} />
                 </div>
               ):
                 (
                   wantToWatchTvShow?.map(item => (
-                    <div className="addedmoviedetails">
+                    <div key={item.id} className="addedmoviedetails">
                       <img src={`${IMG_BASE_URL_SMALL}${item.wanttowatchtvshowimage}`} alt="" />
                       <p>{item.wanttowatchtvshowtitle}</p>
                       <p>{item.wanttowatchtvshowoverview}</p>
@@ -516,6 +588,17 @@ const Sidebar = () => {
               }
           </div>
       </div>
+      <Snackbar open={isSnackbarVisible} 
+                 autoHideDuration={4000} 
+                 onClose={closeSnackbar} 
+                 anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center'
+                 }}>
+          <SnackbarAlert onClose={closeSnackbar} severity='success'>
+              TvShow Deleted Successfully!
+          </SnackbarAlert>
+      </Snackbar>
       </>
     )
   }

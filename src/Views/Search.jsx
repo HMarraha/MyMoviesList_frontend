@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Button } from '@mui/material'
-import Dashboard from '@mui/icons-material/Dashboard'
 import List from '@mui/icons-material/List'
 import { useState } from 'react'
 import tmbdClient from './tmdb'
@@ -11,8 +10,13 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField'
 import axiosClient from './axios'
-import { useStateContext } from '../contexts/contextprovide'
-import { FaMinus } from 'react-icons/fa'
+import {Snackbar, Alert } from '@mui/material'
+import { forwardRef } from 'react'
+const SnackbarAlert = forwardRef(
+    function SnackbarAlert(props,ref) {
+        return <Alert elevation={6} ref={ref} {...props} />
+    }
+)
 const Search = () => {
     const apiKey = import.meta.env.VITE_TMDB_API_KEY
     const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
@@ -30,6 +34,14 @@ const Search = () => {
     const [tvPage,setTvPage] = useState(1)
     const searchTVURL = `https://api.themoviedb.org/3/search/tv?page=${tvPage}?` + apiKey
     const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
+    const [isError,setIsError] = useState(false)
+    const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+    const closeSnackbar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setIsSnackbarVisible(false)
+    }
     const addWatchedTvShow = async (e,item) => {
         e.preventDefault()
         const formData = new FormData()
@@ -39,7 +51,11 @@ const Search = () => {
 
         try {
             const response = await axiosClient.post('/watchedtvshows', formData)
+            setIsError(false)
+            setIsSnackbarVisible(true)
         } catch(error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
             console.log(error)
         }
     }
@@ -52,7 +68,11 @@ const Search = () => {
 
         try {
             const response = await axiosClient.post('/watchingtvshows', formData)
+            setIsError(false)
+            setIsSnackbarVisible(true)
         } catch (error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
             console.error(error)
         }
     }
@@ -65,7 +85,11 @@ const Search = () => {
 
         try {
             const response = await axiosClient.post('/wanttowatchtvshows', formData)
+            setIsError(false)
+            setIsSnackbarVisible(true)
         } catch(error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
             console.error(error)
         }
     }
@@ -78,7 +102,11 @@ const Search = () => {
 
         try {
             const response = await axiosClient.post('/wanttowatchmovies', formData)
+            setIsError(false)
+            setIsSnackbarVisible(true)
         } catch(error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
             console.error(error)
         }
     }
@@ -91,7 +119,11 @@ const Search = () => {
 
         try {
             const response = await axiosClient.post('/watchingmovies', formData)
+            setIsError(false)
+            setIsSnackbarVisible(true)
         } catch(error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
             console.error(error)
         }
     }
@@ -104,7 +136,11 @@ const Search = () => {
       
         try {
           const response = await axiosClient.post('/movies', formData);
+          setIsError(false)
+          setIsSnackbarVisible(true)
         } catch (error) {
+            setIsError(true)
+            setIsSnackbarVisible(true)
           console.error(error);
         }
       };
@@ -194,7 +230,7 @@ const Search = () => {
         <>
             <h1 className='searchtitles'>Search for movies:</h1>
             <form className='searchformovie' onSubmit={handleSubmit} >
-                <TextField style={{width: '40%',marginLeft: '25rem'}} onChange={handleChange} id="outlined-basic" label="Search Movie" variant="outlined" />
+                <TextField className='searchinput' onChange={handleChange} id="outlined-basic" label="Search Movie" variant="outlined" />
                 <Button type='submit' className='searchbutton' variant='contained' color='secondary'>Search</Button>
             </form>
             <div className="profile">
@@ -217,13 +253,13 @@ const Search = () => {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                    <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                    <Button onClick={() => setOpenSnackbar(true)}  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
-                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                    <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
-                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                    <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>
@@ -240,13 +276,13 @@ const Search = () => {
                                 <p className='searchoverview' name='overview' id='overview' >{item.overview}</p>
                                 <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>      
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>      
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                                 </div>
                             </div>
@@ -254,9 +290,33 @@ const Search = () => {
                 ))}
             </div>
         </div>
-               <Stack style={{marginLeft: '65rem',marginBlock: '2rem'}} spacing={2}>
+               <Stack className='stack' spacing={2}>
                     <Pagination onChange={changePage} count={500} color="secondary" />
                 </Stack>
+                {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        Movie Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        Movie Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                } 
         </>
  ) 
 }
@@ -265,7 +325,7 @@ if (tvShowsList) {
         <>
         <h1 className='searchtitles'>Search for tvshows:</h1>
         <form className='searchformovie' onSubmit={handleTvSubmit} >
-                <TextField style={{width: '40%',marginLeft: '25rem'}} onChange={handleTvChange} id="outlined-basic" label="Search TvShow" variant="outlined" />
+                <TextField className='searchinput' onChange={handleTvChange} id="outlined-basic" label="Search TvShow" variant="outlined" />
                 <Button type='submit' className='searchbutton' variant='contained' color='secondary'>Search</Button>
         </form>
         <div className="profile">
@@ -288,13 +348,13 @@ if (tvShowsList) {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                             <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>
@@ -311,13 +371,13 @@ if (tvShowsList) {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                             <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
-                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>
@@ -325,9 +385,33 @@ if (tvShowsList) {
                 ))}
             </div>
         </div>
-                <Stack style={{marginLeft: '65rem',marginBlock: '2rem'}} spacing={2}>
+                <Stack className='stack' spacing={2}>
                     <Pagination onChange={changeTvPage} count={500} color="secondary" />
                 </Stack>
+                {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        TvShow Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        TvShow Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                } 
         </>
     )
 }

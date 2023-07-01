@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export default function Welcomehero() {
   return (
     <>
-        <main>
+        <main id="hero">
             <div className='welcomehero'>
                 <div className='welcomehero-text'>
                     <h1>Welcome to MyMoviesList! You can track how many movies you've watched, still watching, and want to watch.</h1>

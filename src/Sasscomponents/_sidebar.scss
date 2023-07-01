@@ -128,27 +128,24 @@
         @include font(('Karla',sans-serif),2rem);
         text-align: center;
         margin-top: 1rem;
-    }
-    .addmovie {
-        margin-left: 31rem;
-    }   
+    }  
 }
 .tableheads {
-    @include flex(flex-start,center,2rem,row);
+    width: 95%;
+    @include flex(space-between,center,2rem,row);
     @include font(('Karla',sans-serif),1rem);
-    margin-top: 1rem;
-    .tableheadsposter {
-        margin-left: 1.4rem;
+    margin: auto;
+    margin-top: 2rem;
+    .tableheadsoverview {
+        margin-right: 19rem;
     }
     .tableheadstitle {
-        margin-left: 0.7rem;
+        margin-right: 15rem;
     }
-    .tableheadsoverview {
-        margin-left: 22rem;
-    }
-    .tableheadsactions {
-        margin-left: 25.5rem;
-    }
+}
+.addmovie {
+    width: 15%;
+    margin: auto;
 }
 .addedmoviedetails {
     @include flex(space-between,center,2rem,row);
@@ -168,4 +165,76 @@
     text-align: center;
     @include font(('Cairo',sans-serif),3rem);
     margin-top: 4rem;
+}
+@media (max-width: 1550px) {
+    .profile {
+        @include flex(center,center,2rem,column);
+        .movieslist {
+            width: 80%;
+            margin: 2rem auto;
+        }
+        .sidebar {
+            width: 80%;
+            margin: 2rem auto;
+            height: auto;
+            .sidebuttoncontainer {
+                width: 50%;
+                margin: 2rem auto;
+            }
+        }
+        .dashboard {
+            width: 80%;
+            margin: 2rem auto;
+        }
+    }
+}
+@media (max-width: 1150px) {
+    .profile {
+        .moviestvshows {
+            @include flex(center,center,2rem,column);
+            .moviesdashboard,.tvshowsdashboard {
+                width: 100%;
+            }
+        }
+        .wlists {
+            @include flex(center,center,2rem,column);
+            .watchinglist,.watchedlist,.wanttowatchlist {
+                @include flex(center,top,2rem,row);
+                @include font(('Cairo',sans-serif),0.8rem);
+                width: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 505px) {
+    .profile {
+        .sidebar {
+            .sidebuttoncontainer {
+                width: 90%
+            }
+        }
+        .moviestvshows {
+            .moviesdashboard,.tvshowsdashboard {
+                @include flex(center,top,1rem,row);
+                @include font(('Cairo',sans-serif),0.6rem);
+            }
+        }
+        .wlists {
+            .watchinglist,.watchedlist,.wanttowatchlist {
+                @include flex(center,top,1rem,row);
+                @include font(('Cairo',sans-serif),0.6rem);
+            }
+        }
+    }
+}
+@media (max-width: 1225px) {
+    .addmovie {
+        width: 50%;
+    }
+    .addedmoviedetails {
+        @include flex(center,center,2rem,column)
+    }
+    .tableheads {
+        display: none;
+    }
 }

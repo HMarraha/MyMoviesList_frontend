@@ -32,20 +32,6 @@
             transform: translateX(-3px) translateY(-3px);
         }
     }
-    input {
-        display: block;
-        width: 60%;
-        padding: 0.5rem 1rem;
-        margin: 0.6rem auto;
-        @include border(1px,solid,black,10px);
-        outline: none;
-        &:focus {
-            border: 1px solid blueviolet;
-        }
-        &::placeholder {
-            @include font(('Cairo',sans-serif),1.1rem)
-        }
-    }
     h1 {
         text-align: start;
         margin-left: 9rem;

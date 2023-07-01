@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Card from './Card'
 import tmbdClient from '../Views/tmdb'
 import { Button } from '@mui/material'
 import Moviescard from './Moviescard'

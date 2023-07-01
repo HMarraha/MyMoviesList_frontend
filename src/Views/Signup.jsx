@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import smalllogo from "../assets/smalllogo.png"
 import axiosClient from './axios'
 import { useStateContext } from '../contexts/contextprovide'
-
+import { TextField } from '@mui/material'
 export default function Signup() {
   const {setUser, setToken,} = useStateContext()
   const [username,setUsername] = useState('')
@@ -40,41 +40,44 @@ export default function Signup() {
             <h1 className='signup'>Sign up</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Username :</h1>
-            <input
+            <TextField 
+              style={{width: '85%',marginTop: '1rem'}}
               name="username"
               id="username" 
               type="text" 
-              placeholder="Username" 
+              label='Username'
               value={username}
               onChange={e => setUsername(e.target.value)}
-              required
-            />
+              required/>
             <h1>Email:</h1>
-            <input 
+            <TextField 
+              style={{width: '85%',marginTop: '1rem'}}
               id="email"
               name="email"
               type="email" 
-              placeholder='Email' 
+              label='Email'
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
             />
             <h1>Password:</h1>
-            <input 
+            <TextField
+              style={{width: '85%',marginTop: '1rem'}} 
               id="password"
               name="password"
               type="password" 
-              placeholder="Password" 
+              label='Password'
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
             />
             <h1>Confirm Password :</h1>
-            <input 
+            <TextField 
+              style={{width: '85%',marginTop: '1rem'}}
               name="confirm-password"
               id="confirm-password"
               type="password" 
-              placeholder="Confirm Password" 
+              label="Confirm Password" 
               value={passwordConfirmation}
               onChange={e => setPasswordConfirmation(e.target.value)}
               required

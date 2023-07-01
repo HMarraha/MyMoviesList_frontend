@@ -1,4 +1,3 @@
-import {useState} from "react"
 import {FaBars,FaTimes} from "react-icons/fa"
 import {Link} from "react-router-dom"
 import logo from "../assets/mmllogo.jpg"
@@ -64,7 +63,7 @@ export default function Landing({latest,handleLatest,icon,handleIcon,show,handle
                             <Link style={{textDecoration: "none"}} to="/signup"><button style={role}  className='mobile-btn' type='button'>Sign up</button></Link>
                         </div>
                     </ul>
-                    <Link to="/login"><button className='navbar-btn' type='button'>Login</button></Link>
+                    <Link to="/login"><button className='navbar-btn' type='button'>Sign in</button></Link>
                     <Link to="/signup"><button className='navbar-btn' type='button'>Sign up</button></Link>
                     <i onClick={handleIcon} className="hamburger">{icon ? <FaTimes size="30px" color="white"/> : <FaBars size="30px" color="white" />}</i>   
                 </div>

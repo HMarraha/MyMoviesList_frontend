@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axiosClient from './axios'
 import { useStateContext } from '../contexts/contextprovide'
 import { useState } from 'react'
+import { TextField } from '@mui/material'
 export default function Login() {
   const {token,setUser, setToken} = useStateContext()
   const [email,setEmail] = useState('')
@@ -36,19 +37,21 @@ export default function Login() {
             <h1 className='login'>Login</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Email:</h1>
-            <input 
+            <TextField 
+            style={{width: '70%',marginTop:'1rem'}}
             type="email" 
-            placeholder='Email' 
+            label='Email'
             value={email}
             onChange={e=>setEmail(e.target.value)}
-            required/>
+            />
             <h1>Password:</h1>
-            <input 
+            <TextField
+            style={{width: '70%',marginTop:'1rem'}}
             type="password" 
-            placeholder="Password" 
+            label='Password'
             value={password}
             onChange={e=>setPassword(e.target.value)}
-            required/>
+            />
             <button type="submit">Login</button>
             <p>
               Not Registered? <Link style={{textDecoration: "none" }} to="/signup">Create an account</Link>

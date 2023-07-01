@@ -5,9 +5,14 @@ import Link from "@mui/icons-material/Link"
 import { ButtonGroup } from "@mui/material"
 import nopfp from "../assets/OIP.jpg"
 import Star from "@mui/icons-material/Star"
-import tmbdClient from '../Views/tmdb'
-import { useStateContext } from '../contexts/contextprovide'
 import axiosClient from '../Views/axios'
+import {Snackbar, Alert } from '@mui/material'
+import { forwardRef } from 'react'
+const SnackbarAlert = forwardRef(
+    function SnackbarAlert(props,ref) {
+        return <Alert elevation={6} ref={ref} {...props} />
+    }
+)
 const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,Large,IMG_BASE_URL,backdrop_path,poster_path,original_title,original_language,genres,overview,runtime,release_date,vote_average,status,revenue,budget,production_companies,production_countries}) => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200'
   const YOUTUBE_URL = 'https://www.youtube.com/embed/'
@@ -15,6 +20,14 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
   const [showPosters,setShowPosters] = useState(false)
   const [showBackdrop,setShowBackdrop] = useState(false)
   const [showVideos,setShowVidoes] = useState(false)
+  const [isError,setIsError] = useState(false)
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+  const closeSnackbar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setIsSnackbarVisible(false)
+    }
   const addWantToWatchMovie = async (e,poster_path,original_title,overview) => {
     e.preventDefault()
     const formData = new FormData();
@@ -24,7 +37,11 @@ const Moviedescription = ({reviews,itsPosters,itsBackdrops,media,cast,homepage,L
 
     try {
         const response = await axiosClient.post('/wanttowatchmovies', formData)
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch(error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
         console.error(error)
     }
 }
@@ -37,7 +54,11 @@ const addWatchingMovie = async (e, poster_path,original_title,overview) => {
 
     try {
         const response = await axiosClient.post('/watchingmovies', formData)
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch(error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
         console.error(error)
     }
 }
@@ -50,7 +71,11 @@ const addMovie = async (e, poster_path,original_title,overview) => {
   
     try {
       const response = await axiosClient.post('/movies', formData);
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch (error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
       console.error(error);
     }
   };
@@ -84,13 +109,17 @@ const addMovie = async (e, poster_path,original_title,overview) => {
         <div className="movie-description">
           <img className='backdropimage' src={`${Large}${backdrop_path}`} alt="" />
             <div className="description-container">
-              <img src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              <div className='movieimage'>
+                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              </div>
               <div>
                 <div className="movietitle">
                   <h1>{original_title}</h1>
                   <p>({runtime}min)</p>
                 </div>
-                <h1 className='vote'>{vote_average}/10</h1>
+                <div className='vote'>
+                  <h1 style={{width: '100%',margin: 'auto'}} className='vote'>{vote_average}/10</h1>
+                </div>
                 <div className='genres'>
                   <p>{release_date} ({original_language})</p>
                   {genres?.map(genre => <span key={genre.id}>{genre.name}</span>)}
@@ -135,7 +164,7 @@ const addMovie = async (e, poster_path,original_title,overview) => {
             </div>
             <div className="media">
               <h1>Media:</h1>
-              <ButtonGroup variant='text' color='secondary' size='large'>
+              <ButtonGroup className='buttongroup' variant='text' color='secondary' size='large'>
                 <Button onClick={trailer}>Trailer</Button>
                 <Button onClick={posters}>Posters</Button>
                 <Button onClick={backdrop}>Backdrop</Button>
@@ -204,6 +233,30 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               </div>
             </div>
         </div>
+        {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        Movie Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        Movie Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                }
       </>
     )
   }
@@ -213,13 +266,17 @@ const addMovie = async (e, poster_path,original_title,overview) => {
         <div className="movie-description">
           <img className='backdropimage' src={`${Large}${backdrop_path}`} alt="" />
             <div className="description-container">
-              <img src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              <div className='movieimage'>
+                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              </div>
               <div>
                 <div className="movietitle">
                   <h1>{original_title}</h1>
                   <p>({runtime}min)</p>
                 </div>
-                <h1 className='vote'>{vote_average}/10</h1>
+                <div className='vote'>
+                  <h1 style={{width: '100%',margin: 'auto'}} className='vote'>{vote_average}/10</h1>
+                </div>
                 <div className='genres'>
                   <p>{release_date} ({original_language})</p>
                   {genres?.map(genre => <span key={genre.id}>{genre.name}</span>)}
@@ -333,6 +390,30 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               </div>
             </div>
         </div>
+        {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        Movie Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        Movie Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                }
       </>
     )
   }
@@ -342,13 +423,17 @@ const addMovie = async (e, poster_path,original_title,overview) => {
         <div className="movie-description">
           <img className='backdropimage' src={`${Large}${backdrop_path}`} alt="" />
             <div className="description-container">
-              <img src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              <div className='movieimage'>
+                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              </div>
               <div>
                 <div className="movietitle">
                   <h1>{original_title}</h1>
                   <p>({runtime}min)</p>
                 </div>
-                <h1 className='vote'>{vote_average}/10</h1>
+                <div className='vote'>
+                  <h1 style={{width: '100%',margin: 'auto'}} className='vote'>{vote_average}/10</h1>
+                </div>
                 <div className='genres'>
                   <p>{release_date} ({original_language})</p>
                   {genres?.map(genre => <span key={genre.id}>{genre.name}</span>)}
@@ -403,7 +488,7 @@ const addMovie = async (e, poster_path,original_title,overview) => {
                   {itsPosters?.map(item => {
                       return (    
                         <div key={item.id} className='youtube-video'>
-                          <img src={`${IMG_BASE_URL}${item.file_path}`} alt="" />
+                          <img className='postersize' src={`${IMG_BASE_URL}${item.file_path}`} alt="" />
                          </div>
                         ) 
                   })}
@@ -457,6 +542,30 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               </div>
             </div>
         </div>
+        {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        Movie Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        Movie Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                }
       </>
     )
   }
@@ -466,13 +575,17 @@ const addMovie = async (e, poster_path,original_title,overview) => {
         <div className="movie-description">
           <img className='backdropimage' src={`${Large}${backdrop_path}`} alt="" />
             <div className="description-container">
-              <img src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              <div className='movieimage'>
+                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+              </div>
               <div>
                 <div className="movietitle">
                   <h1>{original_title}</h1>
                   <p>({runtime}min)</p>
                 </div>
-                <h1 className='vote'>{vote_average}/10</h1>
+                <div className='vote'>
+                  <h1 style={{width: '100%',margin: 'auto'}} className='vote'>{vote_average}/10</h1>
+                </div>
                 <div className='genres'>
                   <p>{release_date} ({original_language})</p>
                   {genres?.map(genre => <span key={genre.id}>{genre.name}</span>)}
@@ -581,6 +694,30 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               </div>
             </div>
         </div>
+        {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        Movie Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        Movie Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+                }
       </>
     )
   }

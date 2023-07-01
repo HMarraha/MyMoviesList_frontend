@@ -543,28 +543,6 @@ main {
 .login-container img:hover {
   transform: translateX(-3px) translateY(-3px);
 }
-.login-container input {
-  display: block;
-  width: 60%;
-  padding: 0.5rem 1rem;
-  margin: 0.6rem auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  outline: none;
-}
-.login-container input:focus {
-  border: 1px solid blueviolet;
-}
-.login-container input::-moz-placeholder {
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.login-container input::placeholder {
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
 .login-container h1 {
   text-align: start;
   margin-left: 9rem;
@@ -672,28 +650,6 @@ main {
 .signup-container img:hover {
   transform: translateX(-3px) translateY(-3px);
 }
-.signup-container input {
-  display: block;
-  width: 80%;
-  padding: 0.5rem 1rem;
-  margin: 0.6rem auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  outline: none;
-}
-.signup-container input:focus {
-  border: 1px solid blueviolet;
-}
-.signup-container input::-moz-placeholder {
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.signup-container input::placeholder {
-  font-family: "Cairo", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
 .signup-container .signup {
   text-align: center;
   margin: auto;
@@ -720,11 +676,12 @@ main {
   font-weight: bold;
   font-size: 1.25rem;
   padding: 1rem 11rem;
-  margin: 2rem 0;
   cursor: pointer;
   transition: 350ms;
   background-color: transparent;
   box-shadow: 2px 2px 5px blueviolet;
+  display: block;
+  margin: 2rem auto;
 }
 .signup-container button:hover {
   background-color: blueviolet;
@@ -1108,7 +1065,7 @@ main {
   background-repeat: no-repeat;
   background-size: contain;
   padding: 1rem 1rem;
-  position: fixed;
+  position: absolute;
   top: 6rem;
   right: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
@@ -1171,7 +1128,7 @@ main {
   width: 180%;
   top: calc(100% + 1rem);
   background-color: white;
-  padding: 2rem;
+  padding: 2rem 2rem;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
@@ -1183,7 +1140,7 @@ main {
 .nav-links .latest li:hover {
   transform: translateX(2px) translateY(-2px);
 }
-.nav-links .latest a {
+.nav-links .latest Link {
   text-decoration: none;
   color: black;
   text-shadow: 2px 2px 5px #8A2BE2;
@@ -1246,7 +1203,7 @@ main {
   font-size: 1.125rem;
   border: 1px solid white;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 0.62rem 1.25rem;
   background-color: transparent;
   color: white;
   cursor: pointer;
@@ -1757,6 +1714,9 @@ main {
 .description-container img {
   border-radius: 10px;
 }
+.description-container .movieimage {
+  min-width: 35rem;
+}
 .description-container .movietitle {
   display: flex;
   justify-content: center;
@@ -1814,11 +1774,10 @@ main {
   align-items: center;
   gap: 1rem;
   flex-direction: row;
-  margin-left: 4rem;
   margin-top: 1rem;
+  padding-inline: 1rem;
 }
 .description-container .buttons .watch {
-  margin-left: 1rem;
   background-color: rgb(3, 37, 65);
 }
 .description-container .list {
@@ -1832,16 +1791,16 @@ main {
   margin-top: 4rem;
 }
 
-.lastepisodetoair {
+.movie-credits .media .lastepisodetoair {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 2rem;
   flex-direction: row;
-  margin: 4rem 9rem;
+  width: 80%;
+  margin: 4rem auto;
   border: 1px solid white;
   border-radius: 10px;
-  padding-right: 2rem;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
   font-family: "Cairo", sans-serif;
   font-weight: bold;
@@ -1891,10 +1850,10 @@ main {
   align-items: top;
   gap: 1rem;
   flex-direction: row;
-  margin: 4rem 9rem;
+  width: 80%;
+  margin: 4rem auto;
   border: 1px solid white;
   border-radius: 10px;
-  padding-right: 2rem;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
   font-family: "Cairo", sans-serif;
   font-weight: bold;
@@ -1923,7 +1882,7 @@ main {
 }
 
 .movie-credits {
-  max-width: 82%;
+  width: 82%;
   margin: auto;
   border: 1px solid white;
   border-radius: 10px;
@@ -1974,7 +1933,6 @@ main {
 }
 .movie-credits .youtube-video {
   display: inline-flex;
-  flex: 0 0 auto;
   margin-right: 1.25rem;
 }
 .movie-credits .youtube-video iframe {
@@ -2020,9 +1978,8 @@ main {
 }
 .movie-credits .review {
   display: inline-flex;
-  transform: translate(50px);
   margin: auto;
-  padding: 2rem 8rem;
+  padding: 2rem 2rem;
 }
 .movie-credits .review .thereview {
   border: 1px solid purple;
@@ -2035,7 +1992,7 @@ main {
   filter: drop-shadow(8px 8px 10px gray);
   text-shadow: 2px 2px 5px black;
   margin-top: 1rem;
-  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 .movie-credits .review .thereview:last-child {
   margin-right: 0;
@@ -2099,6 +2056,120 @@ main {
   border-radius: 20rem;
 }
 
+@media (max-width: 1660px) {
+  .description-container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .description-container .movieimage {
+    min-width: 0;
+    width: 30rem;
+    margin: auto;
+  }
+  .description-container .vote {
+    width: 30rem;
+    margin: 2rem auto;
+  }
+}
+@media (max-width: 1210px) {
+  .movie-credits .youtube-video iframe {
+    width: 50rem;
+    height: 30rem;
+  }
+  .movie-credits .postersize {
+    width: 20rem;
+  }
+  .movie-credits .additional {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .movie-credits .additional .status, .movie-credits .additional .budget, .movie-credits .additional .revenue, .movie-credits .additional .og-language {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .movie-credits .review {
+    padding: 2rem 2rem;
+  }
+  .movie-credits .review .thereview {
+    margin-right: 1rem;
+  }
+}
+@media (max-width: 1175px) {
+  .movie-credits .seasonsdesc .seasondesc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .movie-credits .seasonsdesc .seasondesc .seasoninfo {
+    text-align: center;
+  }
+  .movie-credits .media .lastepisodetoair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+}
+@media (max-width: 905px) {
+  .description-container {
+    width: 100%;
+  }
+  .description-container .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    width: 100%;
+  }
+  .description-container .vote {
+    width: 89%;
+  }
+  .description-container .movieimage {
+    width: 20rem;
+  }
+}
+@media (max-width: 830px) {
+  .movie-credits .media .lastepisodetoair {
+    width: 100%;
+  }
+  .movie-credits .seasonsdesc .seasondesc {
+    width: 100%;
+  }
+}
+@media (max-width: 450px) {
+  .description-container {
+    width: 100%;
+  }
+  .description-container .movietitle {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .description-container .movieimage {
+    width: 100%;
+  }
+  .movie-credits {
+    width: 100%;
+  }
+  .movie-credits .youtube-video iframe {
+    width: 25rem;
+    height: 15rem;
+  }
+  .movie-credits .media .buttongroup {
+    width: 80%;
+  }
+}
 .profile {
   display: flex;
   justify-content: center;
@@ -2267,32 +2338,30 @@ main {
   text-align: center;
   margin-top: 1rem;
 }
-.profile .addmovie {
-  margin-left: 31rem;
-}
 
 .tableheads {
+  width: 95%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
   flex-direction: row;
   font-family: "Karla", sans-serif;
   font-weight: bold;
   font-size: 1rem;
-  margin-top: 1rem;
-}
-.tableheads .tableheadsposter {
-  margin-left: 1.4rem;
-}
-.tableheads .tableheadstitle {
-  margin-left: 0.7rem;
+  margin: auto;
+  margin-top: 2rem;
 }
 .tableheads .tableheadsoverview {
-  margin-left: 22rem;
+  margin-right: 19rem;
 }
-.tableheads .tableheadsactions {
-  margin-left: 25.5rem;
+.tableheads .tableheadstitle {
+  margin-right: 15rem;
+}
+
+.addmovie {
+  width: 15%;
+  margin: auto;
 }
 
 .addedmoviedetails {
@@ -2328,11 +2397,108 @@ main {
   margin-top: 4rem;
 }
 
+@media (max-width: 1550px) {
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .profile .movieslist {
+    width: 80%;
+    margin: 2rem auto;
+  }
+  .profile .sidebar {
+    width: 80%;
+    margin: 2rem auto;
+    height: auto;
+  }
+  .profile .sidebar .sidebuttoncontainer {
+    width: 50%;
+    margin: 2rem auto;
+  }
+  .profile .dashboard {
+    width: 80%;
+    margin: 2rem auto;
+  }
+}
+@media (max-width: 1150px) {
+  .profile .moviestvshows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .profile .moviestvshows .moviesdashboard, .profile .moviestvshows .tvshowsdashboard {
+    width: 100%;
+  }
+  .profile .wlists {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .profile .wlists .watchinglist, .profile .wlists .watchedlist, .profile .wlists .wanttowatchlist {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 2rem;
+    flex-direction: row;
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+}
+@media (max-width: 505px) {
+  .profile .sidebar .sidebuttoncontainer {
+    width: 90%;
+  }
+  .profile .moviestvshows .moviesdashboard, .profile .moviestvshows .tvshowsdashboard {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 1rem;
+    flex-direction: row;
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 0.6rem;
+  }
+  .profile .wlists .watchinglist, .profile .wlists .watchedlist, .profile .wlists .wanttowatchlist {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 1rem;
+    flex-direction: row;
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 1225px) {
+  .addmovie {
+    width: 50%;
+  }
+  .addedmoviedetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .tableheads {
+    display: none;
+  }
+}
 .searchtitles {
   font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 2rem;
-  margin-left: 60rem;
+  width: 20%;
+  margin: 2rem auto;
 }
 
 .searchmovies {
@@ -2367,22 +2533,24 @@ main {
   margin-left: 2rem;
 }
 
+.stack {
+  width: 50%;
+  margin-left: auto;
+  margin-block: 2rem;
+}
+
 .searchformovie {
+  width: 60%;
+  margin: auto;
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-direction: row;
 }
 .searchformovie .searchinput {
   width: 80%;
-  padding: 1rem;
-  margin-left: 2rem;
 }
 .searchformovie .searchbutton {
-  height: 6vh;
-  width: 8rem;
+  margin-left: 2rem;
+  min-height: 3.4rem;
+  padding-inline: 2rem;
 }
 
 .success {
@@ -2400,6 +2568,77 @@ main {
   border-radius: 10px;
 }
 
+@media (max-width: 1550px) {
+  .searchtitles {
+    width: 25%;
+  }
+  .stack {
+    width: 30%;
+    margin: auto;
+  }
+}
+@media (max-width: 1270px) {
+  .searchformovie {
+    width: 80%;
+  }
+  .searchformovie .searchinput {
+    width: 100%;
+  }
+  .searchformovie .searchbutton {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 1150px) {
+  .searchtitles {
+    width: 20%;
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: auto;
+  }
+  .searchmovies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .stack {
+    width: 35%;
+  }
+}
+@media (max-width: 830px) {
+  .searchmovies .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
+  }
+  .searchmovies .buttons Button {
+    margin-left: 0;
+    padding-inline: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 555px) {
+  .searchmovies .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .stack {
+    width: 50%;
+  }
+  .searchtitles {
+    width: 50%;
+  }
+}
 * {
   padding: 0;
   margin: 0;

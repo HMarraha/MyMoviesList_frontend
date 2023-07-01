@@ -3,13 +3,27 @@ import { useState } from 'react'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Add from "@mui/icons-material/Add"
-import { ButtonGroup } from "@mui/material"
 import nopfp from "../assets/OIP.jpg"
 import noimage from "../assets/noimage.jpg"
 import Star from "@mui/icons-material/Star"
 import axiosClient from '../Views/axios'
+import {Snackbar, Alert } from '@mui/material'
+import { forwardRef } from 'react'
+const SnackbarAlert = forwardRef(
+    function SnackbarAlert(props,ref) {
+        return <Alert elevation={6} ref={ref} {...props} />
+    }
+)
 const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,revenue,budget,status,media,cast,IMG_BASE_URL,Large,backdrop_path,episode_run_time,first_air_date,genres,number_of_episodes,number_of_seasons,original_name,original_language,vote_average,poster_path,overview,homepage}) => {
   const IMG_BASE_URL_SMALL = 'https://image.tmdb.org/t/p/w200' 
+  const [isError,setIsError] = useState(false)
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+  const closeSnackbar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setIsSnackbarVisible(false)
+  }
   const addWatchedTvShow = async (e,poster_path,original_name,overview) => {
     e.preventDefault()
     const formData = new FormData()
@@ -19,7 +33,11 @@ const Tvshowsdescription = ({seasons,last_episode_to_air,last_air_date,reviews,r
 
     try {
         const response = await axiosClient.post('/watchedtvshows', formData)
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch(error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
         console.log(error)
     }
 }
@@ -32,7 +50,11 @@ const addWatchingTvShow = async (e,poster_path,original_name,overview) => {
 
     try {
         const response = await axiosClient.post('/watchingtvshows', formData)
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch (error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
         console.error(error)
     }
 }
@@ -45,7 +67,11 @@ const addWantToWatchTvShow = async (e,poster_path,original_name,overview) => {
 
     try {
         const response = await axiosClient.post('/wanttowatchtvshows', formData)
+        setIsError(false)
+        setIsSnackbarVisible(true)
     } catch(error) {
+        setIsError(true)
+        setIsSnackbarVisible(true)
         console.error(error)
     }
 }
@@ -172,6 +198,30 @@ const addWantToWatchTvShow = async (e,poster_path,original_name,overview) => {
               </div>
             </div>
         </div>
+        {isError ? 
+                <Snackbar open={isSnackbarVisible} 
+                          autoHideDuration={4000} 
+                          onClose={closeSnackbar} 
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center'
+                          }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='error'>
+                        TvShow Already Added!
+                    </SnackbarAlert>
+                </Snackbar>
+                : <Snackbar open={isSnackbarVisible}
+                            autoHideDuration={4000}
+                            onClose={closeSnackbar} 
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center'
+                              }}>
+                    <SnackbarAlert onClose={closeSnackbar} severity='success'>
+                        TvShow Added Successfully!
+                    </SnackbarAlert>
+                </Snackbar>
+        } 
       </>
     )
 }

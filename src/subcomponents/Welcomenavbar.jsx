@@ -56,7 +56,7 @@ const role= {
                 <div className='nav-links-container'> 
                     <ul className='nav-links'>
                         <div className="dropdown">
-                        <Link style={{textDecoration: 'none'}} to="/welcome"><li><a onClick={handleLatest} className='links navbar-links' href="#welcome">Latest</a></li></Link>
+                        <Link style={{textDecoration: 'none'}} onClick={handleLatest}  to="/welcome"><li className='links navbar-links'>Latest</li></Link>
                          <div style={styles} className="latest">
                             <li><a onClick={closeLatest} style={{transition: '350ms'}} href='#welcomepopularid'>Popular</a></li>
                             <li><a onClick={closeLatest} href='#welcomemoviesid'>Movies</a></li>

@@ -1,6 +1,7 @@
 .searchtitles {
     @include font(('Cairo',sans-serif),2rem);
-    margin-left: 60rem;
+    width: 20%;
+    margin: 2rem auto;
 }
 .searchmovies {
     @include flex(start,top,2rem,row);
@@ -21,17 +22,22 @@
         }
     }
 }
+.stack {
+    width: 50%;
+    margin-left: auto;
+    margin-block: 2rem;
+}
 .searchformovie {
+    width: 60%;
+    margin: auto;
     margin-top: 2rem;
-    @include flex(center,center,2rem,row);
     .searchinput {
         width: 80%;
-        padding: 1rem;
-        margin-left: 2rem;
     }
     .searchbutton {
-        height: 6vh;
-        width: 8rem;
+        margin-left: 2rem;
+        min-height: 3.4rem;
+        padding-inline: 2rem;
     }
 }
 .success {
@@ -44,4 +50,65 @@
     @include font(('Cairo',sans-serif),1rem);
     padding: 1rem 5rem;
     @include border(1px,solid,green,10px);
+}
+@media (max-width: 1550px) {
+    .searchtitles {
+        width: 25%;
+    }
+    .stack {
+        width: 30%;
+        margin: auto;
+    }
+}
+@media (max-width: 1270px) {
+    .searchformovie {
+        width: 80%;
+        .searchinput {
+            width: 100%;
+        }
+        .searchbutton {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 2rem;
+        }
+    }
+}
+@media (max-width: 1150px) {
+    .searchtitles {
+        width: 20%;
+        @include font(('Cairo',sans-serif),1.5rem);
+        margin: auto;
+    }
+    .searchmovies {
+        @include flex(center,center,2rem,column);
+        text-align: center;
+    }
+    .stack {
+        width: 35%;
+    }
+}
+@media (max-width: 830px) {
+    .searchmovies {
+        .buttons {
+            @include flex(center,center,1rem,row);
+            Button {
+                margin-left: 0;
+                padding-inline: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+@media (max-width: 555px) {
+    .searchmovies {
+        .buttons {
+            @include flex(center,center,1rem,column)
+        }
+    }
+    .stack {
+        width: 50%;
+    }
+    .searchtitles {
+        width: 50%;
+    }
 }

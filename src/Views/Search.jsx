@@ -36,6 +36,7 @@ const Search = () => {
     const searchURL = `https://api.themoviedb.org/3/search/movie?page=${page}?` + apiKey
     const [isError,setIsError] = useState(false)
     const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const closeSnackbar = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -148,16 +149,20 @@ const Search = () => {
         try {
             const response = await tmbdClient.get(url)
             setSearchResults(response.data.results)
+            setIsLoading(false)
         } catch (error) {
             console.error(error)
+            setIsLoading(false)
         }
     }
     const getTVURL = async (url) => {
         try {
             const response = await tmbdClient.get(url)
             setTvSearchResults(response.data.results)
+            setIsLoading(false)
         } catch (error) {
             console.error(error)
+            setIsLoading(false)
         }
     }
     const changeTvPage = (e,p) => {
@@ -177,8 +182,10 @@ const Search = () => {
         if (tvSearchTerm) {
             getTVURL(searchTVURL + '&query=' + tvSearchTerm)
             setTvSearching(true)
+            setIsLoading(false)
         } else {
             setTvSearching(false)
+            setIsLoading(false)
         }
     }
     const handleSubmit = (e) => {
@@ -186,8 +193,10 @@ const Search = () => {
         if (searchTerm) {
             getURL(searchURL + '&query=' + searchTerm)
             setSearching(true)
+            setIsLoading(false)
         } else {
             setSearching(false)
+            setIsLoading(false)
         }
     }
     useEffect(() => {
@@ -195,8 +204,10 @@ const Search = () => {
             try {
                 const response = await tmbdClient.get(`/discover/movie?page=${page}&sort_by=popularity.desc`)
                 setMovie(response.data.results)
+                setIsLoading(false)
             } catch (error) {
                 console.error(error)
+                setIsLoading(false)
             }
         }
         getURL()
@@ -206,8 +217,10 @@ const Search = () => {
             try {
                 const response = await tmbdClient.get(`/discover/tv?page=${tvPage}&sort_by=vote_count.desc`)
                 setTvShow(response.data.results)
+                setIsLoading(false)
             } catch (error) {
                 console.error(error)
+                setIsLoading(false)
             }
         }
         getURL()
@@ -224,6 +237,9 @@ const Search = () => {
         setSearching(false)
         setSearchTerm('')
       }
+ if (isLoading) {
+    return <div></div>
+ }
  if (movieList) {
     return (
 
@@ -253,13 +269,13 @@ const Search = () => {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                    <Button onClick={() => setOpenSnackbar(true)}  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                    <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
-                                    <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
-                                    <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                    <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>
@@ -276,13 +292,13 @@ const Search = () => {
                                 <p className='searchoverview' name='overview' id='overview' >{item.overview}</p>
                                 <div className="buttons">
                                 <form onSubmit={(e) => {addMovie(e,item)}} >
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingMovie(e,item)}} >
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>      
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>      
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchMovie(e,item)}} >
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                                 </div>
                             </div>
@@ -348,13 +364,13 @@ if (tvShowsList) {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                             <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>
@@ -371,13 +387,13 @@ if (tvShowsList) {
                             <p className='searchoverview'>{item.overview}</p>
                             <div className="buttons">
                             <form onSubmit={(e) => {addWatchedTvShow(e,item)}} >                       
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
+                                        <Button  value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>ًWatched</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWatchingTvShow(e,item)}} >                    
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Watching</Button>
                                 </form>
                                 <form onSubmit={(e) => {addWantToWatchTvShow(e,item)}} >
-                                        <Button onClick={() => setOpenSnackbar(true)} value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
+                                        <Button value={item.id} type='submit' color='secondary' className='watch' startIcon={<Add />} variant='contained' size='large'>Want To Watch</Button>
                                 </form>
                             </div>
                         </div>

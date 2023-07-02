@@ -26,7 +26,7 @@
         margin-top: 4rem;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         .title {
-            @include font(('Karla',sans-serif),2rem);
+            @include font(($secondaryFont,$backupFont),2rem);
             text-align: center;
             margin-top: 1rem
         }
@@ -34,7 +34,7 @@
     .moviestvshows {
         @include flex(center,top,4rem,row);
         padding: 2rem;
-        @include font(('Cairo',sans-serif),1rem);
+        @include font(($primaryFont,$backupFont),1rem);
         .moviesdashboard {
             @include flex(center,top,2rem,row);
             background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
@@ -95,7 +95,7 @@
         padding: 2rem;
         .watchedlist,.watchinglist,.wanttowatchlist {
             @include flex(center,top,2rem,row);
-            @include font(('Cairo',sans-serif),0.8rem);
+            @include font(($primaryFont,$backupFont),0.8rem);
             background-image: linear-gradient(rgb(103, 34, 128,1),rgb(166, 38, 211,1));
             padding: 2rem;
             h1 {
@@ -125,7 +125,7 @@
         margin-top: 4rem;
     }
     .titles {
-        @include font(('Karla',sans-serif),2rem);
+        @include font(($secondaryFont,$backupFont),2rem);
         text-align: center;
         margin-top: 1rem;
     }  
@@ -133,14 +133,14 @@
 .tableheads {
     width: 95%;
     @include flex(space-between,center,2rem,row);
-    @include font(('Karla',sans-serif),1rem);
+    @include font(($secondaryFont,$backupFont),1rem);
     margin: auto;
     margin-top: 2rem;
     .tableheadsoverview {
         margin-right: 19rem;
     }
     .tableheadstitle {
-        margin-right: 15rem;
+        margin-right: 28rem;
     }
 }
 .addmovie {
@@ -149,7 +149,7 @@
 }
 .addedmoviedetails {
     @include flex(space-between,center,2rem,row);
-    @include font(('Cairo',sans-serif),0.9rem);
+    @include font(($primaryFont,$backupFont),0.9rem);
     border-bottom: 1px solid black;
     padding-bottom: 2rem;
     margin-inline: 1rem;
@@ -163,7 +163,7 @@
 }
 .nomovieadded {
     text-align: center;
-    @include font(('Cairo',sans-serif),3rem);
+    @include font(($primaryFont,$backupFont),3rem);
     margin-top: 4rem;
 }
 @media (max-width: 1550px) {
@@ -200,7 +200,7 @@
             @include flex(center,center,2rem,column);
             .watchinglist,.watchedlist,.wanttowatchlist {
                 @include flex(center,top,2rem,row);
-                @include font(('Cairo',sans-serif),0.8rem);
+                @include font(($primaryFont,$backupFont),0.8rem);
                 width: 100%;
             }
         }
@@ -216,13 +216,13 @@
         .moviestvshows {
             .moviesdashboard,.tvshowsdashboard {
                 @include flex(center,top,1rem,row);
-                @include font(('Cairo',sans-serif),0.6rem);
+                @include font(($primaryFont,$backupFont),0.6rem);
             }
         }
         .wlists {
             .watchinglist,.watchedlist,.wanttowatchlist {
                 @include flex(center,top,1rem,row);
-                @include font(('Cairo',sans-serif),0.6rem);
+                @include font(($primaryFont,$backupFont),0.6rem);
             }
         }
     }

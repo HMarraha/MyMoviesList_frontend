@@ -107,10 +107,10 @@ const addMovie = async (e, poster_path,original_title,overview) => {
     return (
       <>
         <div className="movie-description">
-          <img className='backdropimage' src={`${Large}${backdrop_path}`} alt="" />
+          <img className='backdropimage' src={`${Large}/${backdrop_path}`} alt="" />
             <div className="description-container">
               <div className='movieimage'>
-                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}${poster_path}`} alt="" />
+                <img style={{width: '100%',margin:'auto'}} src={`${IMG_BASE_URL}/${poster_path}`} alt="" />
               </div>
               <div>
                 <div className="movietitle">
@@ -211,7 +211,7 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div key={item.key} className='thereview'>
+                      <div key={item.id} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
                             {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 
@@ -368,7 +368,7 @@ const addMovie = async (e, poster_path,original_title,overview) => {
               <div className="reviewflex">
                 <div className="review">
                     {reviews?.map(item => (
-                      <div key={item.key} className='thereview'>
+                      <div key={item.id} className='thereview'>
                         <div className="author-details">
                           <div className="authorpfp">
                             {item.author_details.avatar_path && item.author_details.avatar_path.slice(0,34) === '/https://secure.gravatar.com/avatar' ? 

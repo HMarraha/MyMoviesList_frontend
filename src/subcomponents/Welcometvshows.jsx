@@ -10,13 +10,16 @@ const Welcometvshows = () => {
     const [showAiringToday,setShowAiringToday] = useState(true)
     const [showOnTheAir,setShowOnTheAir] = useState(false)
     const [showTopRated,setShowTopRated] = useState(false)
+    const [isLoading,setIsLoading] = useState(true)
     useEffect(()=> {
       const getURL = async () => {
         try {
           const response = await tmbdClient.get('/tv/airing_today')
           setAiringToday(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -26,8 +29,10 @@ const Welcometvshows = () => {
         try {
           const response = await tmbdClient.get('/tv/on_the_air')
           setOnTheAir(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -37,8 +42,10 @@ const Welcometvshows = () => {
         try {
           const response = await tmbdClient.get('/tv/top_rated')
           setTopRated(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -57,6 +64,9 @@ const Welcometvshows = () => {
       setShowTopRated(true)
       setShowAiringToday(false)
       setShowOnTheAir(false)
+    }
+    if (isLoading) {
+      return <div></div>
     }
     if (showAiringToday) {
       return (

@@ -1,5 +1,5 @@
 header {
-    background: linear-gradient(#672280,#A626D3) right;
+    background: linear-gradient($primaryColor,$secondaryColor) right;
     position: relative;
     width: 100%
 }
@@ -12,7 +12,7 @@ header {
 }
 .nav-links {
     @include flex(space-between,center,20px,row);
-    @include font(('Karla',sans-serif),1.125rem);
+    @include font(($secondaryFont,$backupFont),1.125rem);
     list-style: none;
     margin-right: 3.5rem;
     gap: 3rem;
@@ -23,7 +23,7 @@ header {
     .latest {
         @include flex(space-evenly,center,5px,column);
         @include border(1px,solid,white,10px);
-        @include font(('Karla',sans-serif),1.2rem);
+        @include font(($secondaryFont,$backupFont),1.2rem);
         position: absolute;
         width: 180%;
         top: calc(100% + 1rem);
@@ -82,7 +82,7 @@ header {
         }
     }
     .navbar-btn {
-        @include font(('Karla',sans-serif),1.125rem);
+        @include font(($secondaryFont,$backupFont),1.125rem);
         @include border(1px,solid,white,10px);
         padding: 10px 20px;
         background-color: transparent;
@@ -165,7 +165,7 @@ header {
         }
         .mobile-btn {
             display: block;
-            @include font(('Karla',sans-serif),1.125rem);
+            @include font(($secondaryFont,$backupFont),1.125rem);
             @include border(1px,solid,white,10px);
             padding: 10px 20px;
             background-color: transparent;

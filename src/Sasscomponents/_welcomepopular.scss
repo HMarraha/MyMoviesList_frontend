@@ -5,12 +5,12 @@
     @include flex(start,center,10px,row);
     button {
         @include border(1px,solid,black,10px);
-        @include font(('Karla',sans-serif),1.25rem);
+        @include font(($secondaryFont,$backupFont),1.25rem);
         cursor: pointer;
         padding: 0.5rem;
     }
     h1 {
-        @include font(('Cairo',sans-serif),2rem)
+        @include font(($primaryFont,$backupFont),2rem)
     }
 }
 .card-container {
@@ -30,7 +30,7 @@
         }
     }
     .movietitle {
-        @include font(('Cairo',sans-serif),1.25rem);
+        @include font(($primaryFont,$backupFont),1.25rem);
         transition: 350ms;
         &:hover {
             transform: scale(1.01);
@@ -38,7 +38,7 @@
         }
     }
     .moviedate {
-        @include font(('Karla',sans-serif),1rem);
+        @include font(($secondaryFont,$backupFont),1rem);
         color: black
     }
 }
@@ -47,7 +47,7 @@
         max-width: 90%;
         button {
             padding-inline: 0rem;
-            @include font(('Karla',sans-serif),1rem);
+            @include font(($secondaryFont,$backupFont),1rem);
         }
     }
 }
@@ -57,7 +57,7 @@
         margin-left: 0.5rem;
         margin-right: 0.2rem;
         button {
-            @include font(('Karla',sans-serif),0.8rem);
+            @include font(($secondaryFont,$backupFont),0.8rem);
             padding-inline: 1rem;
         }
     }

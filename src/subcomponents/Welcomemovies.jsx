@@ -10,13 +10,16 @@ const Welcomemovies = () => {
     const [showNowPlayingMovies,setShowNowPlayingMovies] = useState(true)
     const [showTopRatedMovies,setShowTopRatedMovies] = useState(false)
     const [showUpcomingMovies,setShowUpcomingMovies] = useState(false)
+    const [isLoading,setIsLoading] = useState(true)
     useEffect(()=> {
       const getURL = async () => {
         try {
           const response = await tmbdClient.get('/movie/now_playing')
           setNowPlayingMovies(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -26,8 +29,10 @@ const Welcomemovies = () => {
         try {
           const response = await tmbdClient.get('/movie/top_rated')
           setTopRatedMovies(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -37,8 +42,10 @@ const Welcomemovies = () => {
         try {
           const response = await tmbdClient.get('/movie/upcoming')
           setUpcomingMovies(response.data.results)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
       }
       getURL()
@@ -57,6 +64,9 @@ const Welcomemovies = () => {
       setShowUpcomingMovies(true)
       setShowNowPlayingMovies(false)
       setShowTopRatedMovies(false)
+    }
+    if (isLoading) {
+      return <div></div>
     }
     if (showNowPlayingMovies) {
       return (

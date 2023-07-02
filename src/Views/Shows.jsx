@@ -9,13 +9,16 @@ const Shows = () => {
   const Large = 'https://image.tmdb.org/t/p/original'
   const { id } = useParams()
   const [shows,setShows] = useState({})
+  const [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/tv/${id}`)
         setShows(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getURL()

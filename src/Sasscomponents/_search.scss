@@ -1,5 +1,5 @@
 .searchtitles {
-    @include font(('Cairo',sans-serif),2rem);
+    @include font(($primaryFont,$backupFont),2rem);
     width: 20%;
     margin: 2rem auto;
 }
@@ -9,10 +9,10 @@
     margin: auto;
     margin-block: 2rem;
     .searchtitle {
-        @include font(('Cairo',sans-serif),1.25rem)
+        @include font(($primaryFont,$backupFont),1.25rem)
     }
     .searchoverview {
-        @include font(('Cairo',sans-serif),1rem)
+        @include font(($primaryFont,$backupFont),1rem)
     }
     .buttons {
         @include flex(center,center,2rem,row);
@@ -47,7 +47,7 @@
     z-index: 99999;
     background-color: green;
     color: white;
-    @include font(('Cairo',sans-serif),1rem);
+    @include font(($primaryFont,$backupFont),1rem);
     padding: 1rem 5rem;
     @include border(1px,solid,green,10px);
 }
@@ -76,7 +76,7 @@
 @media (max-width: 1150px) {
     .searchtitles {
         width: 20%;
-        @include font(('Cairo',sans-serif),1.5rem);
+        @include font(($primaryFont,$backupFont),1.5rem);
         margin: auto;
     }
     .searchmovies {

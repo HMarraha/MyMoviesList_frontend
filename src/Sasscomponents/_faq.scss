@@ -1,5 +1,5 @@
 .faq-container {
-    @include font(('Cairo',sans-serif),3rem);
+    @include font(($primaryFont,$backupFont),3rem);
     max-width: 70%;
     margin: 2rem auto;
     text-align: center;
@@ -11,11 +11,11 @@
         box-shadow: 8px 8px 10px gray;
         .question {
             @include flex(space-between,center,4rem,row);
-            @include font(('Karla',sans-serif),1.5rem);
+            @include font(($secondaryFont,$backupFont),1.5rem);
             padding-inline: 2rem;
         }
         .answer {
-            @include font(('Karla',sans-serif),1.25rem);
+            @include font(($secondaryFont,$backupFont),1.25rem);
             margin-top: 1.75rem;
             padding-inline: 2rem;
             text-align: start;
@@ -23,7 +23,7 @@
             display: block;
         }
         .noanswer {
-            @include font(('Karla',sans-serif),1.25rem);
+            @include font(($secondaryFont,$backupFont),1.25rem);
             margin-top: 1.75rem;
             padding-inline: 2rem;
             text-align: start;
@@ -37,7 +37,7 @@
         max-width: 90%;
         .question-container {
             .question {
-                @include font(('Karla',sans-serif),1.25rem);
+                @include font(($secondaryFont,$backupFont),1.25rem);
             }
         }
     }

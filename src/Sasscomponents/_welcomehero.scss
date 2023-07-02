@@ -1,13 +1,12 @@
-
 main  {
     width: 70%;
     text-align: center;
 }
 .welcomehero {
-    background-image: linear-gradient(#672280,rgb(166, 38, 211, 0.7)), url(./assets/background.jpg);
+    background-image: linear-gradient($primaryColor,rgb(166, 38, 211, 0.7)), url(./assets/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     z-index: -1;
     filter: drop-shadow(8px 8px 10px gray);
@@ -16,12 +15,12 @@ main  {
         max-width: 60%;
         margin: auto;
         h1 {
-            @include font(('Cario',sans-serif),2.125rem);
+            @include font(($primaryFont,$backupFont),2.125rem);
             @include textdeco();
             text-align: center
         }
         p {
-            @include font(('Cario',sans-serif),1.5rem);
+            @include font(($primaryFont,$backupFont),1.5rem);
             @include textdeco();
             margin-top: 13rem;
         }
@@ -35,7 +34,7 @@ main  {
                 color: white;
                 position: relative;
                 transition: color 0.4s linear;
-                @include font(('Karla',sans-serif),1.125rem);
+                @include font(($secondaryFont,$backupFont),1.125rem);
                 width: 50rem;
             }
             .btn:hover {
@@ -70,7 +69,7 @@ main  {
                 padding: 0;
             }
             p {
-                @include font(('Cario',sans-serif),1.5rem);
+                @include font(($primaryFont,$backupFont),1.5rem);
                 @include textdeco();
                 margin-top: 2rem;
             }
@@ -103,7 +102,7 @@ main  {
                 padding: 0;
             }
             p {
-                @include font(('Cario',sans-serif),1.5rem);
+                @include font(($primaryFont,$backupFont),1.5rem);
                 @include textdeco();
                 margin-top: 2rem;
             }
@@ -136,7 +135,7 @@ main  {
                 padding: 0;
             }
             p {
-                @include font(('Cario',sans-serif),1.5rem);
+                @include font(($primaryFont,$backupFont),1.5rem);
                 @include textdeco();
                 margin-top: 2rem;
             }
@@ -169,7 +168,7 @@ main  {
                 padding: 0;
             }
             p {
-                @include font(('Cario',sans-serif),1.5rem);
+                @include font(($primaryFont,$backupFont),1.5rem);
                 @include textdeco();
                 margin-top: 2rem;
             }
@@ -207,7 +206,7 @@ main  {
 }
 @media (max-width: 642px) {
     .welcomehero {
-        height: 120vh;
+        height: 180vh;
         .welcomehero-text {
             .btn {
                 padding: 1.250rem 5rem;

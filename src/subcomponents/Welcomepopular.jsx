@@ -9,13 +9,16 @@ export default function Weclomepopular() {
     const [popularTvShows,setPopularTvShows] = useState([])
     const [showPopularMovies,setShowPopularMovies] = useState(true)
     const [showPopularTvShows,setShowPopularTvShows] = useState(false)
+    const [isLoading,setIsLoading] = useState(true)
     useEffect(()=> {
         const getURL = async () => {
             try {
                 const response = await tmbdClient.get('/movie/popular')
                 setPopularMovies(response.data.results)
+                setIsLoading(false)
             } catch (error) {
                 console.error(error)
+                setIsLoading(false)
             }
         }
         getURL()
@@ -25,8 +28,10 @@ export default function Weclomepopular() {
             try {
                 const response = await tmbdClient.get('/tv/popular')
                 setPopularTvShows(response.data.results)
+                setIsLoading(false)
             } catch (error) {
                 console.error(error)
+                setIsLoading(false)
             }
         }
         getURL()
@@ -39,7 +44,9 @@ export default function Weclomepopular() {
         setShowPopularMovies(false)
         setShowPopularTvShows(true)
     }
-    
+  if (isLoading) {
+    return <div></div>
+  }  
   if (showPopularMovies) {
     return (
         <>

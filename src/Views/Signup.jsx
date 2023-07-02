@@ -21,7 +21,7 @@ export default function Signup() {
         password_confirmation: passwordConfirmation,
     }).then((response) => {
       setUser(response.data.user)
-      setToken(response.data.authorization.token)
+      setToken(response.data.authorization.token) 
     }).catch((error) => {
       if (error.response) {
         const finalErrors = Object.values(error.response.data.errors).reduce((accum,next) => [...accum,...next],[])

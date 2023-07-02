@@ -25,20 +25,20 @@
     }
     .movietitle {
         @include flex(center,center,2rem,row);
-        @include font(('Cairo',sans-serif),1.25rem);
+        @include font(($primaryFont,$backupFont),1.25rem);
     }
     .genres {
         @include flex(center,center,2rem,row);
-        @include font(('Cairo',sans-serif),1.25rem);
+        @include font(($primaryFont,$backupFont),1.25rem);
         text-align: center
     }
     .seasons {
         @include flex(center,center,2rem,row);
-        @include font(('Cairo',sans-serif),1.25rem);
+        @include font(($primaryFont,$backupFont),1.25rem);
         text-align: center
     }
     .vote {
-        @include font(('Cairo',sans-serif),3rem);
+        @include font(($primaryFont,$backupFont),3rem);
         @include border(1px,solid,black,100%);
         box-shadow: 5px 5px 8px rgb(3,37,65);
         background-color: rgb(3,37,65);
@@ -48,7 +48,7 @@
         margin-left: 10rem;
     }
     .summary {
-        @include font(('Cairo',sans-serif),1.5rem);
+        @include font(($primaryFont,$backupFont),1.5rem);
         margin-top: 3rem;
     }
     .buttons {
@@ -60,7 +60,7 @@
         }
     }
     .list {
-        @include font(('Cairo',sans-serif),1.75rem);
+        @include font(($primaryFont,$backupFont),1.75rem);
         text-align: center;
     }
 }
@@ -75,7 +75,7 @@
             margin: 4rem auto;
             @include border(1px,solid,white,10px);
             box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
-            @include font(('Cairo',sans-serif),1.1rem)
+            @include font(($primaryFont,$backupFont),1.1rem)
         }
     }
 }
@@ -111,7 +111,7 @@
     margin: 4rem auto;
     @include border(1px,solid,white,10px);
     box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
-    @include font(('Cairo',sans-serif),1.1rem)
+    @include font(($primaryFont,$backupFont),1.1rem)
 }
 .seasonimg {
     width: 20rem;
@@ -139,7 +139,7 @@
     background-color: white;
     text-align: center;
     h1 {
-        @include font(('Karla',sans-serif),3rem);
+        @include font(($secondaryFont,$backupFont),3rem);
     }
     .cast-container {
         margin-top: 4rem;
@@ -162,11 +162,11 @@
             border-radius: 10px;
         }
         p {
-            @include font(('Karla',sans-serif),1.2rem)
+            @include font(($secondaryFont,$backupFont),1.2rem)
         }
         .nopfp {
-            width: 13rem;
-            height: 31.5vh;
+            max-width: 13rem;
+            min-height: 91.5%;
         }
     }
     .display-content {
@@ -191,7 +191,7 @@
         flex: 1;
         .status,.budget,.revenue,.og-language {
             @include border(1px,solid,purple,10px);
-            @include font(('Cairo',sans-serif),1.25rem);
+            @include font(($primaryFont,$backupFont),1.25rem);
             background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
             color: white;
             filter: drop-shadow(8px 8px 10px gray);
@@ -220,7 +220,7 @@
         padding: 2rem 2rem;
         .thereview {
             @include border(1px,solid,purple,10px);
-            @include font(('Cairo',sans-serif),1.25rem);
+            @include font(($primaryFont,$backupFont),1.25rem);
             background-image: linear-gradient(rgb(103, 34, 128,0.8),rgb(166, 38, 211,0.8));
             color: white;
             filter: drop-shadow(8px 8px 10px gray);
@@ -248,10 +248,10 @@
             width: 4rem;
         }
         h1 {
-           @include font(('Karla',sans-serif),1rem);
+           @include font(($secondaryFont,$backupFont),1rem);
         }
         p {
-            @include font(('Karla',sans-serif),1rem);
+            @include font(($secondaryFont,$backupFont),1rem);
             color: gray;
         }
         .time {
@@ -264,7 +264,7 @@
     .reviewcontent {
         text-align: start;
         padding: 1rem;
-        @include font(('Karla',sans-serif),1rem);
+        @include font(($secondaryFont,$backupFont),1rem);
         text-shadow: none;
     }
     .noprofilepic {
@@ -369,7 +369,7 @@
     .description-container {
         width: 100%;
         .movietitle {
-            @include font(('Cairo',sans-serif),1rem);
+            @include font(($primaryFont,$backupFont),1rem);
         }
         .movieimage {
             width: 100%;

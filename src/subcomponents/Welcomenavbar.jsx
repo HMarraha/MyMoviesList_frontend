@@ -68,7 +68,7 @@ const role= {
                         <div style={translate} className="mobilenav">
                             <div>
                                 <i onClick={handleIcon} className="closed"><FaTimes color="white" size="30px"/></i>
-                            <li><a onClick={handleShow} className='link navbar-link' href="#navbar">Latest</a></li>
+                            <Link style={{textDecoration: 'none'}} href="/welcome"><li onClick={handleShow} className='link navbar-link' >Latest</li></Link>
                             <div style={latestStyle} className="mobilelatest"> 
                                 <li ><a className="latestli latest-links" href="#welcomepopularid">Popular</a></li>  
                                 <li ><a className="latestli latest-links" href="#welcomemoviesid">Movies</a></li>

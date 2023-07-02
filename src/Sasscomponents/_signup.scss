@@ -25,7 +25,7 @@
     .signup {
         text-align: center;
         margin: auto;
-        @include font(('Karla',sans-serif),2rem);
+        @include font(($secondaryFont,$backupFont),2rem);
         transition: 350ms;
         text-shadow: 2px 2px 5px blueviolet;
         &:hover {
@@ -35,11 +35,11 @@
     h1 {
         text-align: start;
         margin-left: 5rem;
-        @include font(('Cairo',sans-serif),1.25rem)
+        @include font(($primaryFont,$backupFont),1.25rem)
     }
     button {
         @include border(1px,solid,blueviolet,10px);
-        @include font(('Cairo',sans-serif),1.25rem);
+        @include font(($primaryFont,$backupFont),1.25rem);
         padding: 1rem 11rem;
         cursor: pointer;
         transition: 350ms;
@@ -52,7 +52,7 @@
         }
     }
     p {
-        @include font(('Karla',sans-serif),0.9rem);
+        @include font(($secondaryFont,$backupFont),0.9rem);
         opacity: 0.7;
     }
     .error {
@@ -61,7 +61,7 @@
         background-color: rgba(255,0,0,0.8);
         color: white;
         text-shadow: 1px 1px 5px black;
-        @include font(('Karla',sans-serif),1.25rem);
+        @include font(($secondaryFont,$backupFont),1.25rem);
         margin-top: 2rem;
     }
     .input {

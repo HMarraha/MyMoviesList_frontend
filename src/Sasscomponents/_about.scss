@@ -4,7 +4,7 @@
     margin: 2rem auto;
     text-align: center;
     padding: 4rem;
-    background-image: linear-gradient(to right,#672280,#A626D3,), url(./assets/background.jpg);
+    background-image: linear-gradient(to right,$primaryColor,$secondaryColor,), url(./assets/background.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     filter: drop-shadow(8px 8px 10px gray);
@@ -12,14 +12,14 @@
         width: 25rem;
     }
     h1 {
-        @include font(('Karla',sans-serif),4rem);
+        @include font(($secondaryFont,$backupFont),4rem);
         text-transform: uppercase;
         color: white;
         text-shadow: 2px 2px 5px black;
         padding: 2rem;
     }
     p {
-        @include font(('Cairo',sans-serif),2rem);
+        @include font(($primaryFont,$backupFont),2rem);
         color: white;
         text-align: start;
     }
@@ -47,10 +47,10 @@
             width: 15rem;
         }
         h1 {
-            @include font(('Karla',sans-serif),3rem);
+            @include font(($secondaryFont,$backupFont),3rem);
         }
         p {
-            @include font(('Cairo',sans-serif),1.75rem);
+            @include font(($primaryFont,$backupFont),1.75rem);
         }
     }
 }
@@ -62,10 +62,10 @@
             width: 15rem;
         }
         h1 {
-            @include font(('Karla',sans-serif),2rem);
+            @include font(($secondaryFont,$backupFont),2rem);
         }
         p {
-            @include font(('Cairo',sans-serif),1.5rem);
+            @include font(($primaryFont,$backupFont),1.5rem);
         }
     }
 }

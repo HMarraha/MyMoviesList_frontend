@@ -288,7 +288,7 @@ main {
 }
 
 .hero {
-  background-image: linear-gradient(rgba(103, 34, 128, 0.7019607843), rgba(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
+  background-image: linear-gradient(#672280, rgba(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
@@ -302,7 +302,7 @@ main {
   margin: auto;
 }
 .hero .hero-text h1 {
-  font-family: "Cario", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 2.125rem;
   color: white;
@@ -310,7 +310,7 @@ main {
   text-align: start;
 }
 .hero .hero-text p {
-  font-family: "Cario", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   color: white;
@@ -790,7 +790,7 @@ main {
   background-image: linear-gradient(#672280, rgba(166, 38, 211, 0.7)), url(./assets/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   z-index: -1;
   filter: drop-shadow(8px 8px 10px gray);
@@ -801,7 +801,7 @@ main {
   margin: auto;
 }
 .welcomehero .welcomehero-text h1 {
-  font-family: "Cario", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 2.125rem;
   color: white;
@@ -810,7 +810,7 @@ main {
   text-align: center;
 }
 .welcomehero .welcomehero-text p {
-  font-family: "Cario", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   color: white;
@@ -883,7 +883,7 @@ main {
     padding: 0;
   }
   .welcomehero .welcomehero-text p {
-    font-family: "Cario", sans-serif;
+    font-family: "Cairo", sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
@@ -920,7 +920,7 @@ main {
     padding: 0;
   }
   .welcomehero .welcomehero-text p {
-    font-family: "Cario", sans-serif;
+    font-family: "Cairo", sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
@@ -957,7 +957,7 @@ main {
     padding: 0;
   }
   .welcomehero .welcomehero-text p {
-    font-family: "Cario", sans-serif;
+    font-family: "Cairo", sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
@@ -994,7 +994,7 @@ main {
     padding: 0;
   }
   .welcomehero .welcomehero-text p {
-    font-family: "Cario", sans-serif;
+    font-family: "Cairo", sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
@@ -1027,7 +1027,7 @@ main {
 }
 @media (max-width: 642px) {
   .welcomehero {
-    height: 120vh;
+    height: 180vh;
   }
   .welcomehero .welcomehero-text .btn {
     padding: 1.25rem 5rem;
@@ -1298,7 +1298,7 @@ main {
     top: 0rem;
     right: 0;
     max-width: 100%;
-    padding: 5rem;
+    padding: 4rem 3rem;
     gap: 1rem;
     height: 100vh;
     z-index: -1;
@@ -1959,8 +1959,8 @@ main {
   font-size: 1.2rem;
 }
 .movie-credits .cast .nopfp {
-  width: 13rem;
-  height: 31.5vh;
+  max-width: 13rem;
+  min-height: 91.5%;
 }
 .movie-credits .display-content {
   margin-top: 4rem;
@@ -2408,7 +2408,7 @@ main {
   margin-right: 19rem;
 }
 .tableheads .tableheadstitle {
-  margin-right: 15rem;
+  margin-right: 28rem;
 }
 
 .addmovie {

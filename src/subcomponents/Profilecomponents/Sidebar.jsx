@@ -38,12 +38,11 @@ const Sidebar = () => {
   const [tvShowsWatching,setTvShowsWatching] = useState(false)
   const [moviesWatched, setMoviesWatched] = useState(true)
   const [moviesWatching,setMoviesWatching] = useState(false)
-  const [tvShow, setTvShow] = useState([])
-  const [movie,setMovie] = useState([])
   const totalMovies = totalWantToWatchMovies + totalWatchedMovies + totalWatchingMovies
   const totalTvShows = totalWantToWatchTvShows + totalWatchedTvShows + totalWatchingTvShows
   const [isError,setIsError] = useState(false)
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+  const [isLoading,setIsLoading] = useState(true)
   const closeSnackbar = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -133,8 +132,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/watchedtvshows')
         setWatchedTvShow(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWatchedTvShow()
@@ -144,8 +145,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/watchingtvshows')
         setWatchingTvShow(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWatchingTvShow()
@@ -155,8 +158,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/wanttowatchtvshows')
         setWantToWatchTvShow(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWantToWatchTvShow()
@@ -166,8 +171,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/wanttowatchmovies')
         setWantToWatchMovie(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWantToWatchMovie()
@@ -177,8 +184,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/watchingmovies')
         setWatchingMovie(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWatchingMovie()
@@ -188,8 +197,10 @@ const Sidebar = () => {
       try {
         const response = await axiosClient.get('/movies')
         setWatchedMovie(response.data)
+        setIsLoading(false)
       } catch(error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     getWatchedMovie()
@@ -214,34 +225,30 @@ const Sidebar = () => {
   const showWatched = () => {
     setTvShowsWatched(true)
     setTvShowsWatching(false)
-    setTvShowsWantToWatch(false)
   }
   const showWatching = () => {
     setTvShowsWatched(false)
     setTvShowsWatching(true)
-    setTvShowsWantToWatch(false)
   }
   const showWantToWatch = () => {
     setTvShowsWatched(false)
     setTvShowsWatching(false)
-    setTvShowsWantToWatch(true)
   }
   const displayWatched = () => {
     setMoviesWatched(true)
     setMoviesWatching(false)
-    setMoviesWantToWatch(false)
   }
   const displayWatching = () => {
     setMoviesWatched(false)
     setMoviesWatching(true)
-    setMoviesWantToWatch(false)
   }
   const displayWantToWatch = () => {
     setMoviesWatched(false)
     setMoviesWatching(false)
-    setMoviesWantToWatch(true)
   }
-  
+  if (isLoading) {
+    return <div></div>
+  }
   if (dashboard) {
     return (
       <>

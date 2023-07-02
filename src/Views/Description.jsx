@@ -17,106 +17,146 @@ const Description = () => {
   const [tvCast,setTvCast] = useState([])
   const [tvMedia,setTvMedia] = useState([])
   const [tvReviews,setTvReviews] = useState([])
+  const [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/tv/${id}/reviews`)
         setTvReviews(response.data.results)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_name) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/tv/${id}/videos`)
         setTvMedia(response.data.results)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_name) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/tv/${id}/credits`)
         setTvCast(response.data.cast)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_name) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/movie/${id}/reviews`)
         setReviews(response.data.results)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_title) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/movie/${id}/images`)
         setItsBackdrops(response.data.backdrops)
         setItsPosters(response.data.posters)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_title) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/movie/${id}/videos`)
         setMedia(response.data.results)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_title) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
       try {
         const response = await tmbdClient.get(`/movie/${id}/credits`)
         setCast(response.data.cast)
+        setIsLoading(false)
       } catch(error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
-    getURL()
-  },[])
+    if (original_title) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {   
         try {
           const response = await tmbdClient.get(`/movie/${id}`)
           setMovies(response.data)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
     }
-    getURL()
-  },[])
+    if (original_title) {
+      getURL()
+    }
+  },[id,original_name,original_title])
   useEffect(() => {
     const getURL = async () => {
         try {
           const response = await tmbdClient.get(`/tv/${id}`)
           setShows(response.data)
+          setIsLoading(false)
         } catch(error) {
           console.error(error)
+          setIsLoading(false)
         }
     }
-    getURL()
-  },[id])
+    if (original_name) {
+      getURL()
+    }
+  },[id,original_name,original_title])
+  if (isLoading) {
+    return <div></div>
+  }
   if (original_title) {
     return (
       <>

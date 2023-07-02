@@ -337,6 +337,12 @@
             @include flex(center,center,1rem,column);
             width: 100%;
         }
+        .movietitle {
+            @include flex(center,center,1rem,column);
+        }
+        .genres {
+            @include flex(center,center,1rem,column);
+        }
         .vote {
             width: 89%;
         }

@@ -505,14 +505,14 @@ main {
 }
 .login-section {
   background-image: linear-gradient(rgba(103, 34, 128, 0.7), rgba(166, 38, 211, 0.7)), url(./assets/loginbackground.jpg);
-  padding: 8.57rem;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
+  background-position: cover;
+  padding: 5.75rem;
 }
 
 .login-container {
-  max-width: 60%;
-  margin: 4rem auto;
+  width: 60%;
+  margin: 20rem auto;
   border: 1px solid red;
   text-align: center;
   border: 2px solid black;
@@ -574,9 +574,9 @@ main {
   font-size: 0.9rem;
   opacity: 0.7;
 }
-.login-container .remember-me {
-  display: inline;
-  width: 5%;
+.login-container .input {
+  width: 70%;
+  margin-top: 1rem;
 }
 
 @media (max-width: 1500px) {
@@ -586,17 +586,12 @@ main {
 }
 @media (max-width: 1100px) {
   .login-container {
-    max-width: 80%;
+    width: 80%;
   }
 }
 @media (max-width: 950px) {
-  .login-section {
-    padding: 0;
-  }
   .login-container {
     width: 100%;
-    height: 100vh;
-    margin-top: 0;
   }
   .login-container input {
     width: 100%;
@@ -612,6 +607,13 @@ main {
   }
 }
 @media (max-width: 700px) {
+  .login-section {
+    width: 100%;
+    margin: 0;
+  }
+  .login-container {
+    width: 100%;
+  }
   .login-container input {
     width: 100%;
   }
@@ -620,6 +622,36 @@ main {
   }
   .login-container .login {
     margin: auto;
+  }
+}
+@media (max-width: 600px) {
+  .login-section {
+    padding: 2rem;
+  }
+  .login-container {
+    width: 100%;
+    margin-top: 10rem;
+  }
+  .login-container img {
+    width: 5rem;
+  }
+  .login-container .login {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .login-container h1 {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .login-container p {
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
+  .login-container .input {
+    width: 100%;
   }
 }
 .signup-section {
@@ -631,7 +663,7 @@ main {
 
 .signup-container {
   width: 60%;
-  margin: 2.27rem auto;
+  margin: 16rem auto;
   border: 1px solid red;
   text-align: center;
   border: 2px solid black;
@@ -704,6 +736,9 @@ main {
   font-size: 1.25rem;
   margin-top: 2rem;
 }
+.signup-container .input {
+  width: 80%;
+}
 
 @media (max-width: 1000px) {
   .signup-container {
@@ -726,6 +761,9 @@ main {
   }
 }
 @media (max-width: 450px) {
+  .signup-section {
+    padding: 2rem;
+  }
   .signup-container button {
     padding: 1rem 2rem;
   }
@@ -739,10 +777,8 @@ main {
   .signup-container .signup {
     font-size: 1rem;
   }
-}
-@media (min-height: 1400px) {
-  .signup-section {
-    padding-block: 18rem;
+  .signup-container .input {
+    width: 100%;
   }
 }
 main {
@@ -1459,12 +1495,14 @@ main {
 @media (max-width: 474px) {
   .popular {
     max-width: 100%;
+    margin-left: 0.5rem;
     margin-right: 0.2rem;
   }
   .popular button {
     font-family: "Karla", sans-serif;
     font-weight: bold;
     font-size: 0.8rem;
+    padding-inline: 1rem;
   }
 }
 .about-container {
@@ -2131,6 +2169,20 @@ main {
     gap: 1rem;
     flex-direction: column;
     width: 100%;
+  }
+  .description-container .movietitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .description-container .genres {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
   }
   .description-container .vote {
     width: 89%;

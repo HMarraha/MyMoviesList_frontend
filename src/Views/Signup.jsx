@@ -40,8 +40,7 @@ export default function Signup() {
             <h1 className='signup'>Sign up</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Username :</h1>
-            <TextField 
-              style={{width: '85%',marginTop: '1rem'}}
+            <TextField className='input'     
               name="username"
               id="username" 
               type="text" 
@@ -50,8 +49,7 @@ export default function Signup() {
               onChange={e => setUsername(e.target.value)}
               required/>
             <h1>Email:</h1>
-            <TextField 
-              style={{width: '85%',marginTop: '1rem'}}
+            <TextField className='input'
               id="email"
               name="email"
               type="email" 
@@ -62,7 +60,7 @@ export default function Signup() {
             />
             <h1>Password:</h1>
             <TextField
-              style={{width: '85%',marginTop: '1rem'}} 
+              className='input'
               id="password"
               name="password"
               type="password" 
@@ -73,7 +71,7 @@ export default function Signup() {
             />
             <h1>Confirm Password :</h1>
             <TextField 
-              style={{width: '85%',marginTop: '1rem'}}
+              className='input'
               name="confirm-password"
               id="confirm-password"
               type="password" 

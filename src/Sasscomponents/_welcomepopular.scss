@@ -54,9 +54,11 @@
 @media (max-width: 474px) {
     .popular {
         max-width: 100%;
+        margin-left: 0.5rem;
         margin-right: 0.2rem;
         button {
             @include font(('Karla',sans-serif),0.8rem);
+            padding-inline: 1rem;
         }
     }
 }

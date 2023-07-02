@@ -37,16 +37,14 @@ export default function Login() {
             <h1 className='login'>Login</h1>
             {error.__html && <div className='error' dangerouslySetInnerHTML={error}></div>}
             <h1>Email:</h1>
-            <TextField 
-            style={{width: '70%',marginTop:'1rem'}}
+            <TextField className='input'
             type="email" 
             label='Email'
             value={email}
             onChange={e=>setEmail(e.target.value)}
             />
             <h1>Password:</h1>
-            <TextField
-            style={{width: '70%',marginTop:'1rem'}}
+            <TextField className='input'
             type="password" 
             label='Password'
             value={password}

@@ -6,7 +6,7 @@
 }
 .signup-container {
     width: 60%;
-    margin: 2.27rem auto;
+    margin: 16rem auto;
     border: 1px solid red;
     text-align: center;
     @include border(2px,solid,black,10px);
@@ -64,6 +64,9 @@
         @include font(('Karla',sans-serif),1.25rem);
         margin-top: 2rem;
     }
+    .input {
+        width: 80%;
+    }
 }
 @media (max-width: 1000px) {
     .signup-container {
@@ -89,6 +92,9 @@
     }
 }
 @media (max-width: 450px) {
+    .signup-section {
+        padding: 2rem;
+    }
     .signup-container {
         button {
             padding: 1rem 2rem;
@@ -103,10 +109,8 @@
         .signup {
             font-size: 1rem;
         }
-    }
-}
-@media (min-height: 1400px) {
-    .signup-section {
-        padding-block: 18rem;
+        .input {
+            width: 100%;
+        }
     }
 }

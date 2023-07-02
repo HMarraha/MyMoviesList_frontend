@@ -1,4 +1,3 @@
-
 main  {
     width: 70%;
     margin: auto;
@@ -8,7 +7,7 @@ main  {
     background-image: linear-gradient($primaryColor,rgb(166, 38, 211, 0.7)), url(./assets/heroimage.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     z-index: -1;
     filter: drop-shadow(8px 8px 10px gray);
@@ -93,7 +92,7 @@ main  {
         left: 0;
         right: 0;
         padding: 0;
-        height: 100vh;
+        height: 180vh;
         .hero-text {
             margin-bottom: 15rem;
             padding-top: 5rem;
@@ -118,7 +117,37 @@ main  {
     }
 
 }
-
+@media (max-height: 800px) {
+    .hero {
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+        height: 120vh;
+        .hero-text {
+            margin-bottom: 15rem;
+            padding-top: 5rem;
+            h1 {
+                font-size: 1.5rem;
+                text-align: center;
+                padding: 0;
+            }
+            .p-1 {
+                font-size: 1rem;
+                text-align: center;
+            }
+            .p-2 {
+                font-size: 1rem;
+                text-align: center;
+            }
+            .btn-container {
+                flex-wrap: wrap;
+                margin-top: 4rem;
+            }
+        }
+    }
+}
 @media (max-height: 745px) {
     .hero {
         max-width: 100%;
@@ -126,7 +155,7 @@ main  {
         left: 0;
         right: 0;
         padding: 0;
-        height: 80vh;
+        height: 120vh;
         .hero-text {
             margin-bottom: 15rem;
             padding-top: 5rem;
@@ -157,7 +186,7 @@ main  {
         left: 0;
         right: 0;
         padding: 0;
-        height: 80vh;
+        height: 120vh;
         .hero-text {
             margin-bottom: 15rem;
             padding-top: 5rem;
@@ -191,9 +220,13 @@ main  {
         }
     }
 }
+@media (max-width: 450px) {
+    .hero {
+        height: 180vh;
+    }
+}
 @media (max-width: 414px) {
     .hero {
-        height: 120vh;
         .hero-text {
             .btn {
                 padding: 1.250rem 5rem;

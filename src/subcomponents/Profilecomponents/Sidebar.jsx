@@ -12,6 +12,7 @@ import axiosClient from '../../Views/axios'
 import Empty from '@mui/icons-material/HourglassEmpty'
 import { forwardRef } from 'react'
 import {Snackbar, Alert} from '@mui/material'
+import { Link } from 'react-router-dom'
 const SnackbarAlert = forwardRef(
   function SnackbarAlert(props,ref) {
       return <Alert elevation={6} ref={ref} {...props} />
@@ -352,7 +353,7 @@ const Sidebar = () => {
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <div className='addmovie'>
-                <a href="/search"><Button style={{width:'100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />} >Add Movie</Button></a> 
+                <Link to="/search"><Button style={{width:'100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />} >Add Movie</Button></Link> 
               </div>
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
@@ -388,7 +389,7 @@ const Sidebar = () => {
               <Button onClick={displayWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <div className='addmovie'>
-               <a href="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></a>
+               <Link to="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></Link>
               </div>
                <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
@@ -425,7 +426,7 @@ const Sidebar = () => {
                   <Button onClick={displayWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
               </ButtonGroup>
               <div className='addmovie'>
-               <a href="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></a>
+               <Link to="/search"><Button style={{width: '100%',margin:'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add Movie</Button></Link>
               </div>
               <div className='tableheads'>
                 <p className='tableheadsposter'>Poster</p>
@@ -492,7 +493,7 @@ const Sidebar = () => {
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
                 <div className='addmovie'>
-                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                  <Link to="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></Link>
                 </div>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
@@ -528,7 +529,7 @@ const Sidebar = () => {
                 <Button onClick={showWantToWatch} style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup> 
                 <div className='addmovie'>
-                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                  <Link to="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></Link>
                 </div> 
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
@@ -564,7 +565,7 @@ const Sidebar = () => {
                     <Button onClick={showWantToWatch} variant='contained' style={{width: '100%'}}>Want to Watch</Button>
                 </ButtonGroup>
                 <div className='addmovie'>
-                  <a href="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></a>
+                  <Link to="/search"><Button style={{width :'100%',margin: 'auto'}} variant='contained' color='secondary' startIcon={<Add />}>Add TvShow</Button></Link>
                 </div>
                 <div className='tableheads'>
                   <p className='tableheadsposter'>Poster</p>
